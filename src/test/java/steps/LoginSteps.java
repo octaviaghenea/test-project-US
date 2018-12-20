@@ -8,7 +8,7 @@ public class LoginSteps {
 	LoginPage loginPage;
 	
 	@Step
-	public void openReporterPage(String url) {
+	public void openMagentoPage(String url) {
 		loginPage.getDriver().get(url);
 	}
 

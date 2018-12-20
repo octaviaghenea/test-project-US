@@ -19,7 +19,7 @@ import tools.models.ProductModel;
 
 @RunWith(SerenityRunner.class)
 
-public class HappyFlowPage {
+public class HappyFlowTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -64,21 +64,19 @@ public class HappyFlowPage {
 	@Test
 	public void loginToAccount() {
 
-		loginSteps.openReporterPage(baseURL);
-		headerSteps.clickOnLogin();
-		loginSteps.fillEmailAddress(email);
-		loginSteps.fillPasswoord(password);
-		loginSteps.hitSignInButton();
-		headerSteps.searchProduct(product);
-		productListSteps.clickOnProductName();
-		// productPersonalizationSteps.personalizeProduct(product);
-		productPersonalizationSteps.personalizeProduct(product);
-		// productPersonalizationPage.personalizeProduct("No Personalization",
-		// "");
-		// productPersonalizationPage.personalizeProduct("No Personalization",
-		// "");
-		productDetailsSteps.setQuantity(qty);
-		productDetailsSteps.addToCard();
+		loginSteps.openMagentoPage(baseURL);
+		//headerSteps.clickFreeShipping();
+		headerSteps.selectCmsPage("About us");
+		//headerSteps.selectFromAccount("Login");
+		
+//		loginSteps.fillEmailAddress(email);
+//		loginSteps.fillPasswoord(password);
+//		loginSteps.hitSignInButton();
+//		headerSteps.searchProduct(product);
+//		productListSteps.clickOnProductName();
+//		productPersonalizationSteps.personalizeProduct(product);
+//		productDetailsSteps.setQuantity(qty);
+//		productDetailsSteps.addToCard();
 
 	}
 

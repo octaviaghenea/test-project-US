@@ -43,7 +43,7 @@ public class LoginTest {
 	@Test
 	public void loginToAccount() {
 		
-		loginSteps.openReporterPage(baseURL);
+		loginSteps.openMagentoPage(baseURL);
 		//headerSteps.searchProduct(sku);
 		productListSteps.clickOnProductName();
 		/*headerSteps.clickOnLogin();

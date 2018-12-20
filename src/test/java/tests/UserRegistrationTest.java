@@ -48,8 +48,8 @@ public class UserRegistrationTest {
 	@Test
 	public void loginToAccount() {
 
-		loginSteps.openReporterPage(baseURL);
-		headerSteps.clickOnLogin();
+		loginSteps.openMagentoPage(baseURL);
+	//	headerSteps.clickOnLogin();
 //		loginSteps.fillEmailAddress(email);
 //		loginSteps.fillPasswoord(password);
 //		loginSteps.hitSignInButton();
