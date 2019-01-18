@@ -19,7 +19,7 @@ public class HeaderPage extends PageObject {
 	@FindBy(css = ".panel .top-menu")
 	private WebElementFacade cmsContainer;
 
-	@FindBy(css = ".my-account-links")
+	@FindBy(css = "div.my-account-links")
 	private WebElementFacade myAccontLinksContainer;
 	
 	protected void waitForPageToLoad() {
@@ -50,6 +50,7 @@ public class HeaderPage extends PageObject {
 	public void selectFromAccount(String item) {
 
 		element(myAccontLinksContainer).waitUntilVisible();
+		myAccontLinksContainer.click();
 
 		List<WebElement> itemsList = myAccontLinksContainer
 				.findElements(By.cssSelector("li > a[href]"));
@@ -58,11 +59,14 @@ public class HeaderPage extends PageObject {
 			System.out.println("Links are: " + itemText);
 			if (itemText.toLowerCase().contains(item.toLowerCase())) {
 				itemNow.click();
+				break;
 			}
 
 		}
 	}
 
+	
+	
 	// @FindBy(css = "#search")
 	// private WebElementFacade searchInput;
 	//

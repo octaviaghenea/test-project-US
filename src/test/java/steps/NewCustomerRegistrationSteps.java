@@ -1,7 +1,9 @@
 package steps;
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.StepGroup;
 import pages.NewCustomerRegistrationPage;
+import tools.models.UserCreateModel;
 
 public class NewCustomerRegistrationSteps {
 
@@ -41,5 +43,17 @@ public class NewCustomerRegistrationSteps {
 	public void hitCreateAccount() {
 		customerRegistration.hitCreate();
 	}
+	
+	@StepGroup
+	public void createUser(UserCreateModel userCreate) {
+		enterFirstName(userCreate.getFirstName());
+		enterLastName(userCreate.getLastName());
+		hitSignUpNewsletter();
+		enterEmail(userCreate.getEmail());
+		enterPassword(userCreate.getPassword());
+		enterPassConfirmation(userCreate.getConfirmPassword());
+		hitCreateAccount();
+	}
+	
 
 }
