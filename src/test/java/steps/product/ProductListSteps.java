@@ -1,7 +1,7 @@
-package steps;
+package steps.product;
 
 import net.thucydides.core.annotations.Step;
-import pages.ProductListPage;
+import pages.product.ProductListPage;
 
 public class ProductListSteps {
 	

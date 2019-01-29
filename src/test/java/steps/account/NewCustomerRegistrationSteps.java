@@ -1,9 +1,9 @@
-package steps;
+package steps.account;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
-import pages.NewCustomerRegistrationPage;
-import tools.models.UserCreateModel;
+import pages.account.NewCustomerRegistrationPage;
+import tools.models.UserModel;
 
 public class NewCustomerRegistrationSteps {
 
@@ -45,7 +45,7 @@ public class NewCustomerRegistrationSteps {
 	}
 	
 	@StepGroup
-	public void createUser(UserCreateModel userCreate) {
+	public void createUser(UserModel userCreate) {
 		enterFirstName(userCreate.getFirstName());
 		enterLastName(userCreate.getLastName());
 		hitSignUpNewsletter();

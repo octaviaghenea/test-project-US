@@ -21,7 +21,7 @@ public class HeaderPage extends PageObject {
 
 	@FindBy(css = "div.my-account-links")
 	private WebElementFacade myAccontLinksContainer;
-	
+
 	protected void waitForPageToLoad() {
 		new WebDriverWait(getDriver(), 1)
 				.until(ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";"));
@@ -52,8 +52,7 @@ public class HeaderPage extends PageObject {
 		element(myAccontLinksContainer).waitUntilVisible();
 		myAccontLinksContainer.click();
 
-		List<WebElement> itemsList = myAccontLinksContainer
-				.findElements(By.cssSelector("li > a[href]"));
+		List<WebElement> itemsList = myAccontLinksContainer.findElements(By.cssSelector("li > a[href]"));
 		for (WebElement itemNow : itemsList) {
 			String itemText = itemNow.getText();
 			System.out.println("Links are: " + itemText);
@@ -64,21 +63,5 @@ public class HeaderPage extends PageObject {
 
 		}
 	}
-
-	
-	
-	// @FindBy(css = "#search")
-	// private WebElementFacade searchInput;
-	//
-	// public void clickOnLogin() {
-	// element(loginLink).waitUntilVisible();
-	// loginLink.click();
-	// }
-
-	// public void seachForProduct(String text) {
-	// element(searchInput).waitUntilVisible();
-	// searchInput.type(text);
-	// searchInput.sendKeys(Keys.ENTER);
-	// }
 
 }

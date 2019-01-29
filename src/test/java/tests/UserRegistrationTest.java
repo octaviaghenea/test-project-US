@@ -8,9 +8,10 @@ import org.openqa.selenium.WebDriver;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import steps.HeaderSteps;
-import steps.LoginSteps;
-import steps.NewCustomerRegistrationSteps;
+import steps.account.LoginSteps;
+import steps.account.NewCustomerRegistrationSteps;
+import steps.header.HeaderSteps;
+import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
 
@@ -27,40 +28,27 @@ public class UserRegistrationTest {
 	NewCustomerRegistrationSteps newCustomerSteps;
 
 	public String baseURL;
-	public String email;
-	public String password;
-	public String firstName;
-	public String lastName;
-	public String passwordConfirmation;
+	public UserModel userCreate;
 	
 
 	@Before
 	public void dataSetup() {
 		baseURL = "https://storefront-internal.perfectmemorials.com";
-		email = "octavia.ghenea@gmail.com";
-		password = "Pepsicola123";
-		firstName = "Octavia";
-		lastName = "Ghenea";
-		passwordConfirmation = "Pepsicola123";
-				
+		userCreate = new UserModel();
+		userCreate.setFirstName("Ota");
+		userCreate.setLastName("Ghenea");
+		userCreate.setEmail("ota.ghenea@test.com");
+		userCreate.setPassword("Pepsicola123");
+		userCreate.setConfirmPassword("Pepsicola123");
+
 	}
 
 	@Test
-	public void loginToAccount() {
+	public void createAccount() {
 
 		loginSteps.openMagentoPage(baseURL);
-	//	headerSteps.clickOnLogin();
-//		loginSteps.fillEmailAddress(email);
-//		loginSteps.fillPasswoord(password);
-//		loginSteps.hitSignInButton();
-		loginSteps.hitCreateButton();
-		newCustomerSteps.enterFirstName(firstName);
-		newCustomerSteps.enterLastName(lastName);
-		newCustomerSteps.hitSignUpNewsletter();
-		newCustomerSteps.enterEmail(email);
-		newCustomerSteps.enterPassword(password);
-		newCustomerSteps.enterPassConfirmation(passwordConfirmation);
-		newCustomerSteps.hitCreateAccount();
+		headerSteps.selectFromAccount("Register");
+		newCustomerSteps.createUser(userCreate);
 
 	}
 }

@@ -1,4 +1,4 @@
-package pages;
+package pages.product;
 
 import org.openqa.selenium.Keys;
 

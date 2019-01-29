@@ -1,12 +1,14 @@
-package steps;
+package steps.account;
 
 import net.thucydides.core.annotations.Step;
-import pages.LoginPage;
+import net.thucydides.core.annotations.StepGroup;
+import pages.account.LoginPage;
+import tools.models.UserModel;
 
 public class LoginSteps {
 
 	LoginPage loginPage;
-	
+
 	@Step
 	public void openMagentoPage(String url) {
 		loginPage.getDriver().get(url);
@@ -16,21 +18,22 @@ public class LoginSteps {
 	public void fillEmailAddress(String email) {
 		loginPage.fillEmailInput(email);
 	}
-	
+
 	@Step
 	public void fillPasswoord(String pass) {
 		loginPage.fillPasswordInput(pass);
 	}
-	
+
 	@Step
 	public void hitSignInButton() {
 		loginPage.hitSignIn();
 	}
-	
-	@Step
-	public void hitCreateButton() {
-		loginPage.hitCreateAccount();
+
+	@StepGroup
+	public void loginToAccount(UserModel userModel) {
+		fillEmailAddress(userModel.getEmail());
+		fillPasswoord(userModel.getPassword());
+		hitSignInButton();
+
 	}
-	
-	
 }

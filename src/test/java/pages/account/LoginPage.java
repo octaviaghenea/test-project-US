@@ -1,4 +1,4 @@
-package pages;
+package pages.account;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -32,7 +32,7 @@ public class LoginPage extends PageObject {
 		element(signInButton).waitUntilVisible();
 		signInButton.click();
 	}
-	public void hitCreateAccount() {
+	public void hitCreateAccountButton() {
 		element(createAccountButton).waitUntilVisible();
 		createAccountButton.click();
 	}

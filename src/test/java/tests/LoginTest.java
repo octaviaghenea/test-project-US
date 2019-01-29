@@ -8,9 +8,9 @@ import org.openqa.selenium.WebDriver;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import steps.HeaderSteps;
-import steps.LoginSteps;
-import steps.ProductListSteps;
+import steps.account.LoginSteps;
+import steps.header.HeaderSteps;
+import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
 
@@ -23,34 +23,24 @@ public class LoginTest {
 	LoginSteps loginSteps;
 	@Steps
 	HeaderSteps headerSteps;
-	@Steps
-	ProductListSteps productListSteps;
 
 	public String baseURL;
-	public String email;
-	public String password;
-	public String sku;
-	
-	
+	public UserModel userLogin;
+
 	@Before
 	public void dataSetup() {
 		baseURL = "https://storefront-internal.perfectmemorials.com";
-		email = "octavia.ghenea@gmail.com";
-		password = "Pepsicola123";
-		sku = "PM6049";
+		userLogin = new UserModel();
+		userLogin.setEmail("octavia.ghenea@gmail.com");
+		userLogin.setPassword("Pepsicola123");
 	}
-	
+
 	@Test
-	public void loginToAccount() {
-		
+	public void loginToAccount(){
 		loginSteps.openMagentoPage(baseURL);
-		//headerSteps.searchProduct(sku);
-		productListSteps.clickOnProductName();
-		/*headerSteps.clickOnLogin();
-		loginSteps.fillEmailAddress(email);
-		loginSteps.fillPasswoord(password);
-		loginSteps.hitSignInButton();*/
-		
+		headerSteps.selectFromAccount("Login");
+		loginSteps.loginToAccount(userLogin);
+
 	}
 
 }

@@ -1,6 +1,6 @@
 package tools.models;
 
-public class UserCreateModel {
+public class UserModel {
 
 	private String firstName;
 	private String lastName;
