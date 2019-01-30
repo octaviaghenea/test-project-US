@@ -8,6 +8,7 @@ public class ProductModel {
 	private String firstLine;
 	private String secondLine;
 	private String thirdOption;
+	private String croppingNotes;
 
 	public String getFirstOption() {
 		return firstOption;
@@ -49,6 +50,14 @@ public class ProductModel {
 		this.thirdOption = thirdOption;
 	}
 
+	public String getCroppingNotes() {
+		return croppingNotes;
+	}
+
+	public void setCroppingNotes(String croppingNotes) {
+		this.croppingNotes = croppingNotes;
+	}
+
 	public String getProductName() {
 		return productName;
 	}
@@ -69,7 +78,7 @@ public class ProductModel {
 	public String toString() {
 		return "ProductModel [productName=" + productName + ", productSku=" + productSku + ", firstOption="
 				+ firstOption + ", secondOption=" + secondOption + ", firstLine=" + firstLine + ", secondLine="
-				+ secondLine + ", thirdOption=" + thirdOption + "]";
+				+ secondLine + ", thirdOption=" + thirdOption + ", croppingNotes=" + croppingNotes + "]";
 	}
 
 }

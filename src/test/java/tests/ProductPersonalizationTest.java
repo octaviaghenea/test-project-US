@@ -42,13 +42,14 @@ public class ProductPersonalizationTest {
 
 		product = new ProductModel();
 		product.setProductName("name");
-		product.setProductSku("PM10136");
-		product.setFirstOption("Script Font +$14.95");
-		product.setSecondOption("Peace Dove +$1.95");
+		product.setProductSku("PM3458");
+		product.setFirstOption("Engraving on Heart Pendant +$19.95");
+		product.setSecondOption("Block Font");
 		product.setFirstLine("fdsfds");
 		product.setSecondLine("wtdfgdfg");
-		product.setThirdOption("Purple Embroidered Angel Wings +$14.95");
-
+		// product.setThirdOption("Purple Embroidered Angel Wings +$14.95");
+		product.setCroppingNotes(
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua");
 	}
 
 	@Test
