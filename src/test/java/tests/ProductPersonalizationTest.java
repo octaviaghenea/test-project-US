@@ -42,24 +42,27 @@ public class ProductPersonalizationTest {
 
 		product = new ProductModel();
 		product.setProductName("name");
-		product.setProductSku("PM3458");
-		product.setFirstOption("Engraving on Heart Pendant +$19.95");
-		product.setSecondOption("Block Font");
+		product.setProductSku("PM16260");
+		product.setFirstOption("Yes, Plaque +$34.95");
+		product.setSecondOption("Hearts +$4.95");
+		product.setThirdOption("Script Font");
+		product.setFirstPoem("Never Forget +$7.95");
 		product.setFirstLine("fdsfds");
 		product.setSecondLine("wtdfgdfg");
-		// product.setThirdOption("Purple Embroidered Angel Wings +$14.95");
-		product.setCroppingNotes(
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua");
+		product.setThirdLine("dgdlkdjjds dhfgdhf");
+		product.setFourthLine("dfdsgdf dgfgdf gdf");
+		product.setSecondPoem("Those We Have Held +$14.95");
+		/*product.setCroppingNotes(
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua");*/
 	}
 
 	@Test
-	public void loginToAccount() {
+	public void personalizeProduct() {
 
 		loginSteps.openMagentoPage(baseURL);
 		searchSteps.searchProduct(product);
 		searchSteps.clickSearchedItem();
 		productPersonalizationSteps.personalizeProduct(product);
-
 	}
 
 }

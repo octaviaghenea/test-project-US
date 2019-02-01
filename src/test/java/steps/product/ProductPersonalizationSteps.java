@@ -19,13 +19,24 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 	@StepGroup
 	public void personalizeProduct(ProductModel product) {
 		hitPersonalizeButton();
+
 		selectFirstOption(product.getFirstOption());
 		selectSecondOption(product.getSecondOption());
+		selectThirdOption(product.getThirdOption());
+		selectFirstPoem(product.getFirstPoem());
+		previewFrontPoems();
+		closeFrontPoemsModal();
 		enterFirstEngravingLine(product.getFirstLine());
+		hitHelpButton();
+		closeHelpModal();
 		enterSecondEngravingLine(product.getSecondLine());
-		// selectThirdOption(product.getThirdOption());
-		uploadPhoto();
-		enterCroppingNotes(product.getCroppingNotes());
+		enterThirdEngravingLine(product.getThirdLine());
+		enterFourthEngravingLine(product.getFourthLine());
+		selectSecondPoem(product.getSecondPoem());
+		/*
+		  uploadPhoto(); 
+		  enterCroppingNotes(product.getCroppingNotes());
+		 */
 		hitSaveButton();
 
 	}
@@ -40,10 +51,37 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		productPersonalizationPage.selectFirstOption(firstOption);
 	}
 
-	// generatenewMethod for selectsecondop
 	@Step
 	public void selectSecondOption(String secondOption) {
 		productPersonalizationPage.selectSecondOption(secondOption);
+	}
+
+	@Step
+	public void selectThirdOption(String thirdOption) {
+		productPersonalizationPage.selectThirdOption(thirdOption);
+	}
+
+	@Step
+	public void selectFirstPoem(String firstPoem) {
+		productPersonalizationPage.selectFirstPoem(firstPoem);
+	}
+
+	public void previewFrontPoems() {
+		productPersonalizationPage.previewFrontPoems();
+	}
+
+	public void closeFrontPoemsModal() {
+		productPersonalizationPage.closeFrontPoemsModal();
+	}
+
+	@Step
+	public void hitHelpButton() {
+		productPersonalizationPage.hitHelpButton();
+	}
+
+	@StepGroup
+	public void closeHelpModal() {
+		productPersonalizationPage.closeHelpModal();
 	}
 
 	@Step
@@ -56,23 +94,36 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		productPersonalizationPage.enterSecondEngravingLine(secondLine);
 	}
 
-	/*
-	 * @Step public void selectThirdOption(String thirdOption) {
-	 * productPersonalizationPage.selectThirdOption(thirdOption); }
-	 */
+	private void enterThirdEngravingLine(String thirdLine) {
+		productPersonalizationPage.enterThirdEngravingLine(thirdLine);
+
+	}
 
 	@Step
-	public void enterCroppingNotes(String notes) {
-		productPersonalizationPage.enterCroppingNotes(notes);
+	private void enterFourthEngravingLine(String fourthLine) {
+		productPersonalizationPage.enterFourthEngravingLine(fourthLine);
+
 	}
-	
+
+	@Step
+	private void selectSecondPoem(String secondPoem) {
+		productPersonalizationPage.selectSecondPoem(secondPoem);
+
+	}
+
 	@Step
 	public void uploadPhoto() {
 		productPersonalizationPage.uploadImage();
 	}
 
 	@Step
+	public void enterCroppingNotes(String notes) {
+		productPersonalizationPage.enterCroppingNotes(notes);
+	}
+
+	@Step
 	public void hitSaveButton() {
 		productPersonalizationPage.hitSaveButton();
 	}
+
 }

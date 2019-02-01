@@ -5,10 +5,32 @@ public class ProductModel {
 	private String productSku;
 	private String firstOption;
 	private String secondOption;
+	private String thirdOption;
 	private String firstLine;
 	private String secondLine;
-	private String thirdOption;
+	private String thirdLine;
+	private String fourthLine;
+	private String firstPoem;;
+	private String secondPoem;
 	private String croppingNotes;
+
+	
+	public String getFirstPoem() {
+		return firstPoem;
+	}
+
+	public void setFirstPoem(String firstPoem) {
+		this.firstPoem = firstPoem;
+	}
+
+	public String getSecondPoem() {
+		return secondPoem;
+	}
+
+	public void setSecondPoem(String secondPoem) {
+		this.secondPoem = secondPoem;
+	}
+
 
 	public String getFirstOption() {
 		return firstOption;
@@ -40,6 +62,22 @@ public class ProductModel {
 
 	public void setSecondLine(String secondLine) {
 		this.secondLine = secondLine;
+	}
+	
+	public String getThirdLine() {
+		return thirdLine;
+	}
+
+	public void setThirdLine(String thirdLine) {
+		this.thirdLine = thirdLine;
+	}
+
+	public String getFourthLine() {
+		return fourthLine;
+	}
+
+	public void setFourthLine(String fourthLine) {
+		this.fourthLine = fourthLine;
 	}
 
 	public String getThirdOption() {
