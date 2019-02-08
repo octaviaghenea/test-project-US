@@ -3,6 +3,7 @@ package steps.account;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import pages.account.LoginPage;
+import tools.constants.UrlConstants;
 import tools.models.UserModel;
 
 public class LoginSteps {
@@ -10,7 +11,12 @@ public class LoginSteps {
 	LoginPage loginPage;
 
 	@Step
-	public void openMagentoPage(String url) {
+	public void openMagentoPage() {
+		loginPage.getDriver().get(UrlConstants.BASE_URL);
+	}
+	
+	@Step
+	public void openMUrl(String url) {
 		loginPage.getDriver().get(url);
 	}
 

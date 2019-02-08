@@ -18,8 +18,8 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 	// exemplu
 	@StepGroup
 	public void personalizeProduct(ProductModel product) {
-		hitPersonalizeButton();
 
+		hitPersonalizeButton();
 		selectFirstOption(product.getFirstOption());
 		selectSecondOption(product.getSecondOption());
 		selectThirdOption(product.getThirdOption());
@@ -34,8 +34,7 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		enterFourthEngravingLine(product.getFourthLine());
 		selectSecondPoem(product.getSecondPoem());
 		/*
-		  uploadPhoto(); 
-		  enterCroppingNotes(product.getCroppingNotes());
+		 * uploadPhoto(); enterCroppingNotes(product.getCroppingNotes());
 		 */
 		hitSaveButton();
 

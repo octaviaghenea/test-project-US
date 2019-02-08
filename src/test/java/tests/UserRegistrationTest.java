@@ -9,8 +9,9 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import steps.account.LoginSteps;
-import steps.account.NewCustomerRegistrationSteps;
+import steps.account.CustomerSteps;
 import steps.header.HeaderSteps;
+import tools.factory.UserFactory;
 import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
@@ -25,30 +26,22 @@ public class UserRegistrationTest {
 	@Steps
 	HeaderSteps headerSteps;
 	@Steps
-	NewCustomerRegistrationSteps newCustomerSteps;
+	CustomerSteps newCustomerSteps;
 
-	public String baseURL;
-	public UserModel userCreate;
-	
+	public UserModel user;
 
 	@Before
 	public void dataSetup() {
-		baseURL = "https://storefront-internal.perfectmemorials.com";
-		userCreate = new UserModel();
-		userCreate.setFirstName("Ota");
-		userCreate.setLastName("Ghenea");
-		userCreate.setEmail("ota.ghenea@test.com");
-		userCreate.setPassword("Pepsicola123");
-		userCreate.setConfirmPassword("Pepsicola123");
-
+		user = UserFactory.getUserInstance();
 	}
 
 	@Test
 	public void createAccount() {
 
-		loginSteps.openMagentoPage(baseURL);
+		loginSteps.openMagentoPage();
 		headerSteps.selectFromAccount("Register");
-		newCustomerSteps.createUser(userCreate);
-
+		newCustomerSteps.createUser(user);
+		//newCustomerSteps.verifyCustomerName(user);
+		newCustomerSteps.verifySuccesfullyRegisteredMessage();
 	}
 }

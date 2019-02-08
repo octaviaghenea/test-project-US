@@ -10,13 +10,16 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import steps.account.LoginSteps;
 import steps.header.SearchSteps;
-import steps.product.ProductPersonalizationSteps;
+import steps.product.ProductDetailsSteps;
+import steps.product.ProductReviewFormSteps;
 import tools.factory.ProductFactory;
+import tools.factory.ReviewFactory;
 import tools.models.ProductModel;
+import tools.models.ProductReviewModel;
 
 @RunWith(SerenityRunner.class)
 
-public class ProductPersonalizationTest {
+public class ReviewAsGuestTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -24,24 +27,28 @@ public class ProductPersonalizationTest {
 	@Steps
 	LoginSteps loginSteps;
 	@Steps
-	ProductPersonalizationSteps productPersonalizationSteps;
-	@Steps
 	SearchSteps searchSteps;
+	@Steps
+	ProductDetailsSteps productDetailsSteps;
+	@Steps
+	ProductReviewFormSteps productReviewFormSteps;
 
 	public ProductModel product;
+	public ProductReviewModel review;
 
 	@Before
 	public void dataSetup() {
+		review = ReviewFactory.getReviewInstance();
 		product = ProductFactory.getProductInstance();
+		
 	}
 
 	@Test
-	public void personalizeProduct() {
-
+	public void reviewProductAsGuest() {
 		loginSteps.openMagentoPage();
 		searchSteps.searchProduct(product);
 		searchSteps.clickSearchedItem();
-		productPersonalizationSteps.personalizeProduct(product);
+		productDetailsSteps.goToReviewsTab();
+		productReviewFormSteps.reviewProduct(review);
 	}
-
 }

@@ -1,13 +1,18 @@
 package steps.account;
 
+import org.junit.Assert;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
+import pages.account.MyAccountPage;
 import pages.account.NewCustomerRegistrationPage;
+import tools.constants.MessageConstants;
 import tools.models.UserModel;
 
-public class NewCustomerRegistrationSteps {
+public class CustomerSteps {
 
 	NewCustomerRegistrationPage customerRegistration;
+	MyAccountPage myAccountPage;
 
 	@Step
 	public void enterFirstName(String firstname) {
@@ -38,12 +43,12 @@ public class NewCustomerRegistrationSteps {
 	public void enterPassConfirmation(String confirm) {
 		customerRegistration.enterPassConfirmation(confirm);
 	}
-	
+
 	@Step
 	public void hitCreateAccount() {
 		customerRegistration.hitCreate();
 	}
-	
+
 	@StepGroup
 	public void createUser(UserModel userCreate) {
 		enterFirstName(userCreate.getFirstName());
@@ -54,6 +59,20 @@ public class NewCustomerRegistrationSteps {
 		enterPassConfirmation(userCreate.getConfirmPassword());
 		hitCreateAccount();
 	}
-	
 
+	public void verifyCustomerName(UserModel user) {
+		String expectedName = user.getFirstName() + " " + user.getLastName();
+		String actualName = myAccountPage.getCustomerName();
+		Assert.assertTrue(
+				"Customer name not correct Expected: " + expectedName + " Actual: " + actualName,
+				expectedName.contentEquals(actualName));
+	}
+
+	public void verifySuccesfullyRegisteredMessage() {
+		String actualMessage = myAccountPage.getThankYouMessage();
+		Assert.assertTrue(
+				"Customer name not correct Expected: " + MessageConstants.SUCCESFULLY_REGISTERED_MESSAGE + " Actual: "
+						+ actualMessage,
+				MessageConstants.SUCCESFULLY_REGISTERED_MESSAGE.contentEquals(actualMessage));
+	}
 }

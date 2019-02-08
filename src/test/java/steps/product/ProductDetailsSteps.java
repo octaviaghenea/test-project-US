@@ -16,5 +16,10 @@ public class ProductDetailsSteps {
 	public void addToCard() {
 		productdetailsPage.addToCart();
 	}
+	
+	@Step
+	public void goToReviewsTab() {
+		productdetailsPage.goToReviewsTab();
+	}
 
 }

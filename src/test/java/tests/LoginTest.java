@@ -8,8 +8,10 @@ import org.openqa.selenium.WebDriver;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import steps.account.CustomerSteps;
 import steps.account.LoginSteps;
 import steps.header.HeaderSteps;
+import tools.factory.UserFactory;
 import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
@@ -23,23 +25,22 @@ public class LoginTest {
 	LoginSteps loginSteps;
 	@Steps
 	HeaderSteps headerSteps;
+	@Steps
+	CustomerSteps customerSteps;
 
-	public String baseURL;
-	public UserModel userLogin;
+	public UserModel user;
 
 	@Before
 	public void dataSetup() {
-		baseURL = "https://storefront-internal.perfectmemorials.com";
-		userLogin = new UserModel();
-		userLogin.setEmail("octavia.ghenea@gmail.com");
-		userLogin.setPassword("Pepsicola123");
+		user = UserFactory.getUserInstance();
 	}
 
 	@Test
-	public void loginToAccount(){
-		loginSteps.openMagentoPage(baseURL);
+	public void loginToAccount() {
+		loginSteps.openMagentoPage();
 		headerSteps.selectFromAccount("Login");
-		loginSteps.loginToAccount(userLogin);
+		loginSteps.loginToAccount(user);
+		customerSteps.verifyCustomerName(user);
 
 	}
 
