@@ -1,8 +1,12 @@
 package pages.product;
 
 import java.io.File;
+import java.util.List;
+
+import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.WebElement;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -12,19 +16,7 @@ public class ProductPersonalizationPage extends PageObject {
 	@FindBy(css = "#show-personalize")
 	private WebElementFacade personalizeButton;
 
-	@FindBy(css = "#options_3960_text")
-	private WebElementFacade engravingFirstInput;
-
-	@FindBy(css = "#options_3961_text")
-	private WebElementFacade engravingSecondInput;
-
-	@FindBy(css = "#options_95339_text")
-	private WebElementFacade engravingThirdInput;
-
-	@FindBy(css = "#options_95342_text")
-	private WebElementFacade engravingFourthInput;
-
-	@FindBy(css = "#options_3965_text")
+	@FindBy(css = ".control textarea[class]")
 	private WebElementFacade croppingNotes;
 
 	@FindBy(css = ".preview-poems")
@@ -47,24 +39,35 @@ public class ProductPersonalizationPage extends PageObject {
 		personalizeButton.click();
 	}
 
-	public void selectFirstOption(String firstOption) {
-		Select oSelect = new Select(getDriver().findElement(By.id("select_3963")));
-		oSelect.selectByVisibleText(firstOption);
+	public void selectOption(String label, String option) {
+
+		WebElement select = null;
+		boolean found = false;
+
+		List<WebElement> selectsParentsList = getDriver().findElements(By.cssSelector("#custom-option-parent"));
+		for (WebElement selectParent : selectsParentsList) {
+			if (selectParent.findElement(By.cssSelector("label span")).getText().contentEquals(label)) {
+				select = selectParent.findElement(By.cssSelector("div select"));
+				found = true;
+				break;
+			}
+		}
+		Assert.assertTrue("The select has not been found", found);
+		element(select).selectByVisibleText(option);
 	}
 
-	public void selectSecondOption(String secondOption) {
-		Select oSelect = new Select(getDriver().findElement(By.id("select_3962")));
-		oSelect.selectByVisibleText(secondOption);
-	}
+	public void enterText(String label, String text) {
 
-	public void selectThirdOption(String thirdOption) {
-		Select oSelect = new Select(getDriver().findElement(By.id("select_95343")));
-		oSelect.selectByVisibleText(thirdOption);
-	}
+		WebElement input = null;
 
-	public void selectFirstPoem(String fourthOption) {
-		Select oSelect = new Select(getDriver().findElement(By.id("select_95345")));
-		oSelect.selectByVisibleText(fourthOption);
+		List<WebElement> selectLabelsList = getDriver().findElements(By.cssSelector("#custom-option-parent"));
+		for (WebElement selectLabel : selectLabelsList) {
+			if (selectLabel.findElement(By.cssSelector("label span")).getText().contentEquals(label)) {
+				input = selectLabel.findElement(By.cssSelector("div input"));
+				break;
+			}
+		}
+		element(input).type(text);
 	}
 
 	public void previewFrontPoems() {
@@ -86,31 +89,6 @@ public class ProductPersonalizationPage extends PageObject {
 	public void closeHelpModal() {
 		element(closeHelpModal).waitUntilVisible();
 		closeHelpModal.click();
-	}
-
-	public void enterFirstengravingLine(String engravingFirstLine) {
-		element(engravingFirstInput).waitUntilVisible();
-		engravingFirstInput.type(engravingFirstLine);
-	}
-
-	public void enterSecondEngravingLine(String engravingSecondLine) {
-		element(engravingSecondInput).waitUntilVisible();
-		engravingSecondInput.type(engravingSecondLine);
-	}
-
-	public void enterThirdEngravingLine(String thirdLine) {
-		element(engravingThirdInput).waitUntilVisible();
-		engravingThirdInput.type(thirdLine);
-	}
-
-	public void enterFourthEngravingLine(String fourthLine) {
-		element(engravingFourthInput).waitUntilVisible();
-		engravingFourthInput.type(fourthLine);
-	}
-
-	public void selectSecondPoem(String secondPoem) {
-		Select oSelect = new Select(getDriver().findElement(By.id("select_95346")));
-		oSelect.selectByVisibleText(secondPoem);
 	}
 
 	public void uploadImage2() {
@@ -152,5 +130,4 @@ public class ProductPersonalizationPage extends PageObject {
 		element(saveButton).waitUntilVisible();
 		saveButton.click();
 	}
-
 }

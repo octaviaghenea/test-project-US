@@ -23,13 +23,15 @@ public class ProductFactory {
 	}
 
 	public static ProductModel getProductInstanceWithImage() {
-		// TODO to be implemented
+
 		ProductModel product2 = new ProductModel();
 
 		product2.setProductSku("PM3458");
+		product2.setLabelOption("Eternal Embrace Heart");
 		product2.setFirstOption("Photo Engraving on Heart Pendant +$29.95");
+		product2.setLabelLine("Heart Line 1");
 		product2.setSecondOption("Block Font");
-		product2.setFirstLine("");
+		product2.setFirstLine("dfsdfds dfgg df");
 		product2.setSecondLine("");
 		product2.setCroppingNotes(
 				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua");

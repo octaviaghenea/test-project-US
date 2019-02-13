@@ -13,8 +13,26 @@ public class ProductModel {
 	private String firstPoem;;
 	private String secondPoem;
 	private String croppingNotes;
+	private String labelOption;
+	private String labelLine;
 
 	
+	public String getLabelOption() {
+		return labelOption;
+	}
+
+	public void setLabelOption(String label) {
+		this.labelOption = label;
+	}
+
+	public String getLabelLine() {
+		return labelLine;
+	}
+
+	public void setLabelLine(String labelLine) {
+		this.labelLine = labelLine;
+	}
+
 	public String getFirstPoem() {
 		return firstPoem;
 	}
