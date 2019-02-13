@@ -26,7 +26,7 @@ public class NewCustomerRegistrationPage extends PageObject {
 
 	@FindBy(css = ".primary button.action.submit.primary")
 	private WebElementFacade submitButton;
-	
+
 	public void enterFirstName(String firstname) {
 		element(firstnameInput).waitUntilVisible();
 		firstnameInput.type(firstname);
@@ -61,5 +61,4 @@ public class NewCustomerRegistrationPage extends PageObject {
 		element(submitButton).waitUntilVisible();
 		submitButton.click();
 	}
-
 }

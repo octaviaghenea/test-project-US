@@ -1,4 +1,4 @@
-package tests;
+package tests.account;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,15 +8,15 @@ import org.openqa.selenium.WebDriver;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import steps.account.CustomerSteps;
 import steps.account.LoginSteps;
+import steps.account.CustomerSteps;
 import steps.header.HeaderSteps;
 import tools.factory.UserFactory;
 import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
 
-public class LoginTest {
+public class UserRegistrationTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -26,7 +26,7 @@ public class LoginTest {
 	@Steps
 	HeaderSteps headerSteps;
 	@Steps
-	CustomerSteps customerSteps;
+	CustomerSteps newCustomerSteps;
 
 	public UserModel user;
 
@@ -36,12 +36,12 @@ public class LoginTest {
 	}
 
 	@Test
-	public void loginToAccount() {
+	public void createAccount() {
+
 		loginSteps.openMagentoPage();
-		headerSteps.selectFromAccount("Login");
-		loginSteps.loginToAccount(user);
-		customerSteps.verifyCustomerName(user);
-
+		headerSteps.selectFromAccount("Register");
+		newCustomerSteps.createUser(user);
+		//newCustomerSteps.verifyCustomerName(user);
+		newCustomerSteps.verifySuccesfullyRegisteredMessage();
 	}
-
 }

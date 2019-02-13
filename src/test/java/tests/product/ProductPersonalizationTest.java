@@ -1,4 +1,4 @@
-package tests;
+package tests.product;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,16 +10,13 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import steps.account.LoginSteps;
 import steps.header.SearchSteps;
-import steps.product.ProductDetailsSteps;
-import steps.product.ProductReviewFormSteps;
+import steps.product.ProductPersonalizationSteps;
 import tools.factory.ProductFactory;
-import tools.factory.ReviewFactory;
 import tools.models.ProductModel;
-import tools.models.ProductReviewModel;
 
 @RunWith(SerenityRunner.class)
 
-public class ReviewAsGuestTest {
+public class ProductPersonalizationTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -27,28 +24,27 @@ public class ReviewAsGuestTest {
 	@Steps
 	LoginSteps loginSteps;
 	@Steps
+	ProductPersonalizationSteps productPersonalizationSteps;
+	@Steps
 	SearchSteps searchSteps;
-	@Steps
-	ProductDetailsSteps productDetailsSteps;
-	@Steps
-	ProductReviewFormSteps productReviewFormSteps;
 
 	public ProductModel product;
-	public ProductReviewModel review;
+	public ProductModel product2;
 
 	@Before
 	public void dataSetup() {
-		review = ReviewFactory.getReviewInstance();
 		product = ProductFactory.getProductInstance();
-		
+		product2 = ProductFactory.getProductInstanceWithImage();
 	}
 
 	@Test
-	public void reviewProductAsGuest() {
+	public void personalizeProduct() {
+
 		loginSteps.openMagentoPage();
-		searchSteps.searchProduct(product);
+		searchSteps.searchProduct(product2);
 		searchSteps.clickSearchedItem();
-		productDetailsSteps.goToReviewsTab();
-		productReviewFormSteps.reviewProduct(review);
+		//productPersonalizationSteps.personalizeProduct(product);
+		productPersonalizationSteps.personalizeProductWithPhoto(product2);
 	}
+
 }

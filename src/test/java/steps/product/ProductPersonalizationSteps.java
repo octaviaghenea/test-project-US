@@ -33,11 +33,20 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		enterThirdEngravingLine(product.getThirdLine());
 		enterFourthEngravingLine(product.getFourthLine());
 		selectSecondPoem(product.getSecondPoem());
-		/*
-		 * uploadPhoto(); enterCroppingNotes(product.getCroppingNotes());
-		 */
 		hitSaveButton();
 
+	}
+	
+	@StepGroup
+	public void personalizeProductWithPhoto(ProductModel product2) {
+		hitPersonalizeButton();
+		selectFirstOption(product2.getFirstOption());
+		selectSecondOption(product2.getSecondOption());
+		enterFirstEngravingLine(product2.getFirstLine());
+		enterSecondEngravingLine(product2.getSecondLine());
+		uploadPhoto2();
+		enterCroppingNotes(product2.getCroppingNotes());
+		hitSaveButton();
 	}
 
 	@Step
@@ -110,9 +119,14 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 
 	}
 
-	@Step
+	/*@Step
 	public void uploadPhoto() {
 		productPersonalizationPage.uploadImage();
+	}*/
+	
+	@Step
+	public void uploadPhoto2() {
+		productPersonalizationPage.uploadImage2();
 	}
 
 	@Step
@@ -124,5 +138,4 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 	public void hitSaveButton() {
 		productPersonalizationPage.hitSaveButton();
 	}
-
 }

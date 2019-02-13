@@ -3,9 +3,9 @@ package tools.factory;
 import tools.models.ProductModel;
 
 public class ProductFactory {
-	
+
 	public static ProductModel getProductInstance() {
-		
+
 		ProductModel product = new ProductModel();
 		product.setProductName("name");
 		product.setProductSku("PM16260");
@@ -18,10 +18,22 @@ public class ProductFactory {
 		product.setThirdLine("dgdlkdjjds dhfgdhf");
 		product.setFourthLine("dfdsgdf dgfgdf gdf");
 		product.setSecondPoem("Those We Have Held +$14.95");
-		/*product.setCroppingNotes(
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua");*/
-		
+
 		return product;
 	}
 
+	public static ProductModel getProductInstanceWithImage() {
+		// TODO to be implemented
+		ProductModel product2 = new ProductModel();
+
+		product2.setProductSku("PM3458");
+		product2.setFirstOption("Photo Engraving on Heart Pendant +$29.95");
+		product2.setSecondOption("Block Font");
+		product2.setFirstLine("");
+		product2.setSecondLine("");
+		product2.setCroppingNotes(
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua");
+
+		return product2;
+	}
 }

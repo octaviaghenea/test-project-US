@@ -43,7 +43,6 @@ public class HeaderPage extends PageObject {
 			if (itemText.toLowerCase().contains(item.toLowerCase())) {
 				itemNow.click();
 			}
-
 		}
 	}
 
@@ -60,7 +59,6 @@ public class HeaderPage extends PageObject {
 				itemNow.click();
 				break;
 			}
-
 		}
 	}
 

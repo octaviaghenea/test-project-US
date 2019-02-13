@@ -1,10 +1,13 @@
 package steps.account;
 
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import pages.account.LoginPage;
 import tools.constants.UrlConstants;
-import tools.models.UserModel;
+
 
 public class LoginSteps {
 
@@ -14,7 +17,7 @@ public class LoginSteps {
 	public void openMagentoPage() {
 		loginPage.getDriver().get(UrlConstants.BASE_URL);
 	}
-	
+
 	@Step
 	public void openMUrl(String url) {
 		loginPage.getDriver().get(url);
@@ -36,10 +39,17 @@ public class LoginSteps {
 	}
 
 	@StepGroup
-	public void loginToAccount(UserModel userModel) {
-		fillEmailAddress(userModel.getEmail());
-		fillPasswoord(userModel.getPassword());
+	public void loginToAccount(String email, String password) {
+		fillEmailAddress(email);
+		fillPasswoord(password);
 		hitSignInButton();
+	}
 
+	public void verifyPageTitle(WebDriver webdriver) {
+		String actualTitle = webdriver.getTitle();
+		String expectedTitle = "My Account";
+		System.out.println("Actual title: " + actualTitle);
+		Assert.assertTrue("Page name not correct: " + expectedTitle + " Actual page title: " + actualTitle,
+				expectedTitle.contentEquals(actualTitle));
 	}
 }
