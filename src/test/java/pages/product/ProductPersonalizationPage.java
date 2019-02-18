@@ -52,7 +52,7 @@ public class ProductPersonalizationPage extends PageObject {
 				break;
 			}
 		}
-		Assert.assertTrue("The select has not been found", found);
+		Assert.assertTrue("The option has not been found", found);
 		element(select).selectByVisibleText(option);
 	}
 

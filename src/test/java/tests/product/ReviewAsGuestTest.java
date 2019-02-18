@@ -40,7 +40,7 @@ public class ReviewAsGuestTest {
 	public void dataSetup() {
 		review = ReviewFactory.getReviewInstance();
 		product = ProductFactory.getProductInstance();
-		
+
 	}
 
 	@Test
@@ -51,4 +51,5 @@ public class ReviewAsGuestTest {
 		productDetailsSteps.goToReviewsTab();
 		productReviewFormSteps.reviewProduct(review);
 	}
+
 }

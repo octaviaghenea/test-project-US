@@ -1,5 +1,6 @@
 package steps.account;
 
+
 import org.junit.Assert;
 
 import net.thucydides.core.annotations.Step;
@@ -62,17 +63,16 @@ public class CustomerSteps {
 
 	public void verifyCustomerName(UserModel user) {
 		String expectedName = user.getFirstName() + " " + user.getLastName();
+		// System.out.println("Expected name is: " + expectedName);
 		String actualName = myAccountPage.getCustomerName();
-		Assert.assertTrue(
-				"Customer name not correct Expected: " + expectedName + " Actual: " + actualName,
+		Assert.assertTrue("Customer name not correct Expected: " + expectedName + " Actual: " + actualName,
 				expectedName.contentEquals(actualName));
 	}
 
 	public void verifySuccesfullyRegisteredMessage() {
 		String actualMessage = myAccountPage.getThankYouMessage();
-		Assert.assertTrue(
-				"Customer name not correct Expected: " + MessageConstants.SUCCESFULLY_REGISTERED_MESSAGE + " Actual: "
-						+ actualMessage,
+		Assert.assertTrue("Thank you message not correct Expected: " + MessageConstants.SUCCESFULLY_REGISTERED_MESSAGE
+				+ " Actual: " + actualMessage,
 				MessageConstants.SUCCESFULLY_REGISTERED_MESSAGE.contentEquals(actualMessage));
 	}
 }

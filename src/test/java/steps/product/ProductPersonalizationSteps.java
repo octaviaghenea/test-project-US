@@ -4,7 +4,8 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 import pages.product.ProductPersonalizationPage;
-import tools.models.ProductModel;
+import tools.models.ProductPersonalizationModel;
+import tools.models.ProductPersonalizationWithPhotoModel;
 
 public class ProductPersonalizationSteps extends ScenarioSteps {
 
@@ -16,23 +17,34 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 	ProductPersonalizationPage productPersonalizationPage;
 
 	@StepGroup
-	public void personalizeProduct(ProductModel product) {
+	public void personalizeProduct(ProductPersonalizationModel product) {
 
 		hitPersonalizeButton();
+		selectOption(product.getPlaqueStyleLabel(), product.getPlaqueStyleOption());
+		selectOption(product.getArtwoorkLabel(), product.getArtwoorkOption());
+		selectOption(product.getFontStyleLabel(), product.getFontStyleOption());
+		selectOption(product.getChooseFrontPoemLabel(), product.getFrontPoemOption());
 		previewFrontPoems();
 		closeFrontPoemsModal();
+		enterEngravingLine(product.getNameLabel(), product.getNameText());
 		hitHelpButton();
 		closeHelpModal();
+		enterEngravingLine(product.getSentimentLine1Label(), product.getSentimentLine1Text());
+		enterEngravingLine(product.getSentimentLine2Label(), product.getSentimentLine2Text());
+		enterEngravingLine(product.getSentimentLine3Label(), product.getSentimentLine3Text());
+		selectOption(product.getChooseBackPoemLabel(), product.getBackPoemOption());
 		hitSaveButton();
 	}
 
 	@StepGroup
-	public void personalizeProductWithPhoto(ProductModel product2) {
+	public void personalizeProductWithPhoto(ProductPersonalizationWithPhotoModel product) {
 		hitPersonalizeButton();
-		selectOption(product2.getLabelOption(), product2.getFirstOption());
-		enterEngravingLine(product2.getLabelLine(), product2.getFirstLine());
+		selectOption(product.getEmbraceHeart(), product.getEngravingOnHeart());
+		selectOption(product.getHeartFont(), product.getScriptFont());
+		enterEngravingLine(product.getHeartLine1(), product.getTextLine1());
+		enterEngravingLine(product.getHeartLine2(), product.getTextLine2());
 		uploadPhoto2();
-		enterCroppingNotes(product2.getCroppingNotes());
+		enterCroppingNotes(product.getPhotoCroppingNotes());
 		hitSaveButton();
 	}
 
@@ -70,9 +82,8 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 	}
 
 	/*
-	 @Step public void uploadPhoto() {
-	 productPersonalizationPage.uploadImage();
-	 }
+	 * @Step public void uploadPhoto() {
+	 * productPersonalizationPage.uploadImage(); }
 	 */
 
 	@Step

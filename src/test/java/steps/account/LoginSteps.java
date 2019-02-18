@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import pages.account.LoginPage;
+import tools.constants.MessageConstants;
 import tools.constants.UrlConstants;
-
 
 public class LoginSteps {
 
@@ -16,11 +16,6 @@ public class LoginSteps {
 	@Step
 	public void openMagentoPage() {
 		loginPage.getDriver().get(UrlConstants.BASE_URL);
-	}
-
-	@Step
-	public void openMUrl(String url) {
-		loginPage.getDriver().get(url);
 	}
 
 	@Step
@@ -51,5 +46,12 @@ public class LoginSteps {
 		System.out.println("Actual title: " + actualTitle);
 		Assert.assertTrue("Page name not correct: " + expectedTitle + " Actual page title: " + actualTitle,
 				expectedTitle.contentEquals(actualTitle));
+	}
+
+	public void verifyLoginErrorMessage() {
+		String actualMessage = loginPage.getLoginErrorMessage();
+		Assert.assertTrue(
+				"Email or Password not correct: " + MessageConstants.LOGIN_ERROR_MESSAHE + "Actual: " + actualMessage,
+				MessageConstants.LOGIN_ERROR_MESSAHE.contentEquals(actualMessage));
 	}
 }

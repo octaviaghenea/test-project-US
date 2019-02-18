@@ -28,10 +28,11 @@ public class ProductReviewFormPage extends PageObject {
 
 	public void setRatingStars(String text) {
 		element(ratingStarsContainer).waitUntilVisible();
-		List<WebElement> ratingStarsList = ratingStarsContainer.find(By.cssSelector("div.control > label[for]"));
+		List<WebElement> ratingStarsList = ratingStarsContainer.find(By.cssSelector("div.control > label"));
+		System.out.println(ratingStarsList);
 
 		for (WebElement ratingStarNow : ratingStarsList) {
-			String starName = ratingStarNow.getText();
+			String starName = ratingStarNow.getAttribute("for");
 			System.out.println("Rating star are: " + starName);
 			if (starName.contains(text)) {
 				ratingStarNow.click();

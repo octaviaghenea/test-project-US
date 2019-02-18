@@ -12,7 +12,8 @@ import steps.account.LoginSteps;
 import steps.header.SearchSteps;
 import steps.product.ProductPersonalizationSteps;
 import tools.factory.ProductFactory;
-import tools.models.ProductModel;
+import tools.models.ProductPersonalizationModel;
+import tools.models.ProductPersonalizationWithPhotoModel;
 
 @RunWith(SerenityRunner.class)
 
@@ -28,13 +29,13 @@ public class ProductPersonalizationTest {
 	@Steps
 	SearchSteps searchSteps;
 
-	public ProductModel product;
-	public ProductModel product2;
+	public ProductPersonalizationWithPhotoModel product;
+	public ProductPersonalizationModel product2;
 
 	@Before
 	public void dataSetup() {
-		product = ProductFactory.getProductInstance();
-		product2 = ProductFactory.getProductInstanceWithImage();
+		product = ProductFactory.getProductInstanceWithImage();
+		product2 = ProductFactory.getProductInstanceWithoutImage();
 	}
 
 	@Test
@@ -43,8 +44,7 @@ public class ProductPersonalizationTest {
 		loginSteps.openMagentoPage();
 		searchSteps.searchProduct(product2);
 		searchSteps.clickSearchedItem();
-		//productPersonalizationSteps.personalizeProduct(product);
-		productPersonalizationSteps.personalizeProductWithPhoto(product2);
+		productPersonalizationSteps.personalizeProduct(product2);
+		//productPersonalizationSteps.personalizeProductWithPhoto(product);
 	}
-
 }
