@@ -1,6 +1,7 @@
 package pages.product;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.Assert;
@@ -10,11 +11,15 @@ import org.openqa.selenium.WebElement;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import tools.constants.Constants;
 
 public class ProductPersonalizationPage extends PageObject {
 
 	@FindBy(css = "#show-personalize")
 	private WebElementFacade personalizeButton;
+
+	@FindBy(css = "#custom-option-parent div select")
+	private WebElementFacade customOptionSelect;
 
 	@FindBy(css = ".control textarea[class]")
 	private WebElementFacade croppingNotes;
@@ -30,10 +35,13 @@ public class ProductPersonalizationPage extends PageObject {
 
 	@FindBy(css = ".name-modal .action-close")
 	private WebElementFacade closeHelpModal;
+	
+	@FindBy(css = ".cost")
+	private WebElementFacade personalizationCost;
 
 	@FindBy(css = ".save-personalization")
 	private WebElementFacade saveButton;
-
+	
 	public void hitPersonalizeButton() {
 		element(personalizeButton).waitUntilVisible();
 		personalizeButton.click();
@@ -70,6 +78,22 @@ public class ProductPersonalizationPage extends PageObject {
 		element(input).type(text);
 	}
 
+	public String grabCustomOptionsPrices() {
+		element(customOptionSelect).waitUntilVisible();
+		List<WebElement> selectedPriceList = customOptionSelect.findElements(By.cssSelector("option[price]"));
+
+		BigDecimal sumOfOptions = new BigDecimal(0);
+
+		for (WebElement price : selectedPriceList) {
+			String actualPrice = price.getText();
+			sumOfOptions = sumOfOptions.add(new BigDecimal(actualPrice));
+			System.out.println("Sum of options is: " + sumOfOptions);
+		}
+
+		return sumOfOptions.toString();
+
+	}
+
 	public void previewFrontPoems() {
 		element(frontPoemsButton).waitUntilVisible();
 		frontPoemsButton.click();
@@ -95,8 +119,7 @@ public class ProductPersonalizationPage extends PageObject {
 
 		File baseDir = new File(new File("").getAbsolutePath());
 		getDriver().findElement(By.cssSelector("input[type='file'][class*='choose-image']"))
-				.sendKeys(baseDir + "/resources/chuchu.jpg");
-
+				.sendKeys(baseDir + Constants.PICTURE_PATH);
 	}
 
 	/*
@@ -124,6 +147,11 @@ public class ProductPersonalizationPage extends PageObject {
 	public void enterCroppingNotes(String notes) {
 		element(croppingNotes).waitUntilVisible();
 		croppingNotes.type(notes);
+	}
+	
+	public String getPersonalizationCost() {
+		element(personalizationCost).waitUntilVisible();
+		return personalizationCost.getValue();
 	}
 
 	public void hitSaveButton() {

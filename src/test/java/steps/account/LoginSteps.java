@@ -7,7 +7,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import pages.account.LoginPage;
 import tools.constants.MessageConstants;
-import tools.constants.UrlConstants;
+import tools.constants.Constants;
 
 public class LoginSteps {
 
@@ -15,7 +15,7 @@ public class LoginSteps {
 
 	@Step
 	public void openMagentoPage() {
-		loginPage.getDriver().get(UrlConstants.BASE_URL);
+		loginPage.getDriver().get(Constants.BASE_URL);
 	}
 
 	@Step
@@ -51,7 +51,7 @@ public class LoginSteps {
 	public void verifyLoginErrorMessage() {
 		String actualMessage = loginPage.getLoginErrorMessage();
 		Assert.assertTrue(
-				"Email or Password not correct: " + MessageConstants.LOGIN_ERROR_MESSAHE + "Actual: " + actualMessage,
-				MessageConstants.LOGIN_ERROR_MESSAHE.contentEquals(actualMessage));
+				"Email or Password not correct: " + MessageConstants.LOGIN_ERROR_MESSAGE + "Actual: " + actualMessage,
+				MessageConstants.LOGIN_ERROR_MESSAGE.contentEquals(actualMessage));
 	}
 }

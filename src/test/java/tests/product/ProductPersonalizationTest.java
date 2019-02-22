@@ -10,10 +10,10 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import steps.account.LoginSteps;
 import steps.header.SearchSteps;
+import steps.product.ProductDetailsSteps;
 import steps.product.ProductPersonalizationSteps;
 import tools.factory.ProductFactory;
 import tools.models.ProductPersonalizationModel;
-import tools.models.ProductPersonalizationWithPhotoModel;
 
 @RunWith(SerenityRunner.class)
 
@@ -28,23 +28,28 @@ public class ProductPersonalizationTest {
 	ProductPersonalizationSteps productPersonalizationSteps;
 	@Steps
 	SearchSteps searchSteps;
+	@Steps
+	ProductDetailsSteps productDetailsSteps;
 
-	public ProductPersonalizationWithPhotoModel product;
-	public ProductPersonalizationModel product2;
+	public ProductPersonalizationModel product;
 
 	@Before
 	public void dataSetup() {
 		product = ProductFactory.getProductInstanceWithImage();
-		product2 = ProductFactory.getProductInstanceWithoutImage();
+		//product = ProductFactory.getProductInstanceWithoutImage();
 	}
 
 	@Test
 	public void personalizeProduct() {
 
 		loginSteps.openMagentoPage();
-		searchSteps.searchProduct(product2);
+		searchSteps.searchProduct(product);
 		searchSteps.clickSearchedItem();
-		productPersonalizationSteps.personalizeProduct(product2);
-		//productPersonalizationSteps.personalizeProductWithPhoto(product);
+		// productPersonalizationSteps.personalizeProduct(product2);
+		productPersonalizationSteps.personalizeProductWithPhoto(product);
+		//productDetailsSteps.setQuantity("2");
+		//productDetailsSteps.addToCard();
+		//productDetailsSteps.verifySuccessfullyAddedMessage();
+		//productPersonalizationSteps.verifyPersonalizationCost();
 	}
 }

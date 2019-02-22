@@ -21,6 +21,7 @@ public class MyAccountPage extends PageObject {
 
 	public String getThankYouMessage() {
 		thankYouMessage.waitUntilVisible();
+		//TODO waitu
 		waitABit(4000);
 		return thankYouMessage.getText();
 	}

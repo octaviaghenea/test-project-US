@@ -33,7 +33,7 @@ public class ProductReviewFormPage extends PageObject {
 
 		for (WebElement ratingStarNow : ratingStarsList) {
 			String starName = ratingStarNow.getAttribute("for");
-			System.out.println("Rating star are: " + starName);
+			System.out.println("Rating stars are: " + starName);
 			if (starName.contains(text)) {
 				ratingStarNow.click();
 			}
@@ -59,5 +59,4 @@ public class ProductReviewFormPage extends PageObject {
 		submitReviewButton.waitUntilVisible();
 		submitReviewButton.click();
 	}
-
 }

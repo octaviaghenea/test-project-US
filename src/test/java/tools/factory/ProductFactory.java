@@ -2,7 +2,6 @@ package tools.factory;
 
 import tools.models.ProductModel;
 import tools.models.ProductPersonalizationModel;
-import tools.models.ProductPersonalizationWithPhotoModel;
 import tools.utils.RandomGenerators;
 
 public class ProductFactory {
@@ -16,9 +15,9 @@ public class ProductFactory {
 		return product;
 	}
 
-	public static ProductPersonalizationWithPhotoModel getProductInstanceWithImage() {
+	public static ProductPersonalizationModel getProductInstanceWithImage() {
 
-		ProductPersonalizationWithPhotoModel product2 = new ProductPersonalizationWithPhotoModel();
+		ProductPersonalizationModel product2 = new ProductPersonalizationModel();
 
 		product2.setProductSku("PM3458");
 		product2.setEmbraceHeart("Eternal Embrace Heart");

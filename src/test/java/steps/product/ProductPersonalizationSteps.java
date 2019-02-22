@@ -1,11 +1,12 @@
 package steps.product;
 
+import org.junit.Assert;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 import pages.product.ProductPersonalizationPage;
 import tools.models.ProductPersonalizationModel;
-import tools.models.ProductPersonalizationWithPhotoModel;
 
 public class ProductPersonalizationSteps extends ScenarioSteps {
 
@@ -37,7 +38,7 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 	}
 
 	@StepGroup
-	public void personalizeProductWithPhoto(ProductPersonalizationWithPhotoModel product) {
+	public void personalizeProductWithPhoto(ProductPersonalizationModel product) {
 		hitPersonalizeButton();
 		selectOption(product.getEmbraceHeart(), product.getEngravingOnHeart());
 		selectOption(product.getHeartFont(), product.getScriptFont());
@@ -63,10 +64,12 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		productPersonalizationPage.enterText(label, text);
 	}
 
+	@Step
 	public void previewFrontPoems() {
 		productPersonalizationPage.previewFrontPoems();
 	}
 
+	@Step
 	public void closeFrontPoemsModal() {
 		productPersonalizationPage.closeFrontPoemsModal();
 	}
@@ -76,7 +79,7 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		productPersonalizationPage.hitHelpButton();
 	}
 
-	@StepGroup
+	@Step
 	public void closeHelpModal() {
 		productPersonalizationPage.closeHelpModal();
 	}
@@ -99,5 +102,12 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 	@Step
 	public void hitSaveButton() {
 		productPersonalizationPage.hitSaveButton();
+	}
+
+	public void verifyPersonalizationCost() {
+		String expectedCost = productPersonalizationPage.grabCustomOptionsPrices();
+		String actualCost = productPersonalizationPage.getPersonalizationCost();
+		Assert.assertTrue("Sum not correct: " + expectedCost + "Actual cost: " + actualCost,
+				expectedCost.equals(actualCost));
 	}
 }

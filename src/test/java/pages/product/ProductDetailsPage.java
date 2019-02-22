@@ -16,6 +16,10 @@ public class ProductDetailsPage extends PageObject {
 
 	@FindBy(css = "#tab-label-reviews-title")
 	private WebElementFacade reviewsTab;
+	
+	@FindBy(css = ".message-success div")
+	private WebElementFacade addedToCartMessage;
+	
 
 	public void setQuantity(String quantity) {
 		quantityField.waitUntilVisible();
@@ -31,7 +35,12 @@ public class ProductDetailsPage extends PageObject {
 	public void goToReviewsTab() {
 		reviewsTab.waitUntilVisible();
 		reviewsTab.click();
-
 	}
 
+	public String getAddedToCartMessage() {
+		addedToCartMessage.waitUntilVisible();
+		//TODO waitu
+		waitABit(4000);
+		return addedToCartMessage.getText();
+	}
 }
