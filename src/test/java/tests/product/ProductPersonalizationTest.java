@@ -35,8 +35,8 @@ public class ProductPersonalizationTest {
 
 	@Before
 	public void dataSetup() {
-		product = ProductFactory.getProductInstanceWithImage();
-		//product = ProductFactory.getProductInstanceWithoutImage();
+		// product = ProductFactory.getProductInstanceWithImage();
+		product = ProductFactory.getProductInstanceWithoutImage();
 	}
 
 	@Test
@@ -45,11 +45,12 @@ public class ProductPersonalizationTest {
 		loginSteps.openMagentoPage();
 		searchSteps.searchProduct(product);
 		searchSteps.clickSearchedItem();
-		// productPersonalizationSteps.personalizeProduct(product2);
-		productPersonalizationSteps.personalizeProductWithPhoto(product);
-		//productDetailsSteps.setQuantity("2");
-		//productDetailsSteps.addToCard();
-		//productDetailsSteps.verifySuccessfullyAddedMessage();
-		//productPersonalizationSteps.verifyPersonalizationCost();
+		productPersonalizationSteps.personalizeProduct(product);
+		productDetailsSteps.verifyUnitPrice(product);
+		// productPersonalizationSteps.personalizeProductWithPhoto(product);
+		// productDetailsSteps.setQuantity("2");
+		// productDetailsSteps.addToCard();
+		// productDetailsSteps.verifySuccessfullyAddedMessage();
+
 	}
 }

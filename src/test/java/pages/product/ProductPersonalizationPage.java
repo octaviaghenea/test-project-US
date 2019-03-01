@@ -35,13 +35,13 @@ public class ProductPersonalizationPage extends PageObject {
 
 	@FindBy(css = ".name-modal .action-close")
 	private WebElementFacade closeHelpModal;
-	
+
 	@FindBy(css = ".cost")
 	private WebElementFacade personalizationCost;
 
 	@FindBy(css = ".save-personalization")
 	private WebElementFacade saveButton;
-	
+
 	public void hitPersonalizeButton() {
 		element(personalizeButton).waitUntilVisible();
 		personalizeButton.click();
@@ -76,22 +76,6 @@ public class ProductPersonalizationPage extends PageObject {
 			}
 		}
 		element(input).type(text);
-	}
-
-	public String grabCustomOptionsPrices() {
-		element(customOptionSelect).waitUntilVisible();
-		List<WebElement> selectedPriceList = customOptionSelect.findElements(By.cssSelector("option[price]"));
-
-		BigDecimal sumOfOptions = new BigDecimal(0);
-
-		for (WebElement price : selectedPriceList) {
-			String actualPrice = price.getText();
-			sumOfOptions = sumOfOptions.add(new BigDecimal(actualPrice));
-			System.out.println("Sum of options is: " + sumOfOptions);
-		}
-
-		return sumOfOptions.toString();
-
 	}
 
 	public void previewFrontPoems() {
@@ -148,10 +132,10 @@ public class ProductPersonalizationPage extends PageObject {
 		element(croppingNotes).waitUntilVisible();
 		croppingNotes.type(notes);
 	}
-	
+
 	public String getPersonalizationCost() {
 		element(personalizationCost).waitUntilVisible();
-		return personalizationCost.getValue();
+		return personalizationCost.getText().replaceAll("([^0-9.])", "");
 	}
 
 	public void hitSaveButton() {

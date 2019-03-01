@@ -34,6 +34,7 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		enterEngravingLine(product.getSentimentLine2Label(), product.getSentimentLine2Text());
 		enterEngravingLine(product.getSentimentLine3Label(), product.getSentimentLine3Text());
 		selectOption(product.getChooseBackPoemLabel(), product.getBackPoemOption());
+		verifyPersonalizationCost(product);
 		hitSaveButton();
 	}
 
@@ -46,6 +47,7 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		enterEngravingLine(product.getHeartLine2(), product.getTextLine2());
 		uploadPhoto2();
 		enterCroppingNotes(product.getPhotoCroppingNotes());
+		verifyPersonalizationCost(product);
 		hitSaveButton();
 	}
 
@@ -104,10 +106,10 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		productPersonalizationPage.hitSaveButton();
 	}
 
-	public void verifyPersonalizationCost() {
-		String expectedCost = productPersonalizationPage.grabCustomOptionsPrices();
+	public void verifyPersonalizationCost(ProductPersonalizationModel product) {
+		String expectedCost = product.getPersonalizationCost();
 		String actualCost = productPersonalizationPage.getPersonalizationCost();
-		Assert.assertTrue("Sum not correct: " + expectedCost + "Actual cost: " + actualCost,
+		Assert.assertTrue("Costs not equal! Expected cost: " + expectedCost + " Actual cost: " + actualCost,
 				expectedCost.equals(actualCost));
 	}
 }

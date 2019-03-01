@@ -21,6 +21,11 @@ public class ProductPersonalizationModel extends ProductModel {
 	private String chooseBackPoemLabel;
 	private String backPoemOption;
 	private String embraceHeartLabel;
+	private String personalizationCost;
+	private String unitPrice;
+	
+	private EternalEmbraceHeartModel eternalEmbraceHeartModel;
+	
 	private String engravingOnHeartOption;
 	private String heartFontLabel;
 	private String scriptFontOption;
@@ -29,7 +34,9 @@ public class ProductPersonalizationModel extends ProductModel {
 	private String heartLineLabel2;
 	private String textLine2;
 	private String photoCroppingNotes;
-
+	
+	
+	
 	public String getPlaqueStyleLabel() {
 		return plaqueStyleLabel;
 	}
@@ -245,4 +252,70 @@ public class ProductPersonalizationModel extends ProductModel {
 	public void setPhotoCroppingNotes(String photoCroppingNotes) {
 		this.photoCroppingNotes = photoCroppingNotes;
 	}
+
+	public String getEmbraceHeartLabel() {
+		return embraceHeartLabel;
+	}
+
+	public void setEmbraceHeartLabel(String embraceHeartLabel) {
+		this.embraceHeartLabel = embraceHeartLabel;
+	}
+
+	public EternalEmbraceHeartModel getEternalEmbraceHeartModel() {
+		return eternalEmbraceHeartModel;
+	}
+
+	public void setEternalEmbraceHeartModel(EternalEmbraceHeartModel eternalEmbraceHeartModel) {
+		this.eternalEmbraceHeartModel = eternalEmbraceHeartModel;
+	}
+
+	public String getEngravingOnHeartOption() {
+		return engravingOnHeartOption;
+	}
+
+	public void setEngravingOnHeartOption(String engravingOnHeartOption) {
+		this.engravingOnHeartOption = engravingOnHeartOption;
+	}
+
+	public String getHeartFontLabel() {
+		return heartFontLabel;
+	}
+
+	public void setHeartFontLabel(String heartFontLabel) {
+		this.heartFontLabel = heartFontLabel;
+	}
+
+	public String getScriptFontOption() {
+		return scriptFontOption;
+	}
+
+	public void setScriptFontOption(String scriptFontOption) {
+		this.scriptFontOption = scriptFontOption;
+	}
+
+	public String getHeartLine1Label() {
+		return heartLine1Label;
+	}
+
+	public void setHeartLine1Label(String heartLine1Label) {
+		this.heartLine1Label = heartLine1Label;
+	}
+
+	public String getHeartLineLabel2() {
+		return heartLineLabel2;
+	}
+
+	public void setHeartLineLabel2(String heartLineLabel2) {
+		this.heartLineLabel2 = heartLineLabel2;
+	}
+
+	public String getPersonalizationCost() {
+		return personalizationCost;
+	}
+
+	public void setPersonalizationCost(String personalizationCost) {
+		this.personalizationCost = personalizationCost;
+	}
+	
+	
 }
