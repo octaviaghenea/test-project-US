@@ -35,5 +35,4 @@ public class APICatalogOSCSteps extends AbstractApiSteps {
 		Assert.assertTrue("Product price not mathcing!! ",
 				productMagento.getPrice().contentEquals(productOSC.getPrice()));
 	}
-
 }
