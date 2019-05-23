@@ -22,7 +22,7 @@ public class APICatalogOSCSteps extends AbstractApiSteps {
 	public CatalogOSC updateProductNameAndPrice() {
 		CatalogOSC productRequest = CatalogOSCFactory.getOSCProductDetails();
 		CatalogOSC updatedProduct = updateResourse("", productRequest, CatalogOSC.class);	
-		return updatedProduct;
+		return updatedProduct; 
 	}
 
 	@Step
