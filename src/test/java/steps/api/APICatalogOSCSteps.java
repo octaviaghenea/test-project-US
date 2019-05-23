@@ -19,10 +19,12 @@ public class APICatalogOSCSteps extends AbstractApiSteps {
 	}
 
 	@Step
-	public CatalogOSC updateProductNameAndPrice() {
+	public CatalogOSC updateProductNameAndPrice(String ID) {
+		AbstractApiSteps.URL = Constants.URL_OSC_CATALOG;
 		CatalogOSC productRequest = CatalogOSCFactory.getOSCProductDetails();
-		CatalogOSC updatedProduct = updateResourse("", productRequest, CatalogOSC.class);	
-		return updatedProduct; 
+		CatalogOSC updatedProduct = updateResourse("/products/" + ID, productRequest, CatalogOSC.class,
+				"?" + "name=" + productRequest.getName() + "&" + "price=" + productRequest.getPrice());
+		return updatedProduct;
 	}
 
 	@Step

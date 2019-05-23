@@ -36,12 +36,13 @@ public class APICheckProductDetails {
 		System.setProperty("https.proxyHost", "localhost");
 		System.setProperty("https.proxyPort", "8080");
 
+		apiCatalogOSCSteps.updateProductNameAndPrice(ID);
 		/*apiMagentoCatalogSteps.deleteMagentoProduct(SKU);
-		apiEventsAppsSteps.triggerProductChange();*/
+		apiEventsAppsSteps.triggerProductChange();
 		
-		//CatalogOSC catalogOSC = apiCatalogOSCSteps.getProductByID(ID);
+		CatalogOSC catalogOSC = apiCatalogOSCSteps.getProductByID(ID);
 		CatalogMagento catalogMagento = apiMagentoCatalogSteps.getMagentoProductBySKU(SKU);
 		
-		//apiCatalogOSCSteps.verifyProductMagentoToOSC(catalogMagento, catalogOSC);
+		apiCatalogOSCSteps.verifyProductMagentoToOSC(catalogMagento, catalogOSC);*/
 	}
 }

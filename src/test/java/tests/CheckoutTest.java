@@ -69,21 +69,19 @@ public class CheckoutTest {
 	}
 
 	@Test
-	public void personalizeProduct() {
+	public void addToCart() {
 
 		loginSteps.openMagentoPage();
 
 		searchSteps.searchProduct(product1);
 		searchSteps.clickSearchedItem();
 		productPersonalizationSteps.personalizeProductWithoutPhoto(product1);
-		productPersonalizationSteps.verifyPersonalizationCost(product1);
 		productDetailsSteps.verifyUnitPrice(product1);
 		productDetailsSteps.addToCard();
 
 		searchSteps.searchProduct(product2);
 		searchSteps.clickSearchedItem();
 		productPersonalizationSteps.personalizeProductWithoutPhoto(product2);
-		productPersonalizationSteps.verifyPersonalizationCost(product2);
 		productDetailsSteps.verifyUnitPrice(product2);
 		productDetailsSteps.addToCard();
 

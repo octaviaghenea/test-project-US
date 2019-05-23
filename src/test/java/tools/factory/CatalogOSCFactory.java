@@ -9,7 +9,7 @@ public class CatalogOSCFactory {
 
 		CatalogOSC product = new CatalogOSC();
 
-		product.setId("5025");
+		//product.setId("5025");
 		product.setName(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
 		product.setPrice(RandomGenerators.generateRandomString(2, RandomGenerators.Mode.NUMERIC));
 

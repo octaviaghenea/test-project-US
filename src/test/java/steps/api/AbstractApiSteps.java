@@ -20,6 +20,7 @@ public class AbstractApiSteps extends ScenarioSteps {
 	public static RequestSpecification tokenSpec = null;
 	public static Map<String, String> extraHeaders = new HashMap<String, String>();
 	public static String URL = Constants.URL_MAGENTO;
+	public static Map<String, String> parametersMap = new HashMap<>();
 
 	public static RequestSpecification getSpecWithExtraHeaders() {
 
@@ -48,8 +49,9 @@ public class AbstractApiSteps extends ScenarioSteps {
 				.statusCode(anyOf(is(201), is(200), is(301))).extract().response().asString();
 	}
 
-	protected static <T> T updateResourse(String path, Object requestBody, Class<T> responseClass) {
-		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).when().put(path)
+	protected static <T> T updateResourse(String path, Object requestBody, Class<T> responseClass, Object... params) {
+		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).queryParams(parametersMap)
+				.when().put(path)
 				.then().assertThat().statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
 	}
 }
