@@ -22,6 +22,12 @@ public class HeaderPage extends PageObject {
 	@FindBy(css = "div.my-account-links")
 	private WebElementFacade myAccontLinksContainer;
 
+	@FindBy(css = ".action.showcart")
+	private WebElementFacade minicartLink;
+
+	@FindBy(css = ".action.viewcart")
+	private WebElementFacade viewCartLink;
+
 	protected void waitForPageToLoad() {
 		new WebDriverWait(getDriver(), 1)
 				.until(ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";"));
@@ -62,4 +68,14 @@ public class HeaderPage extends PageObject {
 		}
 	}
 
+	public void goToMiniCart() {
+		element(minicartLink).waitUntilVisible();
+		waitABit(4000);
+		minicartLink.click();
+	}
+
+	public void goToCart() {
+		element(viewCartLink).waitUntilVisible();
+		viewCartLink.click();
+	}
 }

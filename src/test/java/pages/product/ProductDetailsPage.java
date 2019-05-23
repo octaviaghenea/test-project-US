@@ -2,10 +2,8 @@ package pages.product;
 
 import java.util.List;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -51,20 +49,15 @@ public class ProductDetailsPage extends PageObject {
 
 	public String getPriceWithPersonalization() {
 
-		return StringUtils.cleanStringToNumber(
-				getDriver().findElement(By.cssSelector("span[data-price-type='finalPrice'] span")).getText());
+		return StringUtils.cleanStringToNumber(getDriver()
+				.findElement(By.cssSelector(".product-add-form span[data-price-type='finalPrice'] span")).getText());
 
-		/*
-		 * WebElement input = null; // boolean found = false;
-		 * 
-		 * List<WebElement> LabelsList = getDriver().findElements(By.
-		 * cssSelector(".product-add-form .price-box")); for (WebElement
-		 * selectLabel : LabelsList) { if
-		 * (selectLabel.findElement(By.cssSelector(".price-label")).getText().
-		 * contentEquals(label)) { input =
-		 * selectLabel.findElement(By.cssSelector("span.price")); break; } } //
-		 * Assert.assertTrue("The label is not found: ", found); return
-		 * element(input).getText().replaceAll("([^0-9.])", ""); }
-		 */
+	}
+
+	public String getProductPrice() {
+
+		return StringUtils.cleanStringToNumber(
+				getDriver().findElement(By.cssSelector(".product-info-price span[data-price-type='initialPrice'] span"))
+						.getText());
 	}
 }

@@ -23,4 +23,8 @@ public class StringUtils {
 		String result = cleanStringToNumber(string);
 		return result.contentEquals("") ? "0" : result;
 	}
+	
+	public static String cleanZeroToNothing(String string){
+		return string = string.replace("0", "");
+	}
 }

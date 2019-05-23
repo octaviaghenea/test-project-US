@@ -18,13 +18,13 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 	ProductPersonalizationPage productPersonalizationPage;
 
 	@StepGroup
-	public void personalizeProduct(ProductPersonalizationModel product) {
+	public void personalizeProductWithoutPhoto(ProductPersonalizationModel product) {
 
 		hitPersonalizeButton();
 		selectOption(product.getPlaqueStyleLabel(), product.getPlaqueStyleOption());
-		selectOption(product.getArtwoorkLabel(), product.getArtwoorkOption());
-		selectOption(product.getFontStyleLabel(), product.getFontStyleOption());
-		selectOption(product.getChooseFrontPoemLabel(), product.getFrontPoemOption());
+		selectOptionDependency(product.getArtwoorkLabel(), product.getArtwoorkOption());
+		selectOptionDependency(product.getFontStyleLabel(), product.getFontStyleOption());
+		selectOptionDependency(product.getChooseFrontPoemLabel(), product.getFrontPoemOption());
 		previewFrontPoems();
 		closeFrontPoemsModal();
 		enterEngravingLine(product.getNameLabel(), product.getNameText());
@@ -59,6 +59,11 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 	@Step
 	public void selectOption(String label, String option) {
 		productPersonalizationPage.selectOption(label, option);
+	}
+	
+	@Step
+	public void selectOptionDependency(String label, String option) {
+		productPersonalizationPage.selectOptionDependency(label, option);
 	}
 
 	@Step
@@ -106,6 +111,7 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 		productPersonalizationPage.hitSaveButton();
 	}
 
+	@Step
 	public void verifyPersonalizationCost(ProductPersonalizationModel product) {
 		String expectedCost = product.getPersonalizationCost();
 		String actualCost = productPersonalizationPage.getPersonalizationCost();

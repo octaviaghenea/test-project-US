@@ -9,6 +9,8 @@ import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import steps.account.LoginSteps;
+import steps.checkout.CartSteps;
+import steps.header.HeaderSteps;
 import steps.header.SearchSteps;
 import steps.product.ProductDetailsSteps;
 import steps.product.ProductPersonalizationSteps;
@@ -30,6 +32,10 @@ public class ProductPersonalizationTest {
 	SearchSteps searchSteps;
 	@Steps
 	ProductDetailsSteps productDetailsSteps;
+	@Steps
+	HeaderSteps headerSteps;
+	@Steps
+	CartSteps cartSteps;
 
 	public ProductPersonalizationModel product;
 
@@ -45,12 +51,13 @@ public class ProductPersonalizationTest {
 		loginSteps.openMagentoPage();
 		searchSteps.searchProduct(product);
 		searchSteps.clickSearchedItem();
-		productPersonalizationSteps.personalizeProduct(product);
-		productDetailsSteps.verifyUnitPrice(product);
+		productPersonalizationSteps.personalizeProductWithoutPhoto(product);
 		// productPersonalizationSteps.personalizeProductWithPhoto(product);
-		// productDetailsSteps.setQuantity("2");
-		// productDetailsSteps.addToCard();
-		// productDetailsSteps.verifySuccessfullyAddedMessage();
-
+		productDetailsSteps.verifyUnitPrice(product);
+		productDetailsSteps.setQuantity("2");
+		productDetailsSteps.addToCard();
+		headerSteps.goToMiniCart();
+		headerSteps.goToCart();
+//		cartSteps.verifyPageTitle(webdriver);
 	}
 }

@@ -1,11 +1,14 @@
 package tools.models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProductPersonalizationModel extends ProductModel {
 
 	private String plaqueStyleLabel;
 	private String plaqueStyleOption;
-	private String artwoorkLabel;
-	private String artwoorkOption;
+	private String artworkLabel;
+	private String artworkOption;
 	private String fontStyleLabel;
 	private String fontStyleOption;
 	private String chooseFrontPoemLabel;
@@ -23,9 +26,7 @@ public class ProductPersonalizationModel extends ProductModel {
 	private String embraceHeartLabel;
 	private String personalizationCost;
 	private String unitPrice;
-	
-	private EternalEmbraceHeartModel eternalEmbraceHeartModel;
-	
+
 	private String engravingOnHeartOption;
 	private String heartFontLabel;
 	private String scriptFontOption;
@@ -34,9 +35,18 @@ public class ProductPersonalizationModel extends ProductModel {
 	private String heartLineLabel2;
 	private String textLine2;
 	private String photoCroppingNotes;
+
 	
+	Map<String, String> options = new HashMap<>();
 	
-	
+	public Map<String, String> getOptions() {
+		return options;
+	}
+
+	public void setOptions(Map<String, String> options) {
+		this.options = options;
+	}
+
 	public String getPlaqueStyleLabel() {
 		return plaqueStyleLabel;
 	}
@@ -54,19 +64,19 @@ public class ProductPersonalizationModel extends ProductModel {
 	}
 
 	public String getArtwoorkLabel() {
-		return artwoorkLabel;
+		return artworkLabel;
 	}
 
 	public void setArtwoorkLabel(String artwoorkLabel) {
-		this.artwoorkLabel = artwoorkLabel;
+		this.artworkLabel = artwoorkLabel;
 	}
 
 	public String getArtwoorkOption() {
-		return artwoorkOption;
+		return artworkOption;
 	}
 
 	public void setArtwoorkOption(String artwoorkOption) {
-		this.artwoorkOption = artwoorkOption;
+		this.artworkOption = artwoorkOption;
 	}
 
 	public String getFontStyleLabel() {
@@ -261,14 +271,6 @@ public class ProductPersonalizationModel extends ProductModel {
 		this.embraceHeartLabel = embraceHeartLabel;
 	}
 
-	public EternalEmbraceHeartModel getEternalEmbraceHeartModel() {
-		return eternalEmbraceHeartModel;
-	}
-
-	public void setEternalEmbraceHeartModel(EternalEmbraceHeartModel eternalEmbraceHeartModel) {
-		this.eternalEmbraceHeartModel = eternalEmbraceHeartModel;
-	}
-
 	public String getEngravingOnHeartOption() {
 		return engravingOnHeartOption;
 	}
@@ -313,9 +315,49 @@ public class ProductPersonalizationModel extends ProductModel {
 		return personalizationCost;
 	}
 
+	public String getArtworkLabel() {
+		return artworkLabel;
+	}
+
+	public void setArtworkLabel(String artworkLabel) {
+		this.artworkLabel = artworkLabel;
+	}
+
+	public String getArtworkOption() {
+		return artworkOption;
+	}
+
+	public void setArtworkOption(String artworkOption) {
+		this.artworkOption = artworkOption;
+	}
+
+	public String getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(String unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
 	public void setPersonalizationCost(String personalizationCost) {
 		this.personalizationCost = personalizationCost;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "ProductPersonalizationModel [plaqueStyleLabel=" + plaqueStyleLabel + ", plaqueStyleOption="
+				+ plaqueStyleOption + ", artworkLabel=" + artworkLabel + ", artworkOption=" + artworkOption
+				+ ", fontStyleLabel=" + fontStyleLabel + ", fontStyleOption=" + fontStyleOption
+				+ ", chooseFrontPoemLabel=" + chooseFrontPoemLabel + ", frontPoemOption=" + frontPoemOption
+				+ ", nameLabel=" + nameLabel + ", nameText=" + nameText + ", sentimentLine1Label=" + sentimentLine1Label
+				+ ", sentimentLine1Text=" + sentimentLine1Text + ", sentimentLine2Label=" + sentimentLine2Label
+				+ ", sentimentLine2Text=" + sentimentLine2Text + ", sentimentLine3Label=" + sentimentLine3Label
+				+ ", sentimentLine3Text=" + sentimentLine3Text + ", chooseBackPoemLabel=" + chooseBackPoemLabel
+				+ ", backPoemOption=" + backPoemOption + ", embraceHeartLabel=" + embraceHeartLabel
+				+ ", personalizationCost=" + personalizationCost + ", unitPrice=" + unitPrice
+				+ ", engravingOnHeartOption=" + engravingOnHeartOption + ", heartFontLabel=" + heartFontLabel
+				+ ", scriptFontOption=" + scriptFontOption + ", heartLine1Label=" + heartLine1Label + ", textLine1="
+				+ textLine1 + ", heartLineLabel2=" + heartLineLabel2 + ", textLine2=" + textLine2
+				+ ", photoCroppingNotes=" + photoCroppingNotes + ", toString()=" + super.toString() + "]";
+	}
 }

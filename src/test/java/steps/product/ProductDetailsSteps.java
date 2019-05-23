@@ -1,7 +1,5 @@
 package steps.product;
 
-import java.math.BigDecimal;
-
 import org.junit.Assert;
 
 import net.thucydides.core.annotations.Step;
@@ -9,6 +7,7 @@ import pages.product.ProductDetailsPage;
 import pages.product.ProductPersonalizationPage;
 import tools.constants.MessageConstants;
 import tools.models.ProductPersonalizationModel;
+import tools.productCalculations.ProductCalculations;
 
 public class ProductDetailsSteps {
 
@@ -38,16 +37,11 @@ public class ProductDetailsSteps {
 				MessageConstants.SUCCESSFULLY_ADDED_PRODUCT_MESSAGE.contains(actualMessage));
 	}
 
+	@Step
 	public void verifyUnitPrice(ProductPersonalizationModel product) {
-		String expectedCost = ProductDetailsSteps.sum(product).toString();
+		String expectedCost = ProductCalculations.calculateUnitPrice(product).toString();
 		String actualCost = productDetailsPage.getPriceWithPersonalization();
 		Assert.assertTrue("Cost not correct: " + expectedCost + " Actual cost: " + actualCost,
 				expectedCost.equals(actualCost));
-	}
-
-	public static BigDecimal sum(ProductPersonalizationModel product) {
-
-		return BigDecimal.valueOf(Double.parseDouble(product.getProductPrice()))
-				.add(BigDecimal.valueOf(Double.parseDouble(product.getPersonalizationCost())));
 	}
 }

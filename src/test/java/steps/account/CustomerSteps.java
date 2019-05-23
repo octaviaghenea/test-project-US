@@ -1,78 +1,81 @@
 package steps.account;
 
-
-import org.junit.Assert;
-
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
-import pages.account.MyAccountPage;
-import pages.account.NewCustomerRegistrationPage;
-import tools.constants.MessageConstants;
+import pages.account.AccountInformationPage;
+import pages.account.AddressBookPage;
 import tools.models.UserModel;
 
 public class CustomerSteps {
 
-	NewCustomerRegistrationPage customerRegistration;
-	MyAccountPage myAccountPage;
+	AccountInformationPage accountInformationPage;
+	AddressBookPage addressBookPage;
 
-	@Step
-	public void enterFirstName(String firstname) {
-		customerRegistration.enterFirstName(firstname);
-	}
-
-	@Step
-	public void enterLastName(String lastName) {
-		customerRegistration.enterLastName(lastName);
-	}
-
-	@Step
-	public void hitSignUpNewsletter() {
-		customerRegistration.hitNewsletterSignUp();
-	}
-
-	@Step
-	public void enterEmail(String email) {
-		customerRegistration.enterEmailAddress(email);
-	}
-
-	@Step
-	public void enterPassword(String pass) {
-		customerRegistration.enterPassword(pass);
-	}
-
-	@Step
-	public void enterPassConfirmation(String confirm) {
-		customerRegistration.enterPassConfirmation(confirm);
-	}
-
-	@Step
-	public void hitCreateAccount() {
-		customerRegistration.hitCreate();
+	@StepGroup
+	public void editAcountInformation(UserModel userEdit) {
+		editUserFirstName(userEdit.getFirstName());
+		editUserLastName(userEdit.getLastName());
+		hitSaveAccount();
 	}
 
 	@StepGroup
-	public void createUser(UserModel userCreate) {
-		enterFirstName(userCreate.getFirstName());
-		enterLastName(userCreate.getLastName());
-		hitSignUpNewsletter();
-		enterEmail(userCreate.getEmail());
-		enterPassword(userCreate.getPassword());
-		enterPassConfirmation(userCreate.getConfirmPassword());
-		hitCreateAccount();
+	public void addNewAddress(UserModel userAddress) {
+		enterCompanyName(userAddress.getCompanyName());
+		enterPhoneNumber(userAddress.getPhoneNumber());
+		enterStreetAddress(userAddress.getStreet());
+		enterCityName(userAddress.getCity());
+		selectState(userAddress.getState());
+		enterZipCode(userAddress.getZipCode());
+		hitSaveAddress();
 	}
 
-	public void verifyCustomerName(UserModel user) {
-		String expectedName = user.getFirstName() + " " + user.getLastName();
-		// System.out.println("Expected name is: " + expectedName);
-		String actualName = myAccountPage.getCustomerName();
-		Assert.assertTrue("Customer name not correct Expected: " + expectedName + " Actual: " + actualName,
-				expectedName.contentEquals(actualName));
+	@Step
+	public void editUserFirstName(String firstname) {
+		accountInformationPage.editUserFirstName(firstname);
 	}
 
-	public void verifySuccesfullyRegisteredMessage() {
-		String actualMessage = myAccountPage.getThankYouMessage();
-		Assert.assertTrue("Thank you message not correct Expected: " + MessageConstants.SUCCESFULLY_REGISTERED_MESSAGE
-				+ " Actual: " + actualMessage,
-				MessageConstants.SUCCESFULLY_REGISTERED_MESSAGE.contentEquals(actualMessage));
+	@Step
+	public void editUserLastName(String lastname) {
+		accountInformationPage.editUserLastName(lastname);
+	}
+
+	@Step
+	public void hitSaveAccount() {
+		accountInformationPage.hitSaveButton();
+	}
+
+	@Step
+	public void enterCompanyName(String company) {
+		addressBookPage.enterCompanyName(company);
+	}
+
+	@Step
+	public void enterPhoneNumber(String phoneNumber) {
+		addressBookPage.enterPhoneNumber(phoneNumber);
+	}
+
+	@Step
+	public void enterStreetAddress(String address) {
+		addressBookPage.enterAddress(address);
+	}
+
+	@Step
+	public void enterCityName(String city) {
+		addressBookPage.enterCityName(city);
+	}
+
+	@Step
+	public void selectState(String state) {
+		addressBookPage.SelectState(state);
+	}
+
+	@Step
+	public void enterZipCode(String zipCode) {
+		addressBookPage.enterZipCode(zipCode);
+	}
+
+	@Step
+	public void hitSaveAddress() {
+		addressBookPage.hitSaveButton();
 	}
 }

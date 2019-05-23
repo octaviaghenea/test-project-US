@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import steps.account.CustomerSteps;
+import steps.account.CustomerCreationSteps;
 import steps.account.LoginSteps;
 import steps.header.HeaderSteps;
 import tools.factory.UserFactory;
@@ -26,7 +26,7 @@ public class UserRegistrationTest {
 	@Steps
 	HeaderSteps headerSteps;
 	@Steps
-	CustomerSteps newCustomerSteps;
+	CustomerCreationSteps newCustomerSteps;
 
 	public UserModel user;
 

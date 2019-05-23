@@ -1,10 +1,9 @@
-package tests.account;
+package tests.api;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,12 +12,18 @@ import org.openqa.selenium.WebDriver;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import steps.account.CustomerSteps;
 import steps.account.LoginSteps;
+import steps.account.MyAccountNavigationSteps;
+import steps.api.APICustomerMagentoSteps;
+import steps.api.APICustomerOSCSteps;
 import steps.header.HeaderSteps;
+import tools.entities.CustomerOSC;
+import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
 
-public class LoginTest {
+public class APICheckCustomerDetailsInOSC {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -27,9 +32,20 @@ public class LoginTest {
 	LoginSteps loginSteps;
 	@Steps
 	HeaderSteps headerSteps;
+	@Steps
+	CustomerSteps customerSteps;
+	@Steps
+	MyAccountNavigationSteps myAccountNavigationSteps;
+	@Steps
+	APICustomerOSCSteps APICustomerOSCSteps;
+	@Steps
+	APICustomerMagentoSteps aPICustomerMagentoSteps;
 
 	String userName = "";
 	String password = "";
+	String id = "";
+
+	public UserModel user;
 
 	@Before
 	public void dataSetup() {
@@ -43,9 +59,11 @@ public class LoginTest {
 
 			userName = prop.getProperty("username");
 			password = prop.getProperty("password");
+			id = prop.getProperty("id");
 
 			System.out.println(prop.getProperty("username"));
 			System.out.println(prop.getProperty("password"));
+			System.out.println(prop.getProperty("id"));
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -58,13 +76,23 @@ public class LoginTest {
 				}
 			}
 		}
+
 	}
 
 	@Test
-	public void loginToAccount() {
+	public void checkCustomerDetailsOSC() {
+
+		System.setProperty("https.proxyHost", "localhost");
+		System.setProperty("https.proxyPort", "8080");
+
 		loginSteps.openMagentoPage();
 		headerSteps.selectFromAccount("Log in");
 		loginSteps.loginToAccount(userName, password);
-		loginSteps.verifyPageTitle(webdriver);
+		
+		myAccountNavigationSteps.clickAccountInformation();
+		customerSteps.editAcountInformation(user);
+
+		CustomerOSC customerOSC = APICustomerOSCSteps.getCustomerById(id);
+		APICustomerOSCSteps.verifyCustomerMagentoToOSC(user, customerOSC);
 	}
 }

@@ -40,7 +40,9 @@ public class LoginSteps {
 		hitSignInButton();
 	}
 
+	@Step
 	public void verifyPageTitle(WebDriver webdriver) {
+		
 		String actualTitle = webdriver.getTitle();
 		String expectedTitle = "My Account";
 		System.out.println("Actual title: " + actualTitle);

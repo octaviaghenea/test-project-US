@@ -13,6 +13,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import tools.constants.Constants;
 
+
 public class ProductPersonalizationPage extends PageObject {
 
 	@FindBy(css = "#show-personalize")
@@ -49,10 +50,22 @@ public class ProductPersonalizationPage extends PageObject {
 
 	public void selectOption(String label, String option) {
 
+		selectOptionDependencyByOption(By.cssSelector("#custom-option-parent"), label, option);
+
+	}
+
+	public void selectOptionDependency(String label, String option) {
+
+		selectOptionDependencyByOption(By.cssSelector("#custom-option-child"), label, option);
+
+	}
+
+	private void selectOptionDependencyByOption(By options, String label, String option) {
+
 		WebElement select = null;
 		boolean found = false;
 
-		List<WebElement> selectsParentsList = getDriver().findElements(By.cssSelector("#custom-option-parent"));
+		List<WebElement> selectsParentsList = getDriver().findElements(options);
 		for (WebElement selectParent : selectsParentsList) {
 			if (selectParent.findElement(By.cssSelector("label span")).getText().contentEquals(label)) {
 				select = selectParent.findElement(By.cssSelector("div select"));
@@ -68,7 +81,7 @@ public class ProductPersonalizationPage extends PageObject {
 
 		WebElement input = null;
 
-		List<WebElement> selectLabelsList = getDriver().findElements(By.cssSelector("#custom-option-parent"));
+		List<WebElement> selectLabelsList = getDriver().findElements(By.cssSelector("#custom-option-child"));
 		for (WebElement selectLabel : selectLabelsList) {
 			if (selectLabel.findElement(By.cssSelector("label span")).getText().contentEquals(label)) {
 				input = selectLabel.findElement(By.cssSelector("div input"));
@@ -135,6 +148,7 @@ public class ProductPersonalizationPage extends PageObject {
 
 	public String getPersonalizationCost() {
 		element(personalizationCost).waitUntilVisible();
+		System.out.println("caca");
 		return personalizationCost.getText().replaceAll("([^0-9.])", "");
 	}
 

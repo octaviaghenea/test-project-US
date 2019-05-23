@@ -16,4 +16,18 @@ public class UserFactory {
 
 		return user;
 	}
+	
+	public static UserModel getUserAddress() {
+		
+		UserModel address = new UserModel();
+		address.setCompanyName(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
+		address.setPhoneNumber(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.NUMERIC));
+		address.setStreet(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
+		address.setCity(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
+		address.setState("Arizona");
+		address.setZipCode(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.NUMERIC));
+		
+		return address;
+	}
 }
+

@@ -21,5 +21,14 @@ public class HeaderSteps {
 	public void selectFromAccount(String link) {
 		headerPage.selectFromAccount(link);
 	}
+	
+	@Step
+	public void goToMiniCart(){
+		headerPage.goToMiniCart();
+	}
 
+	@Step
+	public void goToCart() {
+		headerPage.goToCart();
+	}
 }

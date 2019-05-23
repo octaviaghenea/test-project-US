@@ -1,17 +1,27 @@
 package tools.models;
 
 public class ProductModel {
+
 	private String productName;
 	private String productSku;
 	private String productPrice;
-	private String priceWithPErsonalizationLabel;
-	
-	public String getPriceWithPErsonalizationLabel() {
-		return priceWithPErsonalizationLabel;
+	private String itemAvailability;
+	private String itemName;
+
+	public String getItemName() {
+		return itemName;
 	}
 
-	public void setPriceWithPErsonalizationLabel(String priceWithPErsonalizationLabel) {
-		this.priceWithPErsonalizationLabel = priceWithPErsonalizationLabel;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getItemAvailability() {
+		return itemAvailability;
+	}
+
+	public void setItemAvailability(String itemAvailability) {
+		this.itemAvailability = itemAvailability;
 	}
 
 	public String getProductPrice() {

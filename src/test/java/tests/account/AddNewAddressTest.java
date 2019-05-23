@@ -13,12 +13,16 @@ import org.openqa.selenium.WebDriver;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import steps.account.CustomerSteps;
 import steps.account.LoginSteps;
+import steps.account.MyAccountNavigationSteps;
 import steps.header.HeaderSteps;
+import tools.factory.UserFactory;
+import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
 
-public class LoginTest {
+public class AddNewAddressTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -27,9 +31,15 @@ public class LoginTest {
 	LoginSteps loginSteps;
 	@Steps
 	HeaderSteps headerSteps;
+	@Steps
+	CustomerSteps customerSteps;
+	@Steps
+	MyAccountNavigationSteps myAccountNavigationSteps;
 
 	String userName = "";
 	String password = "";
+	public UserModel user;
+	public UserModel address;
 
 	@Before
 	public void dataSetup() {
@@ -58,13 +68,18 @@ public class LoginTest {
 				}
 			}
 		}
+
+		user = UserFactory.getUserInstance();
+		address = UserFactory.getUserAddress();
 	}
 
 	@Test
-	public void loginToAccount() {
+	public void addNewAddressTest() {
 		loginSteps.openMagentoPage();
 		headerSteps.selectFromAccount("Log in");
 		loginSteps.loginToAccount(userName, password);
 		loginSteps.verifyPageTitle(webdriver);
+		myAccountNavigationSteps.clickAddressBookLink();
+		customerSteps.addNewAddress(address);
 	}
 }
