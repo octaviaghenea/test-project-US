@@ -36,7 +36,7 @@ public class CartSteps {
 	
 	public void verifySubtotalPrice(CartModel product) {
 		
-		//String actualCost = shoppingCartPage.
+		//sString actualCost = shoppingCartPage.
 		String expectedCost = CartCalculations.calculateSubtotal(product).toString();
 		System.out.println("Subtotal is: " + expectedCost);
 	}

@@ -39,7 +39,7 @@ public class CatalogOSC {
 	}
 
 	public String getPrice() {
-		return StringUtils.cleanZeroToNothing(price);
+		return price;
 	}
 
 	public void setPrice(String price) {
@@ -60,5 +60,11 @@ public class CatalogOSC {
 
 	public void setFamily_id(String family_id) {
 		this.family_id = family_id;
+	}
+
+	@Override
+	public String toString() {
+		return "CatalogOSC [id=" + id + ", name=" + name + ", sku=" + sku + ", price=" + price + ", cost=" + cost
+				+ ", family_id=" + family_id + "]";
 	}
 }

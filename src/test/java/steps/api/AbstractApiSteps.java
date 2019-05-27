@@ -49,9 +49,14 @@ public class AbstractApiSteps extends ScenarioSteps {
 				.statusCode(anyOf(is(201), is(200), is(301))).extract().response().asString();
 	}
 
-	protected static <T> T updateResourse(String path, Object requestBody, Class<T> responseClass, Object... params) {
-		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).queryParams(parametersMap)
-				.when().put(path)
-				.then().assertThat().statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
+	protected static <T> T updateResourse(String path, Object requestBody, Class<T> responseClass) {
+		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody)
+				.queryParams(parametersMap).when().put(path).then().assertThat()
+				.statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
+	}
+
+	protected static void updateResourse(String path, Object requestBody,Map<String, String> query) {
+		given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).queryParams(query)
+				.when().put(path).then().assertThat().statusCode(anyOf(is(201), is(200), is(302)));
 	}
 }

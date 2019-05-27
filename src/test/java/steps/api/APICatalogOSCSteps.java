@@ -1,5 +1,8 @@
 package steps.api;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 
 import net.thucydides.core.annotations.Step;
@@ -7,6 +10,7 @@ import tools.constants.Constants;
 import tools.entities.CatalogMagento;
 import tools.entities.CatalogOSC;
 import tools.factory.CatalogOSCFactory;
+import tools.utils.StringUtils;
 
 public class APICatalogOSCSteps extends AbstractApiSteps {
 
@@ -19,22 +23,28 @@ public class APICatalogOSCSteps extends AbstractApiSteps {
 	}
 
 	@Step
-	public CatalogOSC updateProductNameAndPrice(String ID) {
+	public void updateProductNameAndPrice(String ID) {
 		AbstractApiSteps.URL = Constants.URL_OSC_CATALOG;
 		CatalogOSC productRequest = CatalogOSCFactory.getOSCProductDetails();
-		CatalogOSC updatedProduct = updateResourse("/products/" + ID, productRequest, CatalogOSC.class,
-				"?" + "name=" + productRequest.getName() + "&" + "price=" + productRequest.getPrice());
-		return updatedProduct;
+		Map<String, String> parametersMap = new HashMap<>();
+		System.out.println(parametersMap.put("name", productRequest.getName()));
+		System.out.println(parametersMap.put("price", productRequest.getPrice()));
+		updateResourse("products/" + ID, "[]", parametersMap);
 	}
 
 	@Step
 	public void verifyProductMagentoToOSC(CatalogMagento productMagento, CatalogOSC productOSC) {
 		System.out.println("Magento product price is: " + productMagento.getPrice() + " Magento product name is: "
 				+ productMagento.getName());
-		System.out.println(
-				"OSC product price is: " + productOSC.getPrice() + " OSC product name is: " + productOSC.getName());
-		Assert.assertTrue("Product name not mathcing!! ", productMagento.getName().contentEquals(productOSC.getName()));
-		Assert.assertTrue("Product price not mathcing!! ",
-				productMagento.getPrice().contentEquals(productOSC.getPrice()));
+		System.out.println("OSC product price is: " + StringUtils.doubleToIntString(productOSC.getPrice())
+				+ " OSC product name is: " + productOSC.getName());
+		Assert.assertTrue("Product name not mathcing!! " + "Magento name is: " + productMagento.getName()
+				+ " and OSC name is: " + productOSC.getName(),
+				productMagento.getName().contentEquals(productOSC.getName()));
+
+		Assert.assertTrue(
+				"Product price not mathcing!! " + "Magento price is: " + productMagento.getPrice()
+						+ " and OSC price is: " + StringUtils.doubleToIntString(productOSC.getPrice()),
+				productMagento.getPrice().contentEquals(StringUtils.doubleToIntString(productOSC.getPrice())));
 	}
 }

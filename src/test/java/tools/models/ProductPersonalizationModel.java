@@ -358,6 +358,8 @@ public class ProductPersonalizationModel extends ProductModel {
 				+ ", engravingOnHeartOption=" + engravingOnHeartOption + ", heartFontLabel=" + heartFontLabel
 				+ ", scriptFontOption=" + scriptFontOption + ", heartLine1Label=" + heartLine1Label + ", textLine1="
 				+ textLine1 + ", heartLineLabel2=" + heartLineLabel2 + ", textLine2=" + textLine2
-				+ ", photoCroppingNotes=" + photoCroppingNotes + ", toString()=" + super.toString() + "]";
+				+ ", photoCroppingNotes=" + photoCroppingNotes + ", options=" + options + "]";
 	}
+
+
 }

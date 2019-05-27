@@ -15,7 +15,7 @@ import tools.entities.CatalogOSC;
 
 @RunWith(SerenityRunner.class)
 
-public class APICheckProductDetails {
+public class APICheckProductDetailsTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -27,8 +27,8 @@ public class APICheckProductDetails {
 	@Steps
 	APIEventsAppsSteps apiEventsAppsSteps;
 
-	String ID = "5205";
-	String SKU = "PM6205";
+	String ID = "19160";
+	String SKU = "PM20160";
 
 	@Test
 	public void checkProductDetailsOSC() {
@@ -37,12 +37,13 @@ public class APICheckProductDetails {
 		System.setProperty("https.proxyPort", "8080");
 
 		apiCatalogOSCSteps.updateProductNameAndPrice(ID);
-		/*apiMagentoCatalogSteps.deleteMagentoProduct(SKU);
 		apiEventsAppsSteps.triggerProductChange();
 		
 		CatalogOSC catalogOSC = apiCatalogOSCSteps.getProductByID(ID);
+		System.out.println(catalogOSC);
 		CatalogMagento catalogMagento = apiMagentoCatalogSteps.getMagentoProductBySKU(SKU);
+		System.out.println(catalogMagento);
 		
-		apiCatalogOSCSteps.verifyProductMagentoToOSC(catalogMagento, catalogOSC);*/
+		apiCatalogOSCSteps.verifyProductMagentoToOSC(catalogMagento, catalogOSC);
 	}
 }

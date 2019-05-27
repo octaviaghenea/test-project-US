@@ -148,7 +148,6 @@ public class ProductPersonalizationPage extends PageObject {
 
 	public String getPersonalizationCost() {
 		element(personalizationCost).waitUntilVisible();
-		System.out.println("caca");
 		return personalizationCost.getText().replaceAll("([^0-9.])", "");
 	}
 

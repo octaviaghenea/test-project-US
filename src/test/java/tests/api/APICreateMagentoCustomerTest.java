@@ -92,8 +92,7 @@ public class APICreateMagentoCustomerTest {
 
 		String aaa = aPICustomerMagentoSteps.getMagentoCustomer("14");
 		System.out.println(aaa);
-		CustomerMagento cm = aPICustomerMagentoSteps.createMagentoCustomer();
-		System.out.println(cm);
-		//AppsEvents aps = apiEventsAppsSteps.createProductInstallation();
+//		CustomerMagento cm = aPICustomerMagentoSteps.createMagentoCustomer();
+//		System.out.println(cm);
 	}
 }

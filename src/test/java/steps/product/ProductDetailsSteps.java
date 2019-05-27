@@ -3,6 +3,7 @@ package steps.product;
 import org.junit.Assert;
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Title;
 import pages.product.ProductDetailsPage;
 import pages.product.ProductPersonalizationPage;
 import tools.constants.MessageConstants;
@@ -37,6 +38,7 @@ public class ProductDetailsSteps {
 				MessageConstants.SUCCESSFULLY_ADDED_PRODUCT_MESSAGE.contains(actualMessage));
 	}
 
+	@Title("Verify product price after personalization")
 	@Step
 	public void verifyUnitPrice(ProductPersonalizationModel product) {
 		String expectedCost = ProductCalculations.calculateUnitPrice(product).toString();

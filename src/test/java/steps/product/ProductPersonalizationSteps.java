@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
+import net.thucydides.core.annotations.Title;
 import net.thucydides.core.steps.ScenarioSteps;
 import pages.product.ProductPersonalizationPage;
 import tools.models.ProductPersonalizationModel;
@@ -17,6 +18,7 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 
 	ProductPersonalizationPage productPersonalizationPage;
 
+	@Title("Personalize Product Without Photo")
 	@StepGroup
 	public void personalizeProductWithoutPhoto(ProductPersonalizationModel product) {
 

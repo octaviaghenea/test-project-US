@@ -23,7 +23,7 @@ import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
 
-public class APICheckCustomerDetailsInOSC {
+public class APICheckCustomerDetailsInOSCTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;

@@ -1,4 +1,4 @@
-package tests;
+package tests.product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,7 @@ public class CheckoutTest {
 	public CartModel product1;
 	public CartModel product2;
 
-	List<CartModel> expectedProductList = new ArrayList();
+	List<CartModel> expectedProductList = new ArrayList<CartModel>();
 
 	@Before
 	public void dataSetup() {
