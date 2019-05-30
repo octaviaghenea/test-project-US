@@ -1,10 +1,10 @@
 package pages.account;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import pages.AbstractPage;
 
-public class LoginPage extends PageObject {
+public class LoginPage extends AbstractPage {
 
 	@FindBy(css = "#email")
 	private WebElementFacade emailInput;

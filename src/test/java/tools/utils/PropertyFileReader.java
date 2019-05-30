@@ -10,23 +10,14 @@ public class PropertyFileReader {
 
 	public static String dataSetup(String key) {
 
-		String userName = "";
-		String password = "";
-		String id = "";
-
 		Properties prop = new Properties();
 		InputStream input = null;
+		String propertyValue = "";
 
 		try {
-			input = new FileInputStream("src/test/resources/properties/login.properties");
+			input = new FileInputStream("src/main/resources/staging-env/environmentConstants.properties");
 			prop.load(input);
-
-			userName = prop.getProperty("username");
-			password = prop.getProperty("password");
-			id = prop.getProperty("id");
-
-			System.out.println(prop.getProperty("username"));
-			System.out.println(prop.getProperty("password"));
+			propertyValue = prop.getProperty(key);
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -39,6 +30,6 @@ public class PropertyFileReader {
 				}
 			}
 		}
-		return id;
+		return propertyValue;
 	}
 }

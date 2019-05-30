@@ -34,7 +34,7 @@ public class APICatalogOSCSteps extends AbstractApiSteps {
 
 	@Step
 	public void verifyProductMagentoToOSC(CatalogMagento productMagento, CatalogOSC productOSC) {
-		System.out.println("Magento product price is: " + productMagento.getPrice() + " Magento product name is: "
+		System.out.println("Magento product price is: " + StringUtils.doubleToIntString(productMagento.getPrice()) + " Magento product name is: "
 				+ productMagento.getName());
 		System.out.println("OSC product price is: " + StringUtils.doubleToIntString(productOSC.getPrice())
 				+ " OSC product name is: " + productOSC.getName());
@@ -43,8 +43,8 @@ public class APICatalogOSCSteps extends AbstractApiSteps {
 				productMagento.getName().contentEquals(productOSC.getName()));
 
 		Assert.assertTrue(
-				"Product price not mathcing!! " + "Magento price is: " + productMagento.getPrice()
+				"Product price not mathcing!! " + "Magento price is: " + StringUtils.doubleToIntString(productMagento.getPrice())
 						+ " and OSC price is: " + StringUtils.doubleToIntString(productOSC.getPrice()),
-				productMagento.getPrice().contentEquals(StringUtils.doubleToIntString(productOSC.getPrice())));
+						StringUtils.doubleToIntString(productMagento.getPrice()).contentEquals(StringUtils.doubleToIntString(productOSC.getPrice())));
 	}
 }

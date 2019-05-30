@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import steps.account.CustomerSteps;
 import steps.account.LoginSteps;
@@ -23,10 +22,7 @@ import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
 
-public class APICheckCustomerDetailsInOSCTest {
-
-	@Managed(uniqueSession = true)
-	public WebDriver webdriver;
+public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 
 	@Steps
 	LoginSteps loginSteps;
@@ -41,58 +37,22 @@ public class APICheckCustomerDetailsInOSCTest {
 	@Steps
 	APICustomerMagentoSteps aPICustomerMagentoSteps;
 
-	String userName = "";
-	String password = "";
-	String id = "";
+	String id = "652362";
 
 	public UserModel user;
-
-	@Before
-	public void dataSetup() {
-
-		Properties prop = new Properties();
-		InputStream input = null;
-
-		try {
-			input = new FileInputStream("src/test/resources/properties/login.properties");
-			prop.load(input);
-
-			userName = prop.getProperty("username");
-			password = prop.getProperty("password");
-			id = prop.getProperty("id");
-
-			System.out.println(prop.getProperty("username"));
-			System.out.println(prop.getProperty("password"));
-			System.out.println(prop.getProperty("id"));
-
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} finally {
-			if (input != null) {
-				try {
-					input.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-	}
 
 	@Test
 	public void checkCustomerDetailsOSC() {
 
-		System.setProperty("https.proxyHost", "localhost");
-		System.setProperty("https.proxyPort", "8080");
-
 		loginSteps.openMagentoPage();
 		headerSteps.selectFromAccount("Log in");
-		loginSteps.loginToAccount(userName, password);
-		
+		loginSteps.loginToAccount();
+
 		myAccountNavigationSteps.clickAccountInformation();
 		customerSteps.editAcountInformation(user);
 
 		CustomerOSC customerOSC = APICustomerOSCSteps.getCustomerById(id);
+		System.out.println(customerOSC);
 		APICustomerOSCSteps.verifyCustomerMagentoToOSC(user, customerOSC);
 	}
 }

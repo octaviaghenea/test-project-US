@@ -6,10 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import pages.AbstractPage;
 
-public class ProductReviewFormPage extends PageObject {
+public class ProductReviewFormPage extends AbstractPage {
 
 	@FindBy(css = "#product-review-table")
 	private WebElementFacade ratingStarsContainer;

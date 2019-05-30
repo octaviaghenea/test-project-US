@@ -3,10 +3,10 @@ package pages.account;
 import org.openqa.selenium.support.ui.Select;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import pages.AbstractPage;
 
-public class AddressBookPage extends PageObject {
+public class AddressBookPage extends AbstractPage {
 
 	@FindBy(id = "firstname")
 	private WebElementFacade firstNameField;
@@ -61,6 +61,6 @@ public class AddressBookPage extends PageObject {
 	}
 
 	public void hitSaveButton() {
-		saveButton.click();		
+		saveButton.click();
 	}
 }

@@ -32,6 +32,6 @@ public class StringUtils {
 
 	public static String doubleToIntString(String doublePrice) {
 		Double oscPrice = Double.parseDouble(doublePrice);
-		return String.valueOf(oscPrice.intValue());
+		return String.valueOf(oscPrice);
 	}
 }

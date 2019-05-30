@@ -19,7 +19,7 @@ import tools.models.ProductReviewModel;
 
 @RunWith(SerenityRunner.class)
 
-public class ReviewAsGuestTest {
+public class US0012ReviewAsGuestTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;

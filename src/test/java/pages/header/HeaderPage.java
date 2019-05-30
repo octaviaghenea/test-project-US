@@ -8,10 +8,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import pages.AbstractPage;
+import tools.constants.Constants;
 
-public class HeaderPage extends PageObject {
+public class HeaderPage extends AbstractPage {
 
 	@FindBy(css = "#view")
 	private WebElementFacade freeShippingLink;
@@ -48,6 +49,7 @@ public class HeaderPage extends PageObject {
 			System.out.println("CMS Items: " + itemText);
 			if (itemText.toLowerCase().contains(item.toLowerCase())) {
 				itemNow.click();
+				break;
 			}
 		}
 	}
@@ -70,7 +72,7 @@ public class HeaderPage extends PageObject {
 
 	public void goToMiniCart() {
 		element(minicartLink).waitUntilVisible();
-		waitABit(4000);
+		waitForElementToAppear(minicartLink, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
 		minicartLink.click();
 	}
 

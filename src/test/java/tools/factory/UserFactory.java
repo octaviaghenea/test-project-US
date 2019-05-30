@@ -1,5 +1,6 @@
 package tools.factory;
 
+import tools.models.UserAddressModel;
 import tools.models.UserModel;
 import tools.utils.RandomGenerators;
 
@@ -17,9 +18,9 @@ public class UserFactory {
 		return user;
 	}
 	
-	public static UserModel getUserAddress() {
+	public static UserAddressModel getUserAddress() {
 		
-		UserModel address = new UserModel();
+		UserAddressModel address = new UserAddressModel();
 		address.setCompanyName(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
 		address.setPhoneNumber(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.NUMERIC));
 		address.setStreet(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));

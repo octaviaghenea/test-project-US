@@ -1,4 +1,4 @@
-package tests.product;
+package tests;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import tools.utils.StringUtils;
 
 @RunWith(SerenityRunner.class)
 
-public class CheckoutTest {
+public class US0013CheckoutTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;

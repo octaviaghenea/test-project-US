@@ -11,15 +11,13 @@ import net.thucydides.core.annotations.Steps;
 import steps.account.CustomerCreationSteps;
 import steps.account.LoginSteps;
 import steps.header.HeaderSteps;
+import tests.BaseTest;
 import tools.factory.UserFactory;
 import tools.models.UserModel;
 
 @RunWith(SerenityRunner.class)
 
-public class UserRegistrationTest {
-
-	@Managed(uniqueSession = true)
-	public WebDriver webdriver;
+public class US002UserRegistrationTest extends BaseTest {
 
 	@Steps
 	LoginSteps loginSteps;
@@ -41,7 +39,7 @@ public class UserRegistrationTest {
 		loginSteps.openMagentoPage();
 		headerSteps.selectFromAccount("Register");
 		newCustomerSteps.createUser(user);
-		//newCustomerSteps.verifyCustomerName(user);
+		// newCustomerSteps.verifyCustomerName(user);
 		newCustomerSteps.verifySuccesfullyRegisteredMessage();
 	}
 }

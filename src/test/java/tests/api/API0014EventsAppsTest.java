@@ -9,7 +9,7 @@ import steps.api.APIEventsAppsSteps;
 
 @RunWith(SerenityRunner.class)
 
-public class APIEventsAppsTest {
+public class API0014EventsAppsTest {
  
 	@Steps
 	APIEventsAppsSteps apiEventsAppsSteps;

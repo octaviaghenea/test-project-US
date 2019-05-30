@@ -4,6 +4,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import pages.account.AccountInformationPage;
 import pages.account.AddressBookPage;
+import tools.models.UserAddressModel;
 import tools.models.UserModel;
 
 public class CustomerSteps {
@@ -19,7 +20,7 @@ public class CustomerSteps {
 	}
 
 	@StepGroup
-	public void addNewAddress(UserModel userAddress) {
+	public void addNewAddress(UserAddressModel userAddress) {
 		enterCompanyName(userAddress.getCompanyName());
 		enterPhoneNumber(userAddress.getPhoneNumber());
 		enterStreetAddress(userAddress.getStreet());

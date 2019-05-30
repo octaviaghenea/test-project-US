@@ -1,10 +1,11 @@
 package pages.account;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import pages.AbstractPage;
+import tools.constants.Constants;
 
-public class CustomerVerificationPage extends PageObject {
+public class CustomerVerificationPage extends AbstractPage {
 
 	@FindBy(css = ".customer-name span")
 	private WebElementFacade customerName;
@@ -14,15 +15,13 @@ public class CustomerVerificationPage extends PageObject {
 
 	public String getCustomerName() {
 		customerName.waitUntilVisible();
-		// TODO imi sangereaza ochii la wait
-		waitABit(4000);
+		waitForElementToAppear(customerName, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
 		return customerName.getText();
 	}
 
 	public String getThankYouMessage() {
 		thankYouMessage.waitUntilVisible();
-		//TODO waitu
-		waitABit(4000);
+		waitForElementToAppear(customerName, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
 		return thankYouMessage.getText();
 	}
 }

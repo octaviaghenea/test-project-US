@@ -19,7 +19,7 @@ import tools.models.ProductPersonalizationModel;
 
 @RunWith(SerenityRunner.class)
 
-public class ProductPersonalizationTest {
+public class US0012ProductPersonalizationTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;

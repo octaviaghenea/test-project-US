@@ -8,6 +8,7 @@ import net.thucydides.core.annotations.StepGroup;
 import pages.account.LoginPage;
 import tools.constants.MessageConstants;
 import tools.constants.Constants;
+import tools.constants.EnvironmentConstants;
 
 public class LoginSteps {
 
@@ -34,9 +35,9 @@ public class LoginSteps {
 	}
 
 	@StepGroup
-	public void loginToAccount(String email, String password) {
-		fillEmailAddress(email);
-		fillPasswoord(password);
+	public void loginToAccount() {
+		fillEmailAddress(EnvironmentConstants.REGULAR_USER);
+		fillPasswoord(EnvironmentConstants.PASSWORD);
 		hitSignInButton();
 	}
 

@@ -7,11 +7,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import pages.AbstractPage;
 import tools.models.CartModel;
 
-public class ShoppingCartPage extends PageObject {
+public class ShoppingCartPage extends AbstractPage {
 
 	@FindBy(css = "#shopping-cart-table")
 	private WebElementFacade productsContainter;
