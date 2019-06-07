@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import net.thucydides.core.annotations.Step;
 import tools.constants.Constants;
+import tools.entities.CustomerCheckOSC;
 import tools.entities.CustomerOSC;
 import tools.models.UserModel;
 
@@ -24,5 +25,13 @@ public class APICustomerOSCSteps extends AbstractApiSteps {
 		Assert.assertTrue("FirstName doesn't match!!",
 				magentoUser.getFirstName().contentEquals(oscUser.getFirstname()));
 		Assert.assertTrue("LastName doesn't match!!", magentoUser.getLastName().contentEquals(oscUser.getLastname()));
+	}
+	
+	@Step
+	public String getOSCUserId(String email) {
+		AbstractApiSteps.URL = Constants.URL_OSC_CUSTOMER;
+		CustomerCheckOSC oscCustomerCheck = new CustomerCheckOSC();
+		oscCustomerCheck.setEmail(email);
+		return createResource("customers/check", oscCustomerCheck);			
 	}
 }

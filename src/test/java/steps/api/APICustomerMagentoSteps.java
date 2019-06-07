@@ -11,6 +11,7 @@ public class APICustomerMagentoSteps extends AbstractApiSteps {
 
 	@Step
 	public CustomerMagento createMagentoCustomer() {
+		AbstractApiSteps.URL = Constants.URL_MAGENTO;
 		CustomerMagento customerRequest = CustomerMagentoFactory.getCustomerMagentoInstance();
 		CustomerMagento cm = createResource("/V1/customers/", customerRequest, CustomerMagento.class);
 		System.out.println(cm);

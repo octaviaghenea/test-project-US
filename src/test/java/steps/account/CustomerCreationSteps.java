@@ -2,14 +2,11 @@ package steps.account;
 
 import org.junit.Assert;
 
-import jxl.read.biff.PLSRecord;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import pages.account.CustomerVerificationPage;
 import pages.account.NewCustomerRegistrationPage;
-import steps.api.APICustomerOSCSteps;
 import tools.constants.MessageConstants;
-import tools.entities.CustomerOSC;
 import tools.models.UserModel;
 
 public class CustomerCreationSteps {

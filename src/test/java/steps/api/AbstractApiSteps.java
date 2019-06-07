@@ -44,6 +44,11 @@ public class AbstractApiSteps extends ScenarioSteps {
 				.then().assertThat().statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
 	}
 
+	protected static String createResource(String path, Object requestBody) {
+		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).when().post(path).then()
+				.assertThat().statusCode(anyOf(is(201), is(200), is(302))).extract().asString();
+	}
+
 	protected static void deleteResource(String path) {
 		given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).when().delete(path).then().assertThat()
 				.statusCode(anyOf(is(201), is(200), is(301))).extract().response().asString();
@@ -55,8 +60,8 @@ public class AbstractApiSteps extends ScenarioSteps {
 				.statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
 	}
 
-	protected static void updateResourse(String path, Object requestBody,Map<String, String> query) {
-		given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).queryParams(query)
-				.when().put(path).then().assertThat().statusCode(anyOf(is(201), is(200), is(302)));
+	protected static void updateResourse(String path, Object requestBody, Map<String, String> query) {
+		given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).queryParams(query).when()
+				.put(path).then().assertThat().statusCode(anyOf(is(201), is(200), is(302)));
 	}
 }

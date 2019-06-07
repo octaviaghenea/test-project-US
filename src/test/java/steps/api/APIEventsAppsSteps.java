@@ -6,13 +6,19 @@ import tools.entities.AppsEvents;
 import tools.factory.AppsEventsFactory;
 
 public class APIEventsAppsSteps extends AbstractApiSteps {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Step
-	public AppsEvents triggerProductChange() {
+	public String triggerProductChange() {
 		AppsEvents appsRequest = AppsEventsFactory.getProductChangeEvent();
-		AppsEvents aps = createResource(Constants.URL_APPS_EVENTS, appsRequest, AppsEvents.class);
-		return aps;
+		return createResource(Constants.URL_APPS_EVENTS, appsRequest);
+	}
+
+	@Step
+	public String triggerCustomerChange(int payload) {
+		AppsEvents appsRequest = AppsEventsFactory.getMagentoCustomerChange();
+		appsRequest.setPayload(String.valueOf(payload));
+		return createResource(Constants.URL_APPS_EVENTS, appsRequest);
 	}
 }

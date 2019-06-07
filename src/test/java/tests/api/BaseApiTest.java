@@ -11,7 +11,7 @@ public class BaseApiTest {
 	public WebDriver webdriver;
 
 	@Before
-	public void dataSetup() {
+	public void dataMonitor() {
 
 		System.setProperty("https.proxyHost", "localhost");
 		System.setProperty("https.proxyPort", "8080");

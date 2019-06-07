@@ -17,7 +17,7 @@ public class CustomerMagentoFactory {
 		customerMagento.setCustomer(customer);
 		customerMagento.setPassword("Pepsi123");
 		
-		return  customerMagento;
+		return customerMagento;
 	}
 
 }

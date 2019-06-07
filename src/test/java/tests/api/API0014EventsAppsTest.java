@@ -9,16 +9,13 @@ import steps.api.APIEventsAppsSteps;
 
 @RunWith(SerenityRunner.class)
 
-public class API0014EventsAppsTest {
+public class API0014EventsAppsTest extends BaseApiTest {
  
 	@Steps
 	APIEventsAppsSteps apiEventsAppsSteps;
 	
 	@Test	
 	public void triggerAppsEvents() {
-		
-		System.setProperty("https.proxyHost", "localhost");
-		System.setProperty("https.proxyPort", "8080");
 		
 		apiEventsAppsSteps.triggerProductChange();
 	}

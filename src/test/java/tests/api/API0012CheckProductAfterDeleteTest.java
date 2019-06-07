@@ -2,10 +2,8 @@ package tests.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import steps.api.APICatalogOSCSteps;
 import steps.api.APIEventsAppsSteps;
@@ -15,10 +13,7 @@ import tools.entities.CatalogOSC;
 
 @RunWith(SerenityRunner.class)
 
-public class API0012CheckProductAfterDeleteTest {
-
-	@Managed(uniqueSession = true)
-	public WebDriver webdriver;
+public class API0012CheckProductAfterDeleteTest extends BaseApiTest{
 
 	@Steps
 	APICatalogOSCSteps apiCatalogOSCSteps;
@@ -32,9 +27,6 @@ public class API0012CheckProductAfterDeleteTest {
 
 	@Test
 	public void checkProductDetailsAfterDelete() {
-
-		System.setProperty("https.proxyHost", "localhost");
-		System.setProperty("https.proxyPort", "8080");
 
 		apiMagentoCatalogSteps.deleteMagentoProduct(SKU);
 		apiEventsAppsSteps.triggerProductChange();
