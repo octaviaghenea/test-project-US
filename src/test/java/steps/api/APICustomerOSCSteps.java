@@ -28,7 +28,7 @@ public class APICustomerOSCSteps extends AbstractApiSteps {
 	}
 	
 	@Step
-	public String getOSCUserId(String email) {
+	public String getOSCUserIdByEmail(String email) {
 		AbstractApiSteps.URL = Constants.URL_OSC_CUSTOMER;
 		CustomerCheckOSC oscCustomerCheck = new CustomerCheckOSC();
 		oscCustomerCheck.setEmail(email);

@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import pages.AbstractPage;
+import tools.constants.Constants;
 
 public class AddressBookPage extends AbstractPage {
 
@@ -35,32 +36,65 @@ public class AddressBookPage extends AbstractPage {
 	@FindBy(css = ".actions-toolbar button[title]")
 	private WebElementFacade saveButton;
 
+	@FindBy(css = " button.action.primary.add")
+	private WebElementFacade addNewAddressButton;
+
+	@FindBy(id = "#primary_billing")
+	private WebElementFacade billingAddressCheckbox;
+
+	@FindBy(id = "#primary_shipping")
+	private WebElementFacade shippingAddressCheckbox;
+
 	public void enterCompanyName(String company) {
+		element(companyField).waitUntilVisible();
 		companyField.type(company);
 	}
 
 	public void enterPhoneNumber(String phoneNumber) {
+		element(telephoneField).waitUntilVisible();
 		telephoneField.type(phoneNumber);
 	}
 
 	public void enterAddress(String address) {
+		element(streetField).waitUntilVisible();
 		streetField.type(address);
 	}
 
 	public void enterCityName(String city) {
+		element(cityField).waitUntilVisible();
 		cityField.type(city);
 	}
 
-	public void SelectState(String state) {
+	public void selectState(String state) {
 		Select region = new Select(regionField);
 		region.selectByVisibleText(state);
 	}
 
 	public void enterZipCode(String zip) {
+		element(zipCodeField).waitUntilVisible();
 		zipCodeField.type(zip);
 	}
 
+	public void selectBillingCheckbox() {
+		waitForElementToAppear(billingAddressCheckbox, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
+		if (element(billingAddressCheckbox).waitUntilVisible().isSelected()) {
+		billingAddressCheckbox.click();
+		}
+	}
+
+	public void selectShippingCheckbox() {
+		element(shippingAddressCheckbox).waitUntilVisible();
+		waitForElementToAppear(shippingAddressCheckbox, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
+		shippingAddressCheckbox.click();
+	}
+
 	public void hitSaveButton() {
+		element(saveButton).waitUntilVisible();
 		saveButton.click();
+	}
+
+	public void clickAdditionalAddressButton() {
+		element(addNewAddressButton).waitUntilVisible();
+		addNewAddressButton.click();
 	}
 }

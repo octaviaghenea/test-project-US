@@ -65,11 +65,11 @@ public class PropertyFileReader {
 	}
 
 	public static void main(String[] args) throws IOException {
-		PropertyFileReader.savePropertyInPropertyFile("octa.properties", "email", "ciocanel");
+		PropertyFileReader.savePropertyInPropertyFile("test.properties", "email", "cucu" );
 		 Map<String, String> map = new HashMap<String, String>();
 		    map.put("key1", "value1");
 		    map.put("key2", "value2");
 		    map.put("key3", "value3");
-		PropertyFileReader.savePropertiesInPropertyFile("octa.properties", map);
+		PropertyFileReader.savePropertiesInPropertyFile("test.properties", map);
 	}
 }

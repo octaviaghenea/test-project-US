@@ -33,7 +33,7 @@ public class AppsEventsFactory {
 		return event;
 	}
 	
-	public static AppsEvents getMagentoCustomerChange() {
+	public static AppsEvents getMagentoCustomerChangeEvent() {
 		
 		AppsEvents event = new AppsEvents();
 		event.setEvent("E2001");

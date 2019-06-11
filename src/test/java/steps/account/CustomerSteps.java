@@ -29,6 +29,19 @@ public class CustomerSteps {
 		enterZipCode(userAddress.getZipCode());
 		hitSaveAddress();
 	}
+	
+	@StepGroup
+	public void addAdditionalAddress(UserAddressModel userAddress) {
+		clickAddNewAddressButton();
+		enterCompanyName(userAddress.getCompanyName());
+		enterPhoneNumber(userAddress.getPhoneNumber());
+		enterStreetAddress(userAddress.getStreet());
+		enterCityName(userAddress.getCity());
+		selectState(userAddress.getState());
+		enterZipCode(userAddress.getZipCode());
+		selectBillingCheckbox();
+		hitSaveAddress();
+	}
 
 	@Step
 	public void editUserFirstName(String firstname) {
@@ -67,7 +80,7 @@ public class CustomerSteps {
 
 	@Step
 	public void selectState(String state) {
-		addressBookPage.SelectState(state);
+		addressBookPage.selectState(state);
 	}
 
 	@Step
@@ -76,7 +89,21 @@ public class CustomerSteps {
 	}
 
 	@Step
+	public void selectBillingCheckbox() {
+		addressBookPage.selectBillingCheckbox();
+	}
+
+	public void selectShippingCheckbox() {
+		addressBookPage.selectShippingCheckbox();
+	}
+
+	@Step
 	public void hitSaveAddress() {
 		addressBookPage.hitSaveButton();
+	}
+	
+	@Step
+	public void clickAddNewAddressButton() {
+		addressBookPage.clickAdditionalAddressButton();
 	}
 }

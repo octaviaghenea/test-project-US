@@ -17,7 +17,7 @@ public class APIEventsAppsSteps extends AbstractApiSteps {
 
 	@Step
 	public String triggerCustomerChange(int payload) {
-		AppsEvents appsRequest = AppsEventsFactory.getMagentoCustomerChange();
+		AppsEvents appsRequest = AppsEventsFactory.getMagentoCustomerChangeEvent();
 		appsRequest.setPayload(String.valueOf(payload));
 		return createResource(Constants.URL_APPS_EVENTS, appsRequest);
 	}

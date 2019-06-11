@@ -21,13 +21,15 @@ public class API0011CreateMagentoCustomerTest extends BaseApiTest {
 	@Steps
 	APIEventsAppsSteps apiEvents;
 
+
 	@Test
 	public void createMagentoCustomer() {
 	
-		CustomerMagento cm = aPICustomerMagentoSteps.createMagentoCustomer();
-		System.out.println(cm);
-		apiEvents.triggerCustomerChange(cm.getId());
-		String oscID = apiCustomerOSCStepsSteps.getOSCUserId(cm.getEmail());
-		System.out.println(oscID);
+		/*CustomerMagento cm = aPICustomerMagentoSteps.createMagentoCustomer();
+		System.out.println(cm);*/
+		System.out.println(aPICustomerMagentoSteps.getMagentoCustomer("4"));
+		/*apiEvents.triggerCustomerChange(cm.getId());
+		String oscID = apiCustomerOSCStepsSteps.getOSCUserIdByEmail(cm.getEmail());
+		System.out.println(oscID);*/
 	}
 }
