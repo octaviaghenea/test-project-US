@@ -57,6 +57,7 @@ public class HeaderPage extends AbstractPage {
 	public void selectFromAccount(String item) {
 
 		element(myAccontLinksContainer).waitUntilVisible();
+		waitForElementToAppear(myAccontLinksContainer, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
 		myAccontLinksContainer.click();
 
 		List<WebElement> itemsList = myAccontLinksContainer.findElements(By.cssSelector("li > a[href]"));

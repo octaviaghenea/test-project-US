@@ -8,9 +8,6 @@ public class UserModel {
 	private String email;
 	private String password;
 	private String confirmPassword;
-	
-
-	
 
 	public String getFirstName() {
 		return firstName;

@@ -1,6 +1,7 @@
 package tests.api;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,9 +17,12 @@ import steps.api.APICustomerMagentoSteps;
 import steps.api.APICustomerOSCSteps;
 import steps.api.APIEventsAppsSteps;
 import steps.header.HeaderSteps;
+import tools.entities.Customer;
+import tools.entities.CustomerAddressOSC;
 import tools.entities.CustomerMagento;
 import tools.entities.CustomerOSC;
 import tools.factory.UserFactory;
+import tools.models.UserAddressModel;
 import tools.models.UserModel;
 import tools.utils.PropertyFileReader;
 
@@ -37,8 +41,6 @@ public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 	@Steps
 	MyAccountNavigationSteps myAccountNavigationSteps;
 	@Steps
-	APICustomerOSCSteps APICustomerOSCSteps;
-	@Steps
 	APICustomerMagentoSteps aPICustomerMagentoSteps;
 	@Steps
 	APICustomerOSCSteps apiCustomerOSCSteps;
@@ -48,31 +50,45 @@ public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 	// String oscID = "652362";
 
 	public UserModel user;
+	public UserAddressModel userAddress;
 	public String oscID;
+	public String magID;
+
 
 	@Before
 	public void dataSetup() throws IOException {
-		// user = UserFactory.getUserInstance();
+		userAddress = UserFactory.getUserAddress();
+		user = UserFactory.getUserInstance();	
 		CustomerMagento cm = aPICustomerMagentoSteps.createMagentoCustomer();
-		System.out.println(cm);
+		System.out.println(cm);		
 		apiEvents.triggerCustomerChange(cm.getId());
 		oscID = apiCustomerOSCSteps.getOSCUserIdByEmail(cm.getEmail());
-		//aPICustomerMagentoSteps.saveUserCredentialsInFile(cm.getEmail(), cm.getPassword());
+		magID = String.valueOf(cm.getId());
+		aPICustomerMagentoSteps.saveUserCredentialsInFile(cm.getEmail(), cm.getPassword());
 	}
 
 	@Test
-	public void checkCustomerDetailsOSC() throws IOException {
+	public void checkCustomerDetailsOSC() throws Exception {
 
+		loginSteps.openMagentoPage();
+		headerSteps.selectFromAccount("Log in");
+		loginSteps.loginToAccount();
+
+		myAccountNavigationSteps.clickAccountInformation();
+		customerSteps.editAcountInformation(user);
 		
-		 /*loginSteps.openMagentoPage();
-		 headerSteps.selectFromAccount("Login");*/
-		//loginSteps.loginToAccount();
-		 
-		/* myAccountNavigationSteps.clickAccountInformation();
-		 customerSteps.editAcountInformation(user);*/
-		 
-		CustomerOSC customerOSC = APICustomerOSCSteps.getCustomerById(oscID);
+		myAccountNavigationSteps.clickAddressBookLink();
+		customerSteps.addNewAddress(userAddress);
+		
+		Customer customerMagento = aPICustomerMagentoSteps.getMagentoCustomer(magID);
+		System.out.println(customerMagento);
+	
+		CustomerOSC customerOSC = apiCustomerOSCSteps.getCustomerById(oscID);
 		System.out.println(customerOSC);
-		//APICustomerOSCSteps.verifyCustomerMagentoToOSC(user, customerOSC);
+		List<CustomerAddressOSC> customerAddressOSC = apiCustomerOSCSteps.getCustomerAddressById(oscID);
+		System.out.println(customerAddressOSC);
+		
+		//apiCustomerOSCSteps.verifyCustomerMagentoToOSC(customerMagento, customerOSC);
+		apiCustomerOSCSteps.verifyAddressMagentoToOSC(userAddress, customerAddressOSC);
 	}
 }

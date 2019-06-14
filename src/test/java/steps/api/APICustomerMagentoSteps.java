@@ -6,8 +6,10 @@ import java.util.Map;
 
 import net.thucydides.core.annotations.Step;
 import tools.constants.Constants;
+import tools.entities.Customer;
 import tools.entities.CustomerMagento;
 import tools.factory.CustomerMagentoFactory;
+import tools.models.UserModel;
 import tools.utils.PropertyFileReader;
 
 public class APICustomerMagentoSteps extends AbstractApiSteps {
@@ -28,17 +30,17 @@ public class APICustomerMagentoSteps extends AbstractApiSteps {
 		CustomerMagento cm = new CustomerMagento();
 		cm.setEmail(email);
 		cm.setPassword(password);
-		PropertyFileReader.savePropertyInPropertyFile("test.properties", "TEST", "dssds");
+		PropertyFileReader.savePropertyInPropertyFile("login.properties", "TEST", "dssds");
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("email", email);
-		map.put("password", password);
-		PropertyFileReader.savePropertiesInPropertyFile("test.properties", map);
+		map.put("REGULAR_USER", email);
+		map.put("PASSWORD", "Pepsi123");
+		PropertyFileReader.savePropertiesInPropertyFile("login.properties", map);
 	}
 	
 	@Step 
-	public String getMagentoCustomer(String customerId) {
+	public Customer getMagentoCustomer(String customerId) {
 		AbstractApiSteps.URL = Constants.URL_MAGENTO;
 		AbstractApiSteps.extraHeaders.put("Authorization", "Bearer x0e41dpde3gynl2pa67w7gg80rv2wsx0");
-		return getResource("/V1/customers/" + customerId);
+		return getResource("/V1/customers/" + customerId, Customer.class);
 	}
 }

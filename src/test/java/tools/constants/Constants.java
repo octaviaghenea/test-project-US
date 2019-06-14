@@ -19,7 +19,7 @@ public class Constants {
 
 	public static final String API_KEY = "x0e41dpde3gynl2pa67w7gg80rv2wsx0";
 	
-	public static final int WAIT_TIME_ONE_SECOND_IN_MILISECONDS = 1000;
+	public static final int WAIT_TIME_ONE_SECOND_IN_MILISECONDS = 4000;
     public static final int WAIT_TIME_MAXIMUM_IN_SECONDS = 30;
     public static final int WAIT_TIME_FLUENT_WAIT_POLLING_IN_MILISECONDS = 500;
 }

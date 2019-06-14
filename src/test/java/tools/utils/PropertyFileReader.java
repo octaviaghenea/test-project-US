@@ -18,7 +18,7 @@ public class PropertyFileReader {
 		String propertyValue = "";
 
 		try {
-			input = new FileInputStream("src/main/resources/staging-env/environmentConstants.properties");
+			input = new FileInputStream("src/main/resources/staging-env/login.properties");
 			prop.load(input);
 			propertyValue = prop.getProperty(key);
 

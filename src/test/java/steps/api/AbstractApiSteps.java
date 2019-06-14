@@ -4,9 +4,12 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.is;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.restassured.builder.RequestSpecBuilder;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.specification.RequestSpecification;
@@ -38,6 +41,22 @@ public class AbstractApiSteps extends ScenarioSteps {
 		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).when().get(path).then().assertThat()
 				.statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
 	}
+	
+	protected <T> List<T> getResources(String path, Class<T> responseClass) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        String json = "";
+        json = given().relaxedHTTPSValidation()
+                .spec(getSpecWithExtraHeaders())
+                .when().get(path)
+                .then()
+                .assertThat().statusCode(anyOf(is(201), is(204), is(200), is(302)))
+                .extract().asString();
+
+        @SuppressWarnings("unchecked")
+        Class<T[]> arrayClass = (Class<T[]>)Class.forName("[L" + responseClass.getName() + ";");
+        T[] objects = mapper.readValue(json, arrayClass);
+        return Arrays.asList(objects);
+    }
 
 	protected static <T> T createResource(String path, Object requestBody, Class<T> responseClass) {
 		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).when().post(path)
