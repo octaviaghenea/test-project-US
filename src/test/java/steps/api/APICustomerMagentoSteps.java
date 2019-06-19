@@ -9,7 +9,6 @@ import tools.constants.Constants;
 import tools.entities.Customer;
 import tools.entities.CustomerMagento;
 import tools.factory.CustomerMagentoFactory;
-import tools.models.UserModel;
 import tools.utils.PropertyFileReader;
 
 public class APICustomerMagentoSteps extends AbstractApiSteps {

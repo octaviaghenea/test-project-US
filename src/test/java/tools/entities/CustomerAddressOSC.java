@@ -10,7 +10,7 @@ public class CustomerAddressOSC {
 	public String street_address;
 	public String city;
 	public String postcode;
-	public int is_default;
+	public boolean is_default;
 
 	public String getAddress_book_id() {
 		return address_book_id;
@@ -43,12 +43,12 @@ public class CustomerAddressOSC {
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
-
-	public int getIs_default() {
+	
+	public boolean isIs_default() {
 		return is_default;
 	}
 
-	public void setIs_default(int is_default) {
+	public void setIs_default(boolean is_default) {
 		this.is_default = is_default;
 	}
 

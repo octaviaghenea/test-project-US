@@ -1,5 +1,6 @@
 package pages.account;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -39,10 +40,10 @@ public class AddressBookPage extends AbstractPage {
 	@FindBy(css = " button.action.primary.add")
 	private WebElementFacade addNewAddressButton;
 
-	@FindBy(id = "#primary_billing")
+	@FindBy(css = "input[name='default_billing']")
 	private WebElementFacade billingAddressCheckbox;
 
-	@FindBy(id = "#primary_shipping")
+	@FindBy(id = "primary_shipping")
 	private WebElementFacade shippingAddressCheckbox;
 
 	public void enterCompanyName(String company) {
@@ -76,15 +77,14 @@ public class AddressBookPage extends AbstractPage {
 	}
 
 	public void selectBillingCheckbox() {
-		waitForElementToAppear(billingAddressCheckbox, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
-		if (element(billingAddressCheckbox).waitUntilVisible().isSelected()) {
+		element(billingAddressCheckbox).waitUntilVisible();
+		waitForElementToAppear(billingAddressCheckbox, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		billingAddressCheckbox.click();
-		}
 	}
 
 	public void selectShippingCheckbox() {
 		element(shippingAddressCheckbox).waitUntilVisible();
-		waitForElementToAppear(shippingAddressCheckbox, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
+		waitForElementToAppear(shippingAddressCheckbox, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		shippingAddressCheckbox.click();
 	}
 

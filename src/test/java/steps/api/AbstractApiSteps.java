@@ -42,22 +42,6 @@ public class AbstractApiSteps extends ScenarioSteps {
 				.statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
 	}
 	
-	protected <T> List<T> getResources(String path, Class<T> responseClass) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        String json = "";
-        json = given().relaxedHTTPSValidation()
-                .spec(getSpecWithExtraHeaders())
-                .when().get(path)
-                .then()
-                .assertThat().statusCode(anyOf(is(201), is(204), is(200), is(302)))
-                .extract().asString();
-
-        @SuppressWarnings("unchecked")
-        Class<T[]> arrayClass = (Class<T[]>)Class.forName("[L" + responseClass.getName() + ";");
-        T[] objects = mapper.readValue(json, arrayClass);
-        return Arrays.asList(objects);
-    }
-
 	protected static <T> T createResource(String path, Object requestBody, Class<T> responseClass) {
 		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).when().post(path)
 				.then().assertThat().statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);

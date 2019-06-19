@@ -39,7 +39,7 @@ public class CustomerSteps {
 		enterCityName(userAddress.getCity());
 		selectState(userAddress.getState());
 		enterZipCode(userAddress.getZipCode());
-		selectBillingCheckbox();
+		selectShippingCheckbox();
 		hitSaveAddress();
 	}
 

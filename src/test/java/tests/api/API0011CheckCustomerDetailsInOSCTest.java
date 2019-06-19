@@ -24,7 +24,6 @@ import tools.entities.CustomerOSC;
 import tools.factory.UserFactory;
 import tools.models.UserAddressModel;
 import tools.models.UserModel;
-import tools.utils.PropertyFileReader;
 
 @RunWith(SerenityRunner.class)
 
@@ -47,20 +46,21 @@ public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 	@Steps
 	APIEventsAppsSteps apiEvents;
 
-	// String oscID = "652362";
-
 	public UserModel user;
 	public UserAddressModel userAddress;
 	public String oscID;
 	public String magID;
-
+	public UserAddressModel userAdditionalAddress;
 
 	@Before
 	public void dataSetup() throws IOException {
+
+		oscID = "681097";
 		userAddress = UserFactory.getUserAddress();
-		user = UserFactory.getUserInstance();	
+		userAdditionalAddress = UserFactory.getUserAdditionalAddress();
+		user = UserFactory.getUserInstance();
 		CustomerMagento cm = aPICustomerMagentoSteps.createMagentoCustomer();
-		System.out.println(cm);		
+		System.out.println(cm);
 		apiEvents.triggerCustomerChange(cm.getId());
 		oscID = apiCustomerOSCSteps.getOSCUserIdByEmail(cm.getEmail());
 		magID = String.valueOf(cm.getId());
@@ -76,19 +76,22 @@ public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 
 		myAccountNavigationSteps.clickAccountInformation();
 		customerSteps.editAcountInformation(user);
-		
+
 		myAccountNavigationSteps.clickAddressBookLink();
 		customerSteps.addNewAddress(userAddress);
 		
+		myAccountNavigationSteps.clickAddressBookLink();
+		customerSteps.addAdditionalAddress(userAdditionalAddress);
+
 		Customer customerMagento = aPICustomerMagentoSteps.getMagentoCustomer(magID);
 		System.out.println(customerMagento);
-	
+
 		CustomerOSC customerOSC = apiCustomerOSCSteps.getCustomerById(oscID);
 		System.out.println(customerOSC);
 		List<CustomerAddressOSC> customerAddressOSC = apiCustomerOSCSteps.getCustomerAddressById(oscID);
 		System.out.println(customerAddressOSC);
-		
-		//apiCustomerOSCSteps.verifyCustomerMagentoToOSC(customerMagento, customerOSC);
-		apiCustomerOSCSteps.verifyAddressMagentoToOSC(userAddress, customerAddressOSC);
+
+		apiCustomerOSCSteps.verifyCustomerMagentoToOSC(customerMagento, customerOSC);
+		apiCustomerOSCSteps.verifyAddressMagentoToOSC(userAddress, customerAddressOSC.get(0));
 	}
 }

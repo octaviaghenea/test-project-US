@@ -58,12 +58,12 @@ public class ProductFactory {
 		CartModel product3 = new CartModel();
 
 		product3.setProductSku("PM16260");
-		product3.setProductPrice("159.95");
+		product3.setProductPrice("149.95");
 
 		product3.setItemQty("1");
 
 		product3.setPlaqueStyleLabel("Choose Plaque Style");
-		product3.setPlaqueStyleOption("Yes, Plaque +$29.95");
+		product3.setPlaqueStyleOption("Yes, Plaque +$34.95");
 		product3.getOptions().put(OptionsConstants.CHOOSE_PLAQUE_STYLE,
 				StringUtils.cleanStringToNumberOrZeroDefault(product3.getPlaqueStyleOption()));
 

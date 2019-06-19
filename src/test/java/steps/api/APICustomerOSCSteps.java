@@ -1,5 +1,6 @@
 package steps.api;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
@@ -7,6 +8,7 @@ import org.junit.Assert;
 import net.thucydides.core.annotations.Step;
 import tools.constants.Constants;
 import tools.entities.Customer;
+import tools.entities.CustomerAddressArrayOSC;
 import tools.entities.CustomerAddressOSC;
 import tools.entities.CustomerCheckOSC;
 import tools.entities.CustomerOSC;
@@ -33,16 +35,21 @@ public class APICustomerOSCSteps extends AbstractApiSteps {
 		Assert.assertTrue("LastName doesn't match!!", magentoUser.getLastname().contentEquals(oscUser.getLastname()));
 	}
 
-	public void verifyAddressMagentoToOSC(UserAddressModel magentoAddress, List<CustomerAddressOSC> customerAddressOSC) {
-		System.out.println("magento street is: " + magentoAddress.getStreet()+ " magento City is: "
-				+ magentoAddress.getCity());
-		System.out.println("osc street is: " + ((CustomerAddressOSC) customerAddressOSC).getStreet_address()+ " osc City is: "
-				+ ((CustomerAddressOSC) customerAddressOSC).getCity());
-		
-		Assert.assertTrue("Street address doesn't match: ", magentoAddress.getStreet().contentEquals(((CustomerAddressOSC) customerAddressOSC).getStreet_address()));
-		Assert.assertTrue("City names don't match: ", magentoAddress.getCity().contentEquals(((CustomerAddressOSC) customerAddressOSC).getCity()));
+	public void verifyAddressMagentoToOSC(UserAddressModel magentoAddress,
+			CustomerAddressOSC customerAddressOSC) {
+		System.out.println(
+				"Magento street is: " + magentoAddress.getStreet() + " Magento City is: " + magentoAddress.getCity() + "Magento zipcode is: " + magentoAddress.getZipCode());
+		System.out.println("Osc street is: " +  customerAddressOSC.getStreet_address()
+				+ " Osc City is: " +  customerAddressOSC.getCity() + " Osc zipcode is: " + customerAddressOSC.getPostcode());
+
+		Assert.assertTrue("Street address doesn't match: ", magentoAddress.getStreet()
+				.contentEquals(((CustomerAddressOSC) customerAddressOSC).getStreet_address()));
+		Assert.assertTrue("City names don't match: ",
+				magentoAddress.getCity().contentEquals(((CustomerAddressOSC) customerAddressOSC).getCity()));
+		Assert.assertTrue("Zip codes don't match: ",
+				magentoAddress.getZipCode().contentEquals(((CustomerAddressOSC) customerAddressOSC).getPostcode()));
 	}
-	
+
 	@Step
 	public String getOSCUserIdByEmail(String email) {
 		AbstractApiSteps.URL = Constants.URL_OSC_CUSTOMER;
@@ -52,8 +59,10 @@ public class APICustomerOSCSteps extends AbstractApiSteps {
 	}
 
 	@Step
-	public List<CustomerAddressOSC> getCustomerAddressById(String customer_id) throws Exception {
+	public List<CustomerAddressOSC> getCustomerAddressById(String customer_id) {
 		AbstractApiSteps.URL = Constants.URL_OSC_CUSTOMER;
-		return getResources("/customers/" + customer_id + "/addresses", CustomerAddressOSC.class);
+		CustomerAddressOSC[] addressArray = getResource("/customers/" + customer_id + "/addresses",
+				CustomerAddressOSC[].class);
+		return Arrays.asList(addressArray);
 	}
 }

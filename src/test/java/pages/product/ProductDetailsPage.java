@@ -41,7 +41,7 @@ public class ProductDetailsPage extends AbstractPage {
 
 	public String getAddedToCartMessage() {
 		addedToCartMessage.waitUntilVisible();
-		waitForElementToAppear(addedToCartMessage, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
+		waitForElementToAppear(addedToCartMessage, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		return addedToCartMessage.getText();
 	}
 

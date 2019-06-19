@@ -15,13 +15,13 @@ public class CustomerVerificationPage extends AbstractPage {
 
 	public String getCustomerName() {
 		customerName.waitUntilVisible();
-		waitForElementToAppear(customerName, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
+		waitForElementToAppear(customerName, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		return customerName.getText();
 	}
 
 	public String getThankYouMessage() {
 		thankYouMessage.waitUntilVisible();
-		waitForElementToAppear(customerName, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
+		waitForElementToAppear(customerName, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		return thankYouMessage.getText();
 	}
 }

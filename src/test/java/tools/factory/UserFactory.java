@@ -17,9 +17,9 @@ public class UserFactory {
 
 		return user;
 	}
-	
+
 	public static UserAddressModel getUserAddress() {
-		
+
 		UserAddressModel address = new UserAddressModel();
 		address.setCompanyName(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
 		address.setPhoneNumber(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.NUMERIC));
@@ -27,8 +27,20 @@ public class UserFactory {
 		address.setCity(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
 		address.setState("Arizona");
 		address.setZipCode(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.NUMERIC));
-		
+
+		return address;
+	}
+
+	public static UserAddressModel getUserAdditionalAddress() {
+
+		UserAddressModel address = new UserAddressModel();
+		address.setCompanyName(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
+		address.setPhoneNumber(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.NUMERIC));
+		address.setStreet(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
+		address.setCity(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
+		address.setState("Arizona");
+		address.setZipCode(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.NUMERIC));
+
 		return address;
 	}
 }
-

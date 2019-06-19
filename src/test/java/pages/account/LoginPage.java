@@ -24,13 +24,13 @@ public class LoginPage extends AbstractPage {
 
 	public void fillEmailInput(String email) {
 		element(emailInput).waitUntilVisible();
-		waitForElementToAppear(emailInput, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
+		waitForElementToAppear(emailInput, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		emailInput.type(email);
 	}
 
 	public void fillPasswordInput(String password) {
 		element(passInput).waitUntilVisible();
-		waitForElementToAppear(passInput, Constants.WAIT_TIME_ONE_SECOND_IN_MILISECONDS);
+		waitForElementToAppear(passInput, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		passInput.type(password);
 	}
 
