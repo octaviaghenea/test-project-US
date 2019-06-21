@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import pages.AbstractPage;
+import tools.constants.Constants;
 import tools.models.CartModel;
 
 public class ShoppingCartPage extends AbstractPage {
@@ -16,6 +17,9 @@ public class ShoppingCartPage extends AbstractPage {
 	@FindBy(css = "#shopping-cart-table")
 	private WebElementFacade productsContainter;
 
+	@FindBy(css = "li.item button.action")
+	private WebElement proceedToCheckoutButton;
+	
 	public List<CartModel> grabProductsList() {
 
 		element(productsContainter).waitUntilVisible();
@@ -54,5 +58,11 @@ public class ShoppingCartPage extends AbstractPage {
 		}
 		
 		return productsList;
+	}
+	
+	public void proceedToCheckout() {
+		element(proceedToCheckoutButton).waitUntilVisible();
+		waitForElementToAppear(proceedToCheckoutButton, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
+		proceedToCheckoutButton.click();
 	}
 }

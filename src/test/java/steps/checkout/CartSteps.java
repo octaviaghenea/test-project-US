@@ -13,6 +13,10 @@ public class CartSteps {
 	
 	ShoppingCartPage shoppingCartPage;
 	
+	public void proceedToCheckout() {
+		shoppingCartPage.proceedToCheckout();
+	}
+	
 //	public void verifyPageTitle() {
 //		String actualTitle = getDriver().getTitle();
 //		String expectedTitle = "Shopping Cart";

@@ -2,8 +2,6 @@ package tools.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import tools.utils.StringUtils;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CatalogOSC {
 

@@ -55,7 +55,6 @@ public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 	@Before
 	public void dataSetup() throws IOException {
 
-		oscID = "681097";
 		userAddress = UserFactory.getUserAddress();
 		userAdditionalAddress = UserFactory.getUserAdditionalAddress();
 		user = UserFactory.getUserInstance();
