@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import pages.AbstractPage;
+import tools.constants.Constants;
 
 public class CheckoutUnregisteredUsersPage extends AbstractPage {
 
@@ -43,11 +44,13 @@ public class CheckoutUnregisteredUsersPage extends AbstractPage {
 
 	public void enterEmail(String email) {
 		element(emailField).waitUntilVisible();
+		waitForElementToAppear(emailField, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		emailField.type(email);
 	}
 
 	public void enterFirstName(String firstname) {
 		element(firstnameField).waitUntilVisible();
+		waitForElementToAppear(firstnameField, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		firstnameField.type(firstname);
 	}
 

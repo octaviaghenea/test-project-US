@@ -13,13 +13,17 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import steps.account.LoginSteps;
 import steps.checkout.CartSteps;
+import steps.checkout.CheckoutUnregisteredUsersSteps;
+import steps.checkout.LoginOrGuestSteps;
 import steps.header.HeaderSteps;
 import steps.header.SearchSteps;
 import steps.product.ProductDetailsSteps;
 import steps.product.ProductPersonalizationSteps;
 import tools.constants.OptionsConstants;
+import tools.factory.CheckoutFactory;
 import tools.factory.ProductFactory;
 import tools.models.CartModel;
+import tools.models.ShippingDetailsModel;
 import tools.utils.StringUtils;
 
 @RunWith(SerenityRunner.class)
@@ -41,9 +45,14 @@ public class US0013CheckoutTest {
 	HeaderSteps headerSteps;
 	@Steps
 	CartSteps cartSteps;
+	@Steps
+	CheckoutUnregisteredUsersSteps checkoutUnregisteredUsersSteps;
+	@Steps
+	LoginOrGuestSteps loginOrGuestSteps;
 
 	public CartModel product1;
 	public CartModel product2;
+	public ShippingDetailsModel contact;
 
 	List<CartModel> expectedProductList = new ArrayList<CartModel>();
 
@@ -66,6 +75,8 @@ public class US0013CheckoutTest {
 			System.out.println("---------------");
 			System.out.println(cartModel);
 		}
+		
+		contact = CheckoutFactory.getShippingDetails();
 	}
 
 	@Test
@@ -88,5 +99,9 @@ public class US0013CheckoutTest {
 		headerSteps.goToMiniCart();
 		headerSteps.goToCart();
 		cartSteps.verifyProduct();
+		cartSteps.proceedToCheckout();
+		
+		loginOrGuestSteps.continueAsGuest();
+		checkoutUnregisteredUsersSteps.enterContactAndShippingInformation(contact);
 	}
 }
