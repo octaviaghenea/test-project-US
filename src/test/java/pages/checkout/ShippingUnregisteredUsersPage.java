@@ -10,9 +10,9 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import pages.AbstractPage;
 import tools.constants.Constants;
 
-public class CheckoutUnregisteredUsersPage extends AbstractPage {
+public class ShippingUnregisteredUsersPage extends AbstractPage {
 
-	@FindBy(css = ".block #customer-email")
+	@FindBy(css = "#customer-email-fieldset input[name='username']")
 	private WebElementFacade emailField;
 
 	@FindBy(css = "#co-shipping-form input[name='firstname']")
@@ -56,7 +56,7 @@ public class CheckoutUnregisteredUsersPage extends AbstractPage {
 
 	public void enterLastName(String lastname) {
 		element(lastnameField).waitUntilVisible();
-		firstnameField.type(lastname);
+		lastnameField.type(lastname);
 	}
 
 	public void enterCompanyName(String company) {
@@ -95,7 +95,9 @@ public class CheckoutUnregisteredUsersPage extends AbstractPage {
 
 	public void selectShippingMethod(String shippingMethod) {
 		element(shippingMethodsCondtainer).waitUntilVisible();
-		List<WebElement> methodsList = shippingMethodsCondtainer.findElements(By.cssSelector("div input[name]"));
+
+		List<WebElement> methodsList = shippingMethodsCondtainer
+				.findElements(By.cssSelector("div.col.col-carrier[id]"));
 		for (WebElement elementNow : methodsList) {
 			String labelNow = elementNow.getText();
 			if ((labelNow).contains(shippingMethod)) {
@@ -106,6 +108,9 @@ public class CheckoutUnregisteredUsersPage extends AbstractPage {
 	}
 
 	public void hitNext() {
+		By loader = By.className("loader");
+		waitForLoaderToDissapear(loader, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
+
 		element(nextButton).waitUntilVisible();
 		nextButton.click();
 	}

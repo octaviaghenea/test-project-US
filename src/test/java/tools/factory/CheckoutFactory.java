@@ -17,7 +17,7 @@ public class CheckoutFactory {
 		shipping.setState("California");
 		shipping.setZipCode(RandomGenerators.generateRandomString(4, RandomGenerators.Mode.NUMERIC));
 		shipping.setPhoneNumber(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.NUMERIC));
-		shipping.setShippingMethod("ko_unique_6");
+		shipping.setShippingMethod("One-Day Delivery");
 		
 		return shipping;
 	}

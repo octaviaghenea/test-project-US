@@ -2,12 +2,12 @@ package steps.checkout;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
-import pages.checkout.CheckoutUnregisteredUsersPage;
+import pages.checkout.ShippingUnregisteredUsersPage;
 import tools.models.ShippingDetailsModel;
 
-public class CheckoutUnregisteredUsersSteps {
+public class ShippingUnregisteredUsersSteps {
 
-	CheckoutUnregisteredUsersPage checkoutUregisteredUsersPage;
+	ShippingUnregisteredUsersPage checkoutUregisteredUsersPage;
 
 	@StepGroup
 	public void enterContactAndShippingInformation(ShippingDetailsModel contact) {
@@ -20,7 +20,8 @@ public class CheckoutUnregisteredUsersSteps {
 		selectState(contact.getState());
 		enterZipCode(contact.getZipCode());
 		enterPhoneNumber(contact.getPhoneNumber());
-		selectShippingMethod(contact.getState());
+		selectShippingMethod(contact.getShippingMethod());
+		hitNextButton();
 	}
 
 	@Step
@@ -71,5 +72,10 @@ public class CheckoutUnregisteredUsersSteps {
 	@Step
 	public void selectShippingMethod(String method) {
 		checkoutUregisteredUsersPage.selectShippingMethod(method);
+	}
+	
+	@Step
+	public void hitNextButton() {
+		checkoutUregisteredUsersPage.hitNext();
 	}
 }

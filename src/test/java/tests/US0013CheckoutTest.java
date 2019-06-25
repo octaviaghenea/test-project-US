@@ -13,7 +13,7 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import steps.account.LoginSteps;
 import steps.checkout.CartSteps;
-import steps.checkout.CheckoutUnregisteredUsersSteps;
+import steps.checkout.ShippingUnregisteredUsersSteps;
 import steps.checkout.LoginOrGuestSteps;
 import steps.header.HeaderSteps;
 import steps.header.SearchSteps;
@@ -46,7 +46,7 @@ public class US0013CheckoutTest {
 	@Steps
 	CartSteps cartSteps;
 	@Steps
-	CheckoutUnregisteredUsersSteps checkoutUnregisteredUsersSteps;
+	ShippingUnregisteredUsersSteps shippingUnregisteredUsersSteps;
 	@Steps
 	LoginOrGuestSteps loginOrGuestSteps;
 
@@ -102,6 +102,6 @@ public class US0013CheckoutTest {
 		cartSteps.proceedToCheckout();
 		
 		loginOrGuestSteps.continueAsGuest();
-		checkoutUnregisteredUsersSteps.enterContactAndShippingInformation(contact);
+		shippingUnregisteredUsersSteps.enterContactAndShippingInformation(contact);
 	}
 }
