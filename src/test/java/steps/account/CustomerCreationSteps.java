@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
+import net.thucydides.core.annotations.Title;
 import pages.account.CustomerVerificationPage;
 import pages.account.NewCustomerRegistrationPage;
 import tools.constants.MessageConstants;
@@ -55,6 +56,14 @@ public class CustomerCreationSteps {
 		enterLastName(userCreate.getLastName());
 		// hitSignUpNewsletter();
 		enterEmail(userCreate.getEmail());
+		enterPassword(userCreate.getPassword());
+		enterPassConfirmation(userCreate.getConfirmPassword());
+		hitCreateAccount();
+	}
+	
+	@Title("Create account after order placement")
+	@StepGroup
+	public void createAccountAfterplaceingOrder(UserModel userCreate) {
 		enterPassword(userCreate.getPassword());
 		enterPassConfirmation(userCreate.getConfirmPassword());
 		hitCreateAccount();

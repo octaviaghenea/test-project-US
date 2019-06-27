@@ -85,21 +85,33 @@ public class ShippingUnregisteredUsersPage extends AbstractPage {
 
 	public void enterZipCode(String zipcode) {
 		element(postcodeField).waitUntilVisible();
+		
+		By loader = By.className("loader");
+		waitForLoaderToDissapear(loader, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
+		
 		postcodeField.type(zipcode);
 	}
 
 	public void enterPhoneNumber(String number) {
 		element(phoneField).waitUntilVisible();
+
+		By loader = By.className("loader");
+		waitForLoaderToDissapear(loader, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
+		
 		phoneField.type(number);
 	}
 
 	public void selectShippingMethod(String shippingMethod) {
 		element(shippingMethodsCondtainer).waitUntilVisible();
 
+		By loader = By.className("loader");
+		waitForLoaderToDissapear(loader, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
+		
 		List<WebElement> methodsList = shippingMethodsCondtainer
 				.findElements(By.cssSelector("div.col.col-carrier[id]"));
 		for (WebElement elementNow : methodsList) {
 			String labelNow = elementNow.getText();
+			System.out.println(labelNow);
 			if ((labelNow).contains(shippingMethod)) {
 				elementNow.click();
 				break;

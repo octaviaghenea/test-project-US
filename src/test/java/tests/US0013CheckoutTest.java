@@ -11,10 +11,13 @@ import org.openqa.selenium.WebDriver;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
+import steps.account.CustomerCreationSteps;
 import steps.account.LoginSteps;
 import steps.checkout.CartSteps;
 import steps.checkout.ShippingUnregisteredUsersSteps;
 import steps.checkout.LoginOrGuestSteps;
+import steps.checkout.OrderSuccessSteps;
+import steps.checkout.ReviewAndPaymentsSteps;
 import steps.header.HeaderSteps;
 import steps.header.SearchSteps;
 import steps.product.ProductDetailsSteps;
@@ -22,8 +25,10 @@ import steps.product.ProductPersonalizationSteps;
 import tools.constants.OptionsConstants;
 import tools.factory.CheckoutFactory;
 import tools.factory.ProductFactory;
+import tools.factory.UserFactory;
 import tools.models.CartModel;
 import tools.models.ShippingDetailsModel;
+import tools.models.UserModel;
 import tools.utils.StringUtils;
 
 @RunWith(SerenityRunner.class)
@@ -49,10 +54,17 @@ public class US0013CheckoutTest {
 	ShippingUnregisteredUsersSteps shippingUnregisteredUsersSteps;
 	@Steps
 	LoginOrGuestSteps loginOrGuestSteps;
+	@Steps
+	ReviewAndPaymentsSteps reviewAndPaymentsSteps;
+	@Steps
+	OrderSuccessSteps orderSuccessSteps;
+	@Steps 
+	CustomerCreationSteps customerCreationSteps;
 
 	public CartModel product1;
 	public CartModel product2;
 	public ShippingDetailsModel contact;
+	public UserModel user;
 
 	List<CartModel> expectedProductList = new ArrayList<CartModel>();
 
@@ -65,7 +77,8 @@ public class US0013CheckoutTest {
 		product2 = ProductFactory.getProductInstanceWithoutImage();
 		product2.setItemQty("2");
 		product2.setBackPoemOption("No Thanks");
-		product2.getOptions().put(OptionsConstants.CHOOSE_BACK_POEM, StringUtils.cleanStringToNumberOrZeroDefault("No Thanks"));		
+		product2.getOptions().put(OptionsConstants.CHOOSE_BACK_POEM,
+				StringUtils.cleanStringToNumberOrZeroDefault("No Thanks"));
 		ProductFactory.updateInstance(product2);
 
 		expectedProductList.add(product2);
@@ -75,8 +88,9 @@ public class US0013CheckoutTest {
 			System.out.println("---------------");
 			System.out.println(cartModel);
 		}
-		
+
 		contact = CheckoutFactory.getShippingDetails();
+		user = UserFactory.getUserInstance();
 	}
 
 	@Test
@@ -100,8 +114,13 @@ public class US0013CheckoutTest {
 		headerSteps.goToCart();
 		cartSteps.verifyProduct();
 		cartSteps.proceedToCheckout();
-		
+
 		loginOrGuestSteps.continueAsGuest();
 		shippingUnregisteredUsersSteps.enterContactAndShippingInformation(contact);
+		reviewAndPaymentsSteps.enterPaymentInformation();
+		orderSuccessSteps.verifyThankYouMessage();
+		orderSuccessSteps.createAnAccount();
+		customerCreationSteps.createAccountAfterplaceingOrder(user);
+		
 	}
 }
