@@ -68,7 +68,7 @@ public class APICustomerOSCSteps extends AbstractApiSteps {
 	}
 
 	@Step
-	public void getOrdersById(String customerID) {
+	public void getOrdersByCustomerId(String customerID) {
 		AbstractApiSteps.URL = Constants.URL_OSC_CUSTOMER;
 		Map<String, String> parametersMap = new HashMap<>();
 		parametersMap.put("page", "1");

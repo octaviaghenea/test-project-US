@@ -10,8 +10,9 @@ public class APIEventsAppsSteps extends AbstractApiSteps {
 	private static final long serialVersionUID = 1L;
 
 	@Step
-	public String triggerProductChange() {
+	public String triggerProductChange(int payload) {
 		AppsEvents appsRequest = AppsEventsFactory.getProductChangeEvent();
+		appsRequest.setPayload(String.valueOf(payload));
 		return createResource(Constants.URL_APPS_EVENTS, appsRequest);
 	}
 

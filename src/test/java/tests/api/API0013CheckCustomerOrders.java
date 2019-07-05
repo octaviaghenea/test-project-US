@@ -17,6 +17,6 @@ public class API0013CheckCustomerOrders extends BaseApiTest {
 	@Test
 	public void checkCustomerOrdersInOSC() {
 
-		apiCustomerOSCStepsSteps.getOrdersById("68563");
+		apiCustomerOSCStepsSteps.getOrdersByCustomerId("68563");
 	}
 }

@@ -17,6 +17,6 @@ public class API0014EventsAppsTest extends BaseApiTest {
 	@Test	
 	public void triggerAppsEvents() {
 		
-		apiEventsAppsSteps.triggerProductChange();
+		//apiEventsAppsSteps.triggerProductChange();
 	}
 }

@@ -120,7 +120,6 @@ public class US0013CheckoutTest {
 		reviewAndPaymentsSteps.enterPaymentInformation();
 		orderSuccessSteps.verifyThankYouMessage();
 		orderSuccessSteps.createAnAccount();
-		customerCreationSteps.createAccountAfterplaceingOrder(user);
-		
+		customerCreationSteps.createAccountAfterplaceingOrder(user);		
 	}
 }

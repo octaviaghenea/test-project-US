@@ -4,12 +4,9 @@ import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.is;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.restassured.builder.RequestSpecBuilder;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.specification.RequestSpecification;
@@ -42,6 +39,11 @@ public class AbstractApiSteps extends ScenarioSteps {
 				.statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
 	}
 
+	protected <T> T getResource(String path, Class<T> responseClass, Map<String, String> query) {
+		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).queryParams(parametersMap).when().get(path).then().assertThat()
+				.statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
+	}
+	
 	protected static void getResource(String path, Object requestBody, Map<String, String> query) {
 		given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).queryParams(parametersMap)
 				.when().get(path).then().assertThat().statusCode(anyOf(is(201), is(200), is(302)));
@@ -71,6 +73,10 @@ public class AbstractApiSteps extends ScenarioSteps {
 	protected static void updateResourse(String path, Object requestBody, Map<String, String> query) {
 		given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).queryParams(query).when()
 				.put(path).then().assertThat().statusCode(anyOf(is(201), is(200), is(302)));
+	}
+
+	public void waitABitAfterEventTriggering(long delayInMilliseconds) {
+		waitABit(delayInMilliseconds);
 	}
 
 }
