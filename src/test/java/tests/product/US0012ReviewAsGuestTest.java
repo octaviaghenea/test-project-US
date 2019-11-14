@@ -48,8 +48,7 @@ public class US0012ReviewAsGuestTest {
 		loginSteps.openMagentoPage();
 		searchSteps.searchProduct(product);
 		searchSteps.clickSearchedItem();
-		productDetailsSteps.goToReviewsTab();
+		productDetailsSteps.goToWriteAReview();
 		productReviewFormSteps.reviewProduct(review);
 	}
-
 }

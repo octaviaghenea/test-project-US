@@ -13,7 +13,6 @@ public class UserFactory {
 		user.setLastName(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA));
 		user.setEmail(RandomGenerators.generateRandomString(10, RandomGenerators.Mode.ALPHA) + "@test.com");
 		user.setPassword("Pepsicola123");
-		user.setConfirmPassword("Pepsicola123");
 
 		return user;
 	}

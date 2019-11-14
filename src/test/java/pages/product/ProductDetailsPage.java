@@ -17,8 +17,9 @@ public class ProductDetailsPage extends AbstractPage {
 	@FindBy(css = "#qty")
 	private WebElementFacade quantityField;
 
-	@FindBy(css = "#tab-label-reviews-title")
-	private WebElementFacade reviewsTab;
+	//@FindBy(css = "button.write-review")
+	@FindBy(css = "#write-review")
+	private WebElementFacade reviewsButton;
 
 	@FindBy(css = ".message-success div")
 	private WebElementFacade addedToCartMessage;
@@ -34,9 +35,11 @@ public class ProductDetailsPage extends AbstractPage {
 		addToCartButton.click();
 	}
 
-	public void goToReviewsTab() {
-		reviewsTab.waitUntilVisible();
-		reviewsTab.click();
+	public void goToWriteAReview() {
+		//scrollDownToElement(reviewsButton);
+		reviewsButton.waitUntilVisible();
+		waitForElementToAppear(reviewsButton, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
+		reviewsButton.click();
 	}
 
 	public String getAddedToCartMessage() {

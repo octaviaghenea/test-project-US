@@ -26,9 +26,6 @@ public class HeaderPage extends AbstractPage {
 	@FindBy(css = ".action.showcart")
 	private WebElementFacade minicartLink;
 
-	@FindBy(css = ".action.viewcart")
-	private WebElementFacade viewCartLink;
-
 	protected void waitForPageToLoad() {
 		new WebDriverWait(getDriver(), 1)
 				.until(ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";"));
@@ -77,8 +74,4 @@ public class HeaderPage extends AbstractPage {
 		minicartLink.click();
 	}
 
-	public void goToCart() {
-		element(viewCartLink).waitUntilVisible();
-		viewCartLink.click();
-	}
 }

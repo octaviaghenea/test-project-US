@@ -12,9 +12,10 @@ public class ProductReviewFormSteps {
 	@StepGroup
 	public void reviewProduct(ProductReviewModel productReviewModel) {
 		setRatingStar(productReviewModel.getRatingStars());
-		enterNickname(productReviewModel.getNickname());
 		enterSummary(productReviewModel.getSummary());
+		enterNickname(productReviewModel.getNickname());
 		enterReview(productReviewModel.getReview());
+		hitSubmitButton();
 	}
 
 	@Step

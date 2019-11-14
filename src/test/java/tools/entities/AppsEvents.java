@@ -1,5 +1,7 @@
 package tools.entities;
 
+import java.sql.Array;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

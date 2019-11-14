@@ -26,8 +26,8 @@ public class ProductDetailsSteps {
 	}
 
 	@Step
-	public void goToReviewsTab() {
-		productDetailsPage.goToReviewsTab();
+	public void goToWriteAReview() {
+		productDetailsPage.goToWriteAReview();
 	}
 
 	public void verifySuccessfullyAddedMessage() {

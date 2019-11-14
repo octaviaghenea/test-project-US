@@ -22,16 +22,16 @@ public class API0012CheckProductDetailsAfterUpdateTest extends BaseApiTest {
 	@Steps
 	APIEventsAppsSteps apiEventsAppsSteps;
 
-	String ID = "4721";
-	String SKU = "PM5721";
+	String ID = "7132";
+	String SKU = "PM8132";
 
 	@Test
 	public void checkProductDetailsAfterUpdateOSC() {
 
-		/*apiCatalogOSCSteps.updateProductNameAndPrice(ID);
+		apiCatalogOSCSteps.updateProductNameAndPrice(ID);
 		apiEventsAppsSteps.triggerProductChange(Integer.valueOf(ID));
 		apiEventsAppsSteps.waitABitAfterEventTriggering(10000);
-*/
+
 		CatalogOSC catalogOSC = apiCatalogOSCSteps.getProductByID(ID);
 		System.out.println(catalogOSC);
 		CatalogMagento catalogMagento = apiMagentoCatalogSteps.getMagentoProductBySKU(SKU);

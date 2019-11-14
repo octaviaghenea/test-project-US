@@ -39,8 +39,8 @@ public class AbstractApiSteps extends ScenarioSteps {
 				.statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
 	}
 
-	protected <T> T getResource(String path, Class<T> responseClass, Map<String, String> query) {
-		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).queryParams(parametersMap).when().get(path).then().assertThat()
+	protected <T> T getResource(String path, Object requestBody, Class<T> responseClass) {
+		return given().relaxedHTTPSValidation().spec(getSpecWithExtraHeaders()).body(requestBody).queryParams(parametersMap).when().get(path).then().assertThat()
 				.statusCode(anyOf(is(201), is(200), is(302))).extract().as(responseClass);
 	}
 	
@@ -78,5 +78,4 @@ public class AbstractApiSteps extends ScenarioSteps {
 	public void waitABitAfterEventTriggering(long delayInMilliseconds) {
 		waitABit(delayInMilliseconds);
 	}
-
 }

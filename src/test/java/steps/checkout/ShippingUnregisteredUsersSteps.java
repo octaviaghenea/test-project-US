@@ -7,7 +7,7 @@ import tools.models.ShippingDetailsModel;
 
 public class ShippingUnregisteredUsersSteps {
 
-	ShippingUnregisteredUsersPage checkoutUregisteredUsersPage;
+	ShippingUnregisteredUsersPage shippingUnregisteredUsersPage;
 
 	@StepGroup
 	public void enterContactAndShippingInformation(ShippingDetailsModel contact) {
@@ -26,56 +26,56 @@ public class ShippingUnregisteredUsersSteps {
 
 	@Step
 	public void enterEmail(String email) {
-		checkoutUregisteredUsersPage.enterEmail(email);
+		shippingUnregisteredUsersPage.enterEmail(email);
 	}
 
 	@Step
 	public void enterFirstName(String firstname) {
-		checkoutUregisteredUsersPage.enterFirstName(firstname);
+		shippingUnregisteredUsersPage.enterFirstName(firstname);
 	}
 
 	@Step
 	public void enterLastName(String lastname) {
-		checkoutUregisteredUsersPage.enterLastName(lastname);
+		shippingUnregisteredUsersPage.enterLastName(lastname);
 	}
 
 	@Step
 	public void enterCompany(String company) {
-		checkoutUregisteredUsersPage.enterCompanyName(company);
+		shippingUnregisteredUsersPage.enterCompanyName(company);
 	}
 
 	@Step
 	public void enterStreetAddress(String street) {
-		checkoutUregisteredUsersPage.enterStreetAddress(street);
+		shippingUnregisteredUsersPage.enterStreetAddress(street);
 	}
 
 	@Step
 	public void enterCity(String city) {
-		checkoutUregisteredUsersPage.enterCityName(city);
+		shippingUnregisteredUsersPage.enterCityName(city);
 	}
 
 	@Step
 	public void selectState(String state) {
-		checkoutUregisteredUsersPage.selectState(state);
+		shippingUnregisteredUsersPage.selectState(state);
 	}
 
 	@Step
 	public void enterZipCode(String zipcode) {
-		checkoutUregisteredUsersPage.enterZipCode(zipcode);
+		shippingUnregisteredUsersPage.enterZipCode(zipcode);
 	}
 
 	@Step
 	public void enterPhoneNumber(String phonenumber) {
-		checkoutUregisteredUsersPage.enterPhoneNumber(phonenumber);
+		shippingUnregisteredUsersPage.enterPhoneNumber(phonenumber);
 	}
 
 	@Step
 	public void selectShippingMethod(String method) {
-		checkoutUregisteredUsersPage.selectShippingMethod(method);
+		shippingUnregisteredUsersPage.selectShippingMethod(method);
 	}
-	
+
 	@Step
 	public void hitNextButton() {
-		checkoutUregisteredUsersPage.hitNext();
+		shippingUnregisteredUsersPage.hitNext();
 	}
 }

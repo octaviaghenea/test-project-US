@@ -57,15 +57,13 @@ public class CustomerCreationSteps {
 		// hitSignUpNewsletter();
 		enterEmail(userCreate.getEmail());
 		enterPassword(userCreate.getPassword());
-		enterPassConfirmation(userCreate.getConfirmPassword());
 		hitCreateAccount();
 	}
 	
 	@Title("Create account after order placement")
 	@StepGroup
-	public void createAccountAfterplaceingOrder(UserModel userCreate) {
+	public void createAccountAfterPlacingOrder(UserModel userCreate) {
 		enterPassword(userCreate.getPassword());
-		enterPassConfirmation(userCreate.getConfirmPassword());
 		hitCreateAccount();
 	}
 

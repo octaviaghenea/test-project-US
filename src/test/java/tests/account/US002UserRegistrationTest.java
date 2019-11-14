@@ -48,8 +48,8 @@ public class US002UserRegistrationTest extends BaseTest {
 		newCustomerSteps.createUser(user);
 		// newCustomerSteps.verifyCustomerName(user);
 		newCustomerSteps.verifySuccesfullyRegisteredMessage();
-		myAccountNavigationSteps.clickAddressBookLink();
-		customerSteps.addNewAddress(address);
+		/*myAccountNavigationSteps.clickAddressBookLink();
+		customerSteps.addNewAddress(address);*/
 		
 	}
 }

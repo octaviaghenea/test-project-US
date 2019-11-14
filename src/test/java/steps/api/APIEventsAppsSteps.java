@@ -1,5 +1,7 @@
 package steps.api;
 
+import java.sql.Array;
+
 import net.thucydides.core.annotations.Step;
 import tools.constants.Constants;
 import tools.entities.AppsEvents;
@@ -13,6 +15,13 @@ public class APIEventsAppsSteps extends AbstractApiSteps {
 	public String triggerProductChange(int payload) {
 		AppsEvents appsRequest = AppsEventsFactory.getProductChangeEvent();
 		appsRequest.setPayload(String.valueOf(payload));
+		return createResource(Constants.URL_APPS_EVENTS, appsRequest);
+	}
+	
+	@Step
+	public String triggerProductOptionsChange(int payload) {
+		AppsEvents appsRequest = AppsEventsFactory.getProductOptionsChangeEvent();
+		appsRequest.setPayload("{\"id\":" +  String.valueOf(payload) + "}");
 		return createResource(Constants.URL_APPS_EVENTS, appsRequest);
 	}
 

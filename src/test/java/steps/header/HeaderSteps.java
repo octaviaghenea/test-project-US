@@ -26,9 +26,4 @@ public class HeaderSteps {
 	public void goToMiniCart(){
 		headerPage.goToMiniCart();
 	}
-
-	@Step
-	public void goToCart() {
-		headerPage.goToCart();
-	}
 }

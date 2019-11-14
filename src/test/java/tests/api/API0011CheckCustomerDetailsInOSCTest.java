@@ -44,7 +44,7 @@ public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 	@Steps
 	APICustomerOSCSteps apiCustomerOSCSteps;
 	@Steps
-	APIEventsAppsSteps apiEvents;
+	APIEventsAppsSteps apiEventsAppsSteps;
 
 	public UserModel user;
 	public UserAddressModel userAddress;
@@ -60,7 +60,8 @@ public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 		user = UserFactory.getUserInstance();
 		CustomerMagento cm = aPICustomerMagentoSteps.createMagentoCustomer();
 		System.out.println(cm);
-		apiEvents.triggerCustomerChange(cm.getId());
+		apiEventsAppsSteps.triggerCustomerChange(cm.getId());
+		apiEventsAppsSteps.waitABitAfterEventTriggering(5000);
 		oscID = apiCustomerOSCSteps.getOSCUserIdByEmail(cm.getEmail());
 		magID = String.valueOf(cm.getId());
 		aPICustomerMagentoSteps.saveUserCredentialsInFile(cm.getEmail(), cm.getPassword());
@@ -69,7 +70,7 @@ public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 	@Test
 	public void checkCustomerDetailsOSC() throws Exception {
 
-		loginSteps.openMagentoPage();
+		/*loginSteps.openMagentoPage();
 		headerSteps.selectFromAccount("Log in");
 		loginSteps.loginToAccount();
 
@@ -81,7 +82,7 @@ public class API0011CheckCustomerDetailsInOSCTest extends BaseApiTest {
 		
 		myAccountNavigationSteps.clickAddressBookLink();
 		customerSteps.addAdditionalAddress(userAdditionalAddress);
-
+*/
 		Customer customerMagento = aPICustomerMagentoSteps.getMagentoCustomer(magID);
 		System.out.println(customerMagento);
 

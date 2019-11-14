@@ -19,14 +19,17 @@ public class ShoppingCartPage extends AbstractPage {
 
 	@FindBy(css = "li.item button.action")
 	private WebElement proceedToCheckoutButton;
-	
+
+	@FindBy(css = ".action.viewcart")
+	private WebElementFacade viewCartLink;
+
 	public List<CartModel> grabProductsList() {
 
 		element(productsContainter).waitUntilVisible();
 		List<CartModel> productsList = new ArrayList<>();
 
 		List<WebElement> products = productsContainter.findElements(By.cssSelector("tbody tr.item-info"));
-		
+
 		for (WebElement product : products) {
 			CartModel cartModel = new CartModel();
 			cartModel.setProductSku(product.findElement(By.cssSelector("p.additional-info")).getText());
@@ -56,13 +59,19 @@ public class ShoppingCartPage extends AbstractPage {
 			cartModel.setProductPrice(product.findElement(By.cssSelector("td.col.price span.price")).getText());
 			productsList.add(cartModel);
 		}
-		
+
 		return productsList;
 	}
-	
+
+	public void goToCart() {
+		element(viewCartLink).waitUntilVisible();
+		viewCartLink.click();
+	}
+
 	public void proceedToCheckout() {
 		element(proceedToCheckoutButton).waitUntilVisible();
-		waitForElementToAppear(proceedToCheckoutButton, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
+		// waitForElementToAppear(proceedToCheckoutButton,
+		// Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 		proceedToCheckoutButton.click();
 	}
 }

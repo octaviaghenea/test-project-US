@@ -23,14 +23,14 @@ public class ProductReviewFormPage extends AbstractPage {
 	@FindBy(css = "#review_field")
 	private WebElementFacade reviewInput;
 
-	@FindBy(css = "button.action.submit.primary")
+	@FindBy(css = "button.action.submit.secondary")
 	private WebElementFacade submitReviewButton;
 
 	public void setRatingStars(String text) {
 		element(ratingStarsContainer).waitUntilVisible();
 		List<WebElement> ratingStarsList = ratingStarsContainer.find(By.cssSelector("div.control > label"));
 		System.out.println(ratingStarsList);
-
+		
 		for (WebElement ratingStarNow : ratingStarsList) {
 			String starName = ratingStarNow.getAttribute("for");
 			System.out.println("Rating stars are: " + starName);
@@ -42,7 +42,7 @@ public class ProductReviewFormPage extends AbstractPage {
 
 	public void enterNickname(String nickname) {
 		nicknameInput.waitUntilVisible();
-		nicknameInput.type(nickname);
+		nicknameInput.sendKeys(nickname);
 	}
 
 	public void enterSummary(String summary) {

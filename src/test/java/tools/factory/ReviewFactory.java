@@ -8,7 +8,7 @@ public class ReviewFactory {
 
 		ProductReviewModel review = new ProductReviewModel();
 		review.setRatingStars("Rating_4");
-		review.setNickname("Octavia");
+		review.setNickname("Test");
 		review.setSummary("Simba's final rest");
 		review.setReview(
 				"Simba's final rest Aug 28, 2012 Reviewed By: Nakema COn Aug 9th, I had to put my furry daughter to sleep. I was "

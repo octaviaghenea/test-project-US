@@ -58,7 +58,7 @@ public class ProductFactory {
 		CartModel product3 = new CartModel();
 
 		product3.setProductSku("PM16260");
-		product3.setProductPrice("149.95");
+		product3.setProductPrice("159.95");
 
 		product3.setItemQty("1");
 

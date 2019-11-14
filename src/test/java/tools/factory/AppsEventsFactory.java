@@ -10,10 +10,21 @@ public class AppsEventsFactory {
 
 		AppsEvents event = new AppsEvents();
 		event.setEvent("E1001");
-		event.setPayload("19160");
+		event.setPayload("");
 		event.setPriority("199");
 		return event;
 	}
+	public static AppsEvents getProductOptionsChangeEvent() {
+		
+		AppsEvents event = new AppsEvents();
+		event.setEvent("E1004");
+		event.setPayload("");
+		event.setPriority("199");
+		return event;
+	}
+	
+	
+	
 
 	public static AppsEvents getCategoryChangeEvent() {
 

@@ -27,6 +27,7 @@ import tools.factory.CheckoutFactory;
 import tools.factory.ProductFactory;
 import tools.factory.UserFactory;
 import tools.models.CartModel;
+import tools.models.ReviewAndPaymentsModel;
 import tools.models.ShippingDetailsModel;
 import tools.models.UserModel;
 import tools.utils.StringUtils;
@@ -64,6 +65,7 @@ public class US0013CheckoutTest {
 	public CartModel product1;
 	public CartModel product2;
 	public ShippingDetailsModel contact;
+	public ReviewAndPaymentsModel payment;
 	public UserModel user;
 
 	List<CartModel> expectedProductList = new ArrayList<CartModel>();
@@ -91,6 +93,8 @@ public class US0013CheckoutTest {
 
 		contact = CheckoutFactory.getShippingDetails();
 		user = UserFactory.getUserInstance();
+		payment = CheckoutFactory.getPaymentMethodDetails();
+		
 	}
 
 	@Test
@@ -98,28 +102,31 @@ public class US0013CheckoutTest {
 
 		loginSteps.openMagentoPage();
 
-		searchSteps.searchProduct(product1);
-		searchSteps.clickSearchedItem();
+	/*	searchSteps.searchProduct(product1);
+		searchSteps.clickSearchedItem();*/
 		productPersonalizationSteps.personalizeProductWithoutPhoto(product1);
 		productDetailsSteps.verifyUnitPrice(product1);
 		productDetailsSteps.addToCard();
+		
+		loginSteps.openMagentoPage();
 
-		searchSteps.searchProduct(product2);
-		searchSteps.clickSearchedItem();
+		/*searchSteps.searchProduct(product2);
+		searchSteps.clickSearchedItem();*/
 		productPersonalizationSteps.personalizeProductWithoutPhoto(product2);
 		productDetailsSteps.verifyUnitPrice(product2);
 		productDetailsSteps.addToCard();
 
 		headerSteps.goToMiniCart();
-		headerSteps.goToCart();
+		cartSteps.goToCart();
 		cartSteps.verifyProduct();
-		cartSteps.proceedToCheckout();
+		cartSteps.proceedToCheckout();	
+		
 
 		loginOrGuestSteps.continueAsGuest();
 		shippingUnregisteredUsersSteps.enterContactAndShippingInformation(contact);
-		reviewAndPaymentsSteps.enterPaymentInformation();
+		reviewAndPaymentsSteps.enterPaymentInformation(payment);
 		orderSuccessSteps.verifyThankYouMessage();
 		orderSuccessSteps.createAnAccount();
-		customerCreationSteps.createAccountAfterplaceingOrder(user);		
+		customerCreationSteps.createAccountAfterPlacingOrder(user);		
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
+import net.thucydides.core.annotations.Step;
 import pages.checkout.ShoppingCartPage;
 import tools.models.CartModel;
 import tools.utils.CartCalculations;
@@ -13,6 +14,13 @@ public class CartSteps {
 	
 	ShoppingCartPage shoppingCartPage;
 	
+
+	@Step
+	public void goToCart() {
+		shoppingCartPage.goToCart();
+	}
+	
+	@Step
 	public void proceedToCheckout() {
 		shoppingCartPage.proceedToCheckout();
 	}

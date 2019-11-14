@@ -39,7 +39,7 @@ public class APICustomerMagentoSteps extends AbstractApiSteps {
 	@Step 
 	public Customer getMagentoCustomer(String customerId) {
 		AbstractApiSteps.URL = Constants.URL_MAGENTO;
-		AbstractApiSteps.extraHeaders.put("Authorization", "Bearer x0e41dpde3gynl2pa67w7gg80rv2wsx0");
+		AbstractApiSteps.extraHeaders.put("Authorization", "Bearer 5cbbock1c9hb6jr1d3f4pt5uzneuqh38");
 		return getResource("/V1/customers/" + customerId, Customer.class);
 	}
 }

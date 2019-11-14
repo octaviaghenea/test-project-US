@@ -9,13 +9,14 @@ import net.thucydides.core.annotations.Step;
 import tools.constants.Constants;
 import tools.entities.CatalogMagento;
 import tools.entities.CatalogOSC;
+import tools.entities.product.Product;
 import tools.factory.CatalogOSCFactory;
 import tools.utils.StringUtils;
 
 public class APICatalogOSCSteps extends AbstractApiSteps {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Step
 	public CatalogOSC getProductByID(String SKU) {
 		AbstractApiSteps.URL = Constants.URL_OSC_CATALOG;

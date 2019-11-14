@@ -22,16 +22,16 @@ public class API0012CheckProductAfterDeleteTest extends BaseApiTest{
 	@Steps
 	APIEventsAppsSteps apiEventsAppsSteps;
 
-	String ID = "4721";
-	String SKU = "PM5721";
+	String ID = "2304";
+	String SKU = "PM3304";
 	CatalogMagento catalogMagento;
 
 	@Test
 	public void checkProductDetailsAfterDelete() {
 
-		/*apiMagentoCatalogSteps.deleteMagentoProduct(SKU);
+		apiMagentoCatalogSteps.deleteMagentoProduct(SKU);
 		apiEventsAppsSteps.triggerProductChange(Integer.valueOf(ID));
-		apiEventsAppsSteps.waitABitAfterEventTriggering(5000);*/
+		apiEventsAppsSteps.waitABitAfterEventTriggering(10000);
 		
 
 		CatalogMagento catalogMagento = apiMagentoCatalogSteps.getMagentoProductBySKU(SKU);

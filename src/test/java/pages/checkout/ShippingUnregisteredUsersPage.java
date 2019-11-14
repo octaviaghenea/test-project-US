@@ -120,8 +120,6 @@ public class ShippingUnregisteredUsersPage extends AbstractPage {
 	}
 
 	public void hitNext() {
-		By loader = By.className("loader");
-		waitForLoaderToDissapear(loader, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 
 		element(nextButton).waitUntilVisible();
 		nextButton.click();

@@ -42,7 +42,7 @@ public class APICustomerOSCSteps extends AbstractApiSteps {
 		AbstractApiSteps.URL = Constants.URL_OSC_CUSTOMER;
 		CustomerCheckOSC oscCustomerCheck = new CustomerCheckOSC();
 		oscCustomerCheck.setEmail(email);
-		return createResource("customers/check", oscCustomerCheck);
+		return createResource("/customers/check", oscCustomerCheck);
 	}
 
 	@Step

@@ -57,7 +57,7 @@ public class US0012ProductPersonalizationTest {
 		productDetailsSteps.setQuantity("2");
 		productDetailsSteps.addToCard();
 		headerSteps.goToMiniCart();
-		headerSteps.goToCart();
+		cartSteps.goToCart();
 //		cartSteps.verifyPageTitle(webdriver);
 	}
 }

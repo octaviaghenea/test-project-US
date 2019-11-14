@@ -48,6 +48,9 @@ public class ProductPersonalizationPage extends AbstractPage {
 	}
 
 	public void selectOption(String label, String option) {
+		
+		By loader = By.className("loader");
+		waitForLoaderToDissapear(loader, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
 
 		selectOptionDependencyByOption(By.cssSelector("#custom-option-parent"), label, option);
 
@@ -64,6 +67,9 @@ public class ProductPersonalizationPage extends AbstractPage {
 		WebElement select = null;
 		boolean found = false;
 
+		By loader = By.className("loader");
+		waitForLoaderToDissapear(loader, Constants.WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS);
+		
 		List<WebElement> selectsParentsList = getDriver().findElements(options);
 		for (WebElement selectParent : selectsParentsList) {
 			if (selectParent.findElement(By.cssSelector("label span")).getText().contentEquals(label)) {
