@@ -1,5 +1,11 @@
 package tools.entities.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+
 public class CategoryLinks {
 
 	private String position;
@@ -13,16 +19,18 @@ public class CategoryLinks {
 		this.position = position;
 	}
 
-	public String getCategoryID() {
+	public String getCategory_id() {
 		return category_id;
 	}
 
-	public void setCategoryID(String categoryID) {
-		this.category_id = categoryID;
+	public void setCategory_id(String category_id) {
+		this.category_id = category_id;
 	}
 
 	@Override
 	public String toString() {
-		return "CategoryLinks [position=" + position + ", categoryID=" + category_id + "]";
+		return "CategoryLinks [position=" + position + ", category_id=" + category_id + "]";
 	}
+
+	
 }

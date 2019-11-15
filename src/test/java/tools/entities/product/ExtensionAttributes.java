@@ -3,8 +3,10 @@ package tools.entities.product;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 
 public class ExtensionAttributes {
 
@@ -12,34 +14,33 @@ public class ExtensionAttributes {
 	private List<CategoryLinks> category_links;
 	private StockItem stock_item;
 
-	public List<String> getWebsiteIds() {
+	public List<String> getWebsite_ids() {
 		return website_ids;
 	}
 
-	public void setWebsiteIds(List<String> websiteIds) {
-		this.website_ids = websiteIds;
+	public void setWebsite_ids(List<String> website_ids) {
+		this.website_ids = website_ids;
 	}
 
-	public List<CategoryLinks> getCategoryLinks() {
+	public List<CategoryLinks> getCategory_links() {
 		return category_links;
 	}
 
-	public void setCategoryLinks(List<CategoryLinks> categoryLinks) {
-		this.category_links = categoryLinks;
+	public void setCategory_links(List<CategoryLinks> category_links) {
+		this.category_links = category_links;
 	}
 
-	public StockItem getStockItem() {
+	public StockItem getStock_item() {
 		return stock_item;
 	}
 
-	public void setStockItem(StockItem stockItem) {
-		this.stock_item = stockItem;
+	public void setStock_item(StockItem stock_item) {
+		this.stock_item = stock_item;
 	}
 
 	@Override
 	public String toString() {
-		return "ExtensionAttributes [websiteIds=" + website_ids + ", categoryLinks=" + category_links + ", stockItem="
-				+ stock_item + "]";
+		return "ExtensionAttributes [website_ids=" + website_ids + ", category_links=" + category_links
+				+ ", stock_item=" + stock_item + "]";
 	}
-
 }

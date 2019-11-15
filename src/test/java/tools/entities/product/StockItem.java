@@ -1,8 +1,14 @@
 package tools.entities.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+
 public class StockItem {
 
-	private String product_id;
+	private int product_id;
 	private String stock_id;
 	private String qty;
 	private boolean is_in_stock;
@@ -28,11 +34,13 @@ public class StockItem {
 	private boolean is_decimal_divided;
 	private String stock_status_changed_auto;
 
-	public String getProduct_id() {
+
+
+	public int getProduct_id() {
 		return product_id;
 	}
 
-	public void setProduct_id(String product_id) {
+	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
 

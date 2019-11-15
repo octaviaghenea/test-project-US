@@ -7,6 +7,7 @@ import net.thucydides.core.annotations.Step;
 import tools.constants.Constants;
 import tools.entities.CatalogMagento;
 import tools.entities.product.Product;
+import tools.entities.product.ProductModel;
 import tools.factory.ProductMagentoFactory;
 
 public class APIMagentoCatalogSteps extends AbstractApiSteps {
@@ -22,14 +23,14 @@ public class APIMagentoCatalogSteps extends AbstractApiSteps {
 	}
 
 	@Step
-	public Product createMagentoProductUsingAPI(Product product, String SKU) {
+	public ProductModel createMagentoProductUsingAPI(ProductModel product, String SKU) {
 		AbstractApiSteps.URL = Constants.URL_MAGENTO;
 		AbstractApiSteps.parametersMap = new HashMap<>();
-		parametersMap.put("sku", product.getSku());
+		parametersMap.put("sku", "Test011");
 		System.out.println(parametersMap);
 		AbstractApiSteps.extraHeaders.put("Authorization", "Bearer " + Constants.API_KEY);
-		Product productRequest =  ProductMagentoFactory.getMagentoProductInstance();
-		Product prod = updateResourse("/V1/products/" + SKU, productRequest, Product.class);
+		ProductModel productRequest =  ProductMagentoFactory.getMagentoProductInstance();
+		ProductModel prod = updateResourse("/V1/products/" + SKU, productRequest, ProductModel.class);
 				return prod;
 	}
 	
