@@ -102,16 +102,16 @@ public class US0013CheckoutTest {
 
 		loginSteps.openMagentoPage();
 
-	/*	searchSteps.searchProduct(product1);
-		searchSteps.clickSearchedItem();*/
+		searchSteps.searchProduct(product1);
+		searchSteps.clickSearchedItem();
 		productPersonalizationSteps.personalizeProductWithoutPhoto(product1);
 		productDetailsSteps.verifyUnitPrice(product1);
 		productDetailsSteps.addToCard();
 		
 		loginSteps.openMagentoPage();
 
-		/*searchSteps.searchProduct(product2);
-		searchSteps.clickSearchedItem();*/
+		searchSteps.searchProduct(product2);
+		searchSteps.clickSearchedItem();
 		productPersonalizationSteps.personalizeProductWithoutPhoto(product2);
 		productDetailsSteps.verifyUnitPrice(product2);
 		productDetailsSteps.addToCard();

@@ -24,9 +24,9 @@ public class ProductPersonalizationSteps extends ScenarioSteps {
 
 		hitPersonalizeButton();
 		selectOption(product.getPlaqueStyleLabel(), product.getPlaqueStyleOption());
-		selectOptionDependency(product.getArtwoorkLabel(), product.getArtwoorkOption());
-		selectOptionDependency(product.getFontStyleLabel(), product.getFontStyleOption());
-		selectOptionDependency(product.getChooseFrontPoemLabel(), product.getFrontPoemOption());
+		selectOption(product.getArtwoorkLabel(), product.getArtwoorkOption());
+		selectOption(product.getFontStyleLabel(), product.getFontStyleOption());
+		selectOption(product.getChooseFrontPoemLabel(), product.getFrontPoemOption());
 		previewFrontPoems();
 		closeFrontPoemsModal();
 		enterEngravingLine(product.getNameLabel(), product.getNameText());

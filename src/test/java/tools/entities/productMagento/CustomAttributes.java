@@ -1,4 +1,4 @@
-package tools.entities.product;
+package tools.entities.productMagento;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -9,7 +9,7 @@ import steps.api.APICatalogOSCSteps;
 import steps.api.APIEventsAppsSteps;
 import steps.api.APIMagentoCatalogSteps;
 import tools.entities.CatalogMagento;
-import tools.entities.CatalogOSC;
+import tools.entities.productOSC.CatalogOSC;
 
 @RunWith(SerenityRunner.class)
 

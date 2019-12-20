@@ -1,4 +1,4 @@
-package tools.entities;
+package tools.entities.productOSC;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -63,7 +63,7 @@ public class ProductFactory {
 		product3.setItemQty("1");
 
 		product3.setPlaqueStyleLabel("Choose Plaque Style");
-		product3.setPlaqueStyleOption("Yes, Plaque +$34.95");
+		product3.setPlaqueStyleOption("Yes, Plaque +$29.95");
 		product3.getOptions().put(OptionsConstants.CHOOSE_PLAQUE_STYLE,
 				StringUtils.cleanStringToNumberOrZeroDefault(product3.getPlaqueStyleOption()));
 

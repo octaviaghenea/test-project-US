@@ -1,6 +1,6 @@
 package tools.factory;
 
-import tools.entities.CatalogOSC;
+import tools.entities.productOSC.CatalogOSC;
 import tools.utils.RandomGenerators;
 
 public class CatalogOSCFactory {

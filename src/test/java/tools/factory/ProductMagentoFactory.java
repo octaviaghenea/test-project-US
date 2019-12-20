@@ -3,14 +3,14 @@ package tools.factory;
 import java.util.ArrayList;
 import java.util.List;
 
-import tools.entities.product.CategoryLinks;
-import tools.entities.product.CustomAttributes;
-import tools.entities.product.ExtensionAttributes;
-import tools.entities.product.OptionValues;
-import tools.entities.product.Options;
-import tools.entities.product.Product;
-import tools.entities.product.ProductModel;
-import tools.entities.product.StockItem;
+import tools.entities.productMagento.CategoryLinks;
+import tools.entities.productMagento.CustomAttributes;
+import tools.entities.productMagento.ExtensionAttributes;
+import tools.entities.productMagento.OptionValues;
+import tools.entities.productMagento.Options;
+import tools.entities.productMagento.Product;
+import tools.entities.productMagento.ProductModel;
+import tools.entities.productMagento.StockItem;
 
 public class ProductMagentoFactory {
 
@@ -26,11 +26,12 @@ public class ProductMagentoFactory {
 		List<CustomAttributes> customAttributes = new ArrayList<CustomAttributes>();
 		List<Options> options = new ArrayList<Options>();
 
+		//------------- Product ---------------
 		productModel.setProduct(product);
-		product.setId("1000");
+		product.setId("99999");
 		product.setSku("Test011");
 		product.setName("Test Product AutomationAPI");
-		product.setAttribute_set_id("9");
+		product.setAttribute_set_id("10");
 		product.setPrice("65.69");
 		product.setStatus("2");
 		product.setVisibility("4");
@@ -39,11 +40,13 @@ public class ProductMagentoFactory {
 		product.setUpdated_at("2019-10-23 13:46:45");
 		product.setWeight("5");
 
+		//-------------Extension attributes-------------
 		product.setExtension_attributes(extentionAttribute);
 		product.setOptions(options);
 		product.setCustom_attributes(customAttributes);
 
-		stock.setProduct_id(1000);
+		//-------------Stock details---------------
+		stock.setProduct_id(99999);
 		stock.setStock_id("1");
 		stock.setQty("9999");
 		stock.setIs_in_stock(true);
@@ -68,8 +71,10 @@ public class ProductMagentoFactory {
 		stock.setIs_decimal_divided(false);
 		stock.setStock_status_changed_auto("0");
 
+		//----------website ids--------------
 		websiteIDs.add("1");
 
+		//----------categories details---------------
 		CategoryLinks firstCategory = new CategoryLinks();
 		firstCategory.setCategory_id("49");
 		firstCategory.setPosition("1");
@@ -85,6 +90,7 @@ public class ProductMagentoFactory {
 		extentionAttribute.setStock_item(stock);
 		extentionAttribute.setWebsite_ids(websiteIDs);
 
+		//------------Custom attributes details-------------------
 		CustomAttributes themeAttribute = new CustomAttributes();
 		themeAttribute.setAttribute_code("mt_theme");
 		themeAttribute.setValue("103");
@@ -96,20 +102,26 @@ public class ProductMagentoFactory {
 		CustomAttributes isFeaturedAttribute = new CustomAttributes();
 		isFeaturedAttribute.setAttribute_code("pm_featured");
 		isFeaturedAttribute.setValue("1");
+		
+		CustomAttributes shipingClassAttribute = new CustomAttributes();
+		shipingClassAttribute.setAttribute_code("perfectm_shipping_class_id");
+		shipingClassAttribute.setValue("28");
 
 		customAttributes.add(themeAttribute);
 		customAttributes.add(colorAttribute);
 		customAttributes.add(isFeaturedAttribute);
+		customAttributes.add(shipingClassAttribute);
 
 		List<OptionValues> firstOptionValues = new ArrayList<OptionValues>();
 
+		//-------------- options details-------------
 		Options firstOption = new Options();
 		firstOption.setProduct_sku("Test011");
 		firstOption.setTitle("Choose first option");
 		firstOption.setType("drop_down");
-		firstOption.setSort_order("1");
+		//firstOption.setSort_order("1");
 		firstOption.setIs_require(false);
-		firstOption.setValues(firstOptionValues);
+		//firstOption.setValues(firstOptionValues);
 
 		OptionValues firstOptionValue = new OptionValues();
 		OptionValues firstOptionValue2 = new OptionValues();
@@ -129,14 +141,14 @@ public class ProductMagentoFactory {
 		options.add(firstOption);
 
 		List<OptionValues> secondOptionValues = new ArrayList<OptionValues>();
-
 		Options secondOption = new Options();
+		
 		secondOption.setProduct_sku("Test011");
 		secondOption.setTitle("Choose second option");
 		secondOption.setType("drop_down");
-		secondOption.setSort_order("2");
+		//secondOption.setSort_order("2");
 		secondOption.setIs_require(false);
-		secondOption.setValues(secondOptionValues);
+		//secondOption.setValues(secondOptionValues);
 
 		OptionValues secondOptionValue = new OptionValues();
 		OptionValues secondOptionValue2 = new OptionValues();
@@ -156,14 +168,14 @@ public class ProductMagentoFactory {
 		options.add(secondOption);
 
 		List<OptionValues> poemValues = new ArrayList<OptionValues>();
-
 		Options thirdOptionPoem = new Options();
+		
 		thirdOptionPoem.setProduct_sku("Test011");
 		thirdOptionPoem.setTitle("Choose Poem");
 		thirdOptionPoem.setType("drop_down");
-		thirdOptionPoem.setSort_order("3");
+		//thirdOptionPoem.setSort_order("3");
 		thirdOptionPoem.setIs_require(false);
-		thirdOptionPoem.setValues(poemValues);
+		//thirdOptionPoem.setValues(poemValues);
 
 		OptionValues firstPoemValue = new OptionValues();
 		OptionValues secondPoemValue = new OptionValues();
@@ -211,14 +223,15 @@ public class ProductMagentoFactory {
 		options.add(thirdOptionPoem);
 
 		Options fourthOption = new Options();
+		
 		fourthOption.setProduct_sku("Test011");
 		fourthOption.setTitle("Engraving Option");
 		fourthOption.setType("field");
-		fourthOption.setSort_order("4");
+		//fourthOption.setSort_order("4");
 		fourthOption.setIs_require(false);
-		fourthOption.setPrice("0");
-		fourthOption.setPrice_type("fixed");
-		fourthOption.setMax_characters("50");
+		//fourthOption.setPrice("0");
+		//fourthOption.setPrice_type("fixed");
+		//fourthOption.setMax_characters("50");
 
 		options.add(fourthOption);
 

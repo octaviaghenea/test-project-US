@@ -21,7 +21,7 @@ public class US0011LoginTest extends BaseTest {
 	@Test
 	public void loginToAccount() {
 		loginSteps.openMagentoPage();
-		headerSteps.selectFromAccount("Log in");
+		headerSteps.selectFromAccount("Sign In");
 		loginSteps.loginToAccount();
 		loginSteps.verifyPageTitle(webdriver);
 	}

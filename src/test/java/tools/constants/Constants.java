@@ -4,8 +4,9 @@ import java.io.File;
 
 public class Constants {
 
-	public static final String BASE_URL = "https://storefront.urnbag.com/large-lighthouse-cremation-urn-engravable.html";
+	public static final String BASE_URL = "https://storefront.urnbag.com";
 	public static final String RESOURCES_PATH = "resources" + File.separator;
+	public static final String OSC_URL = "www.theperfecturn.com/admin/";
 
 	public static final String PICTURE_PATH = "/resources/chuchu.jpg";
 
@@ -17,7 +18,7 @@ public class Constants {
 	//public static final String URL_CUSTOMERS_MAP = "https://apps-docker.perfectmemorials.com/helper/api/customer-map";
 
 
-	public static final String API_KEY = "e96qsc8tpy2hes9x0kie70cfagjthcas";
+	public static final String API_KEY = "qzw3aungtjhdn2ujo3n6rcq6sl5dkqi4";
 	
 	public static final int WAIT_TIME_FOUR_SECONDS_IN_MILISECONDS = 8000;
     public static final int WAIT_TIME_MAXIMUM_IN_SECONDS = 30;

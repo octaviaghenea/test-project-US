@@ -1,6 +1,4 @@
-package tools.entities.product;
-
-import java.util.List;
+package tools.entities.productMagento;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -13,13 +11,8 @@ public class Options {
 	private String product_sku;
 	private String title;
 	private String type;
-	private String sort_order;
+	private int sort_order;
 	private boolean is_require;
-	private String price;
-	private String price_type;
-	private String max_characters;
-
-	private List<OptionValues> values;
 
 	public String getProduct_sku() {
 		return product_sku;
@@ -45,11 +38,11 @@ public class Options {
 		this.type = type;
 	}
 
-	public String getSort_order() {
+	public int getSort_order() {
 		return sort_order;
 	}
 
-	public void setSort_order(String sort_order) {
+	public void setSort_order(int sort_order) {
 		this.sort_order = sort_order;
 	}
 
@@ -61,35 +54,12 @@ public class Options {
 		this.is_require = is_require;
 	}
 
-	public List<OptionValues> getValues() {
-		return values;
+	@Override
+	public String toString() {
+		return "Options [product_sku=" + product_sku + ", title=" + title + ", type=" + type + ", sort_order="
+				+ sort_order + ", is_require=" + is_require + "]";
 	}
+	
+	
 
-	public void setValues(List<OptionValues> values) {
-		this.values = values;
-	}
-
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
-	}
-
-	public String getPrice_type() {
-		return price_type;
-	}
-
-	public void setPrice_type(String price_type) {
-		this.price_type = price_type;
-	}
-
-	public String getMax_characters() {
-		return max_characters;
-	}
-
-	public void setMax_characters(String max_characters) {
-		this.max_characters = max_characters;
-	}
 }

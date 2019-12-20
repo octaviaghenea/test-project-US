@@ -1,4 +1,4 @@
-package tools.entities.product;
+package tools.entities.productMagento;
 
 import java.util.List;
 

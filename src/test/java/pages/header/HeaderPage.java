@@ -20,7 +20,7 @@ public class HeaderPage extends AbstractPage {
 	@FindBy(css = ".panel .top-menu")
 	private WebElementFacade cmsContainer;
 
-	@FindBy(css = "div.my-account-links")
+	@FindBy(css = ".my-account-links")
 	private WebElementFacade myAccontLinksContainer;
 
 	@FindBy(css = ".action.showcart")

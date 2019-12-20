@@ -8,8 +8,8 @@ import org.junit.Assert;
 import net.thucydides.core.annotations.Step;
 import tools.constants.Constants;
 import tools.entities.CatalogMagento;
-import tools.entities.CatalogOSC;
-import tools.entities.product.Product;
+import tools.entities.productMagento.Product;
+import tools.entities.productOSC.CatalogOSC;
 import tools.factory.CatalogOSCFactory;
 import tools.utils.StringUtils;
 

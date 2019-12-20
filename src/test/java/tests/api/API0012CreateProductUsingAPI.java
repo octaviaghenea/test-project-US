@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import steps.api.APIMagentoCatalogSteps;
-import tools.entities.product.ProductModel;
+import tools.entities.productMagento.ProductModel;
 import tools.factory.ProductMagentoFactory;
 
 @RunWith(SerenityRunner.class)
@@ -23,12 +23,12 @@ public class API0012CreateProductUsingAPI extends BaseApiTest {
 	public String SKU;
 	
 	
+	
 	@Before
 	public void dataSetup() throws IOException {
-
-		product = ProductMagentoFactory.getMagentoProductInstance();
-		//SKU = product.getSku();
 		SKU = "Test011";
+		product = ProductMagentoFactory.getMagentoProductInstance();
+		
 	}
 	
 	@Test
@@ -36,8 +36,6 @@ public class API0012CreateProductUsingAPI extends BaseApiTest {
 		
 		ProductModel prod = apiMagentoCatalogSteps.createMagentoProductUsingAPI(product, SKU);
 		System.out.println(prod);
-		
-		//apiMagentoCatalogSteps.getMagentoProductBySKU(SKU);
 	}
 	
 }
