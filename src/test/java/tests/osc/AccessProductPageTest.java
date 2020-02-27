@@ -45,7 +45,6 @@ public class AccessProductPageTest extends BaseTest {
 		dashboardSteps.goToProductPage();
 		oscProductSteps.enterProductDetails(oscProductDetails);
 		oscProductSteps.clickUpdate();
-
 	}
 
 }

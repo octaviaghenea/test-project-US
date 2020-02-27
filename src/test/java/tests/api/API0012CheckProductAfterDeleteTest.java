@@ -12,6 +12,8 @@ import steps.api.APIEventsAppsSteps;
 import steps.api.APIMagentoCatalogSteps;
 import tools.entities.CatalogMagento;
 import tools.entities.productMagento.Options;
+import tools.entities.productOSC.CatalogOSC;
+import tools.entities.productOSC.OptionsOSC;
 
 @RunWith(SerenityRunner.class)
 
@@ -37,15 +39,22 @@ public class API0012CheckProductAfterDeleteTest extends BaseApiTest {
 		 * apiEventsAppsSteps.waitABitAfterEventTriggering(100000);
 		 */
 
-		CatalogMagento catalogMagento = apiMagentoCatalogSteps.getMagentoProductBySKU(SKU);
-		List<Options> options = catalogMagento.getOptions();
-		System.out.println(options);
 		/*
-		  CatalogOSC catalogOSC = apiCatalogOSCSteps.getProductByID(ID);
-		 * System.out.println(catalogOSC);
-		 * 
+		 * CatalogMagento catalogMagento =
+		 * apiMagentoCatalogSteps.getMagentoProductBySKU(SKU); List<Options>
+		 * options = catalogMagento.getOptions(); System.out.println(options);
+		 */
+
+		OptionsOSC catalogOSC = apiCatalogOSCSteps.getProductOptionsByID(ID);
+		System.out.println(catalogOSC);
+
+		/*CatalogOSC catalogOSC2 = apiCatalogOSCSteps.getProductByID(ID);
+		System.out.println(catalogOSC2);*/
+
+		/*
 		 * apiCatalogOSCSteps.verifyProductMagentoToOSC(catalogMagento,
 		 * catalogOSC);
 		 */
+
 	}
 }

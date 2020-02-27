@@ -10,6 +10,7 @@ import tools.constants.Constants;
 import tools.entities.CatalogMagento;
 import tools.entities.productMagento.Product;
 import tools.entities.productOSC.CatalogOSC;
+import tools.entities.productOSC.OptionsOSC;
 import tools.factory.CatalogOSCFactory;
 import tools.utils.StringUtils;
 
@@ -21,6 +22,12 @@ public class APICatalogOSCSteps extends AbstractApiSteps {
 	public CatalogOSC getProductByID(String SKU) {
 		AbstractApiSteps.URL = Constants.URL_OSC_CATALOG;
 		return getResource("/products/" + SKU, CatalogOSC.class);
+	}
+	
+	@Step
+	public OptionsOSC getProductOptionsByID(String SKU) {
+		AbstractApiSteps.URL = Constants.URL_OSC_CATALOG;
+		return getResource("products/" + SKU + "/options", OptionsOSC.class);
 	}
 
 	@Step

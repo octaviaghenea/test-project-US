@@ -1,5 +1,7 @@
 package tools.entities.productOSC;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -11,6 +13,15 @@ public class CatalogOSC {
 	private String price;
 	private String cost;
 	private String family_id;
+	private List<OptionsOSC> options;
+
+	public List<OptionsOSC> getOptions() {
+		return options;
+	}
+
+	public void setOptions(List<OptionsOSC> options) {
+		this.options = options;
+	}
 
 	public String getId() {
 		return id;
@@ -63,6 +74,7 @@ public class CatalogOSC {
 	@Override
 	public String toString() {
 		return "CatalogOSC [id=" + id + ", name=" + name + ", sku=" + sku + ", price=" + price + ", cost=" + cost
-				+ ", family_id=" + family_id + "]";
+				+ ", family_id=" + family_id + ", options=" + options + "]";
 	}
+
 }
